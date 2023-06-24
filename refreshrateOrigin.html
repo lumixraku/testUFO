@@ -1303,91 +1303,95 @@
     </div>
     <canvas id="area51" height="360" width="766"></canvas>
     <div id="ufofooter">
-
-
-            <table class="telemetry">
-              <tr>
-                <td class="cellLabel">
-                  <div class="box">
-                    Frame<br>Rate
-                  </div>
-                </td>
-                <td class="cellValue">
-                  <div class="box">
-                    <span id="display_fps"></span>
-                    &nbsp;fps
-                  </div>
-                </td>
-                <td class="cellSpacer"></td>
-                <td class="cellLabel">
-                  <div class="box">
-                    Refresh<br>Rate
-                  </div>
-                </td>
-                <td class="cellValue">
-                  <div class="box">
-                    <span id="display_refresh">-</span>
-                    &nbsp;Hz
-                  </div>
-                </td>
-                <td class="cellSpacer"></td>
-                <td class="cellLabel">
-                  <div class="box">
-                    Pixels<br>Per &nbsp;Frame
-                  </div>
-                </td>
-                <td class="cellValue">
-                  <div class="box">
-                    <span id="display_ppf">-</span>
-                  </div>
-                </td>
-                <td class="cellSpacer"></td>
-                <td class="cellLabel">
-                  <div class="box">
-                    Pixels<br>Per &nbsp;Sec
-                  </div>
-                </td>
-                <td class="cellValue">
-                  <div class="box">
-                    <span id="display_pps">-</span>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td colspan="11" class="cellStatus box" id="display_jitter" title="For perfect animations with TestUFO Motion Tests:
-            - Close all other apps/tabs.
-            - TestUFO should be the only webpage/only app running.
-            - Windows, Mac, or iOS. May stutter with Linux/Android.
-            - Supported browser. Run directly. Not in Parallels or VMWARE.
-            - Internet Explorer 10/11 do not yet support 120Hz animation.
-            - Enable GPU acceleration. Check chrome://gpu in Chrome.
-            - Enable Aero in Microsoft Windows.
-            - Single-monitor is more reliable. Use primary monitor.
-            - If using laptop, use 'Performance Mode'.">-
-                </td>
-              </tr>
-              <tr>
-                <td colspan="11" class="cellShare box" id="share-box">
-                  <span class="shareLabel">Share This Test!</span>
-                  <input class="shareText" type="text" title="share" id="share" name="share" required readonly="readonly"
-                    onClick="shareClick()">
-                  &nbsp;&nbsp;
-                  <span class="shareButtonGroup">
-                    <a href="javascript:void(0);">
-                      <img
-                        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADQAAAA0CAYAAADFeBvrAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAALiIAAC4iAari3ZIAAAAadEVYdFNvZnR3YXJlAFBhaW50Lk5FVCB2My41LjExR/NCNwAABTlJREFUaEPtmv1TFVUYx2mayaZ+y2nG/KH6oX+hZprJLCYbU38oJ8ZGgoJCJkCkAkwTCMgSKBt0ahJEUZSGlwi8ghCUouAEKhhvogTC5UVEUejCfd29T89zONzusrv3Ci13obnfmc/Mzu4+5zzfPXte9iXAkwDgEUEUV3f3jT3dem3kWT1pu37rmalp2yrM6SGe3oMJA55EUpEOxI6IiHMp4HSCYHcIN0TReRC3X8R9PGsV4QkbkDFkOYgutAFdrubpS4UH1yNWOnOuRu+YoKltEM4198HZpl6f09jSDzeH7oEgUkPJ1I88x23MCF2uxJ232GEubFJouNIPkcm/wNqQHHhp64+6sib4EGz5uBBKqtvBbhd4li61I49zO6x1kthuLrtDhKy886wQpcL1Jiq1HMYnzDxbl5K4HWaIHDJRy3xz5LxiQUuJiKQysFgdPGumO8gKMvMEQqMZ0x9XjfCyDi0TtOMkZB6uh/K6TuwzA9DSOQyXO4bgYusA1F7sgdKadnj/sxJJTE5xM8/apcDZkc2lmPQKSdBi825CEVy4fBMcAg1anpVyoFYS+0bEUTBN2/hRpliJIbovXw3NlQQtJikH68Bscd0cXrV7f42sDLoYbkqTGMLZWBawWHyaUQkOHHzmo4TMKlk5BRUt/CjTXomhZpxr5gYsBq+H58HoXROv9cEV95VBVlautB8l62KIpoSFKDpN3r+XhKFL7YO8RmVRR7/WOwYdN0ZddP11G0ISi2Vl6W6IJuuJvy28RrnONvXBa2GHFWOV0N0Q9R+bfOniUkTSz4pxauhuaP2HR1QN4WMBbN5+QjFOjSVtiFbTm2MKFOPU8BvSGr8hL/jUEK3av8D1WvoPv7ugSVVtISris0v28UbJ+e6888lPsjp8auiV0ByYnsfi05vSvv9NVseyNrTr22pZHcvakO6LU60NbUsuk9WxrA2FJBbJ6ljWht6OPSmrw6eGaNhOPlALqTg6zZKRW+9x2P7uWIPkfHcC35O/HvCpISX8KwUv+A1pjd+QF/5/hko8GKI3LaE7S2DDtvxFe7+tlSGa497Cc8tqO3k0k9zQ9i8NjI9SKyBkZzF7xqcktPpGtBBD9KaI5qCNkfkQFFcIYbtLISb9FMvz9LluHs2kbmguMUhkSjmE7SqFrfFFELSjEN6MLoBNkccwyaOwLiyPVUrGqXXXBFMiCCU0mxhC56oZopck4ZgsXcQt+OxD7+E+2FMGUXhxlXIiFmxovsSkGyA67RREpVWwhBi4HZ9ZpfpOmwwl4cpCqTw1fGZIjcSsar8hT7gbwqWg9OtDr3FcMUhLtDZU09DDo5mkhiZNVoj7ulIxUCu0NvRnt+TjfQIZWjezPaP9+Q2KgVqhpaGErDOS5y2zxR5Ehh622gXXjdh2fRRi9yoXoAVaGiqv6+KRGOt0CgPD92b+KrHaHOl8P/usf8JwVbEALdDK0D58UHT/rG+xOeqYGdL4pHkVFjbBj7EfL45XtEKsQkH/FbpNpsw2wIsogz4g78n2bigr7wLcd/vGhI0gjo1PBXI7M8J7MRwbx/UzDf36dKVzGPbl1OMteFqx4IUSn1HFJlglPN3u1Hq/NvbIVhrTZvshbuNfGY3OADyQTG75eUxk7PZdExtNLrUP6UJL1zAYRyYU30Xg7Vs5ODr5KLchFa63AiZMlmBBEOk3k6UuAQ1mT5mtK3j66jKO3F9ptto/R2M0+in3YP00jf2iRBDFF3i68xN21KewkLUITcCbkI1821dQfUEI1f08doHHeGoKCgj4B4qP/1au5HxEAAAAAElFTkSuQmCC"
-                        title="Share on Facebook" class="shareButton" width="26" height="26" onclick="shareFacebook()">
-                    </a>
-                    &nbsp;
-                    <a href="javascript:void(0);">
-                      <img
-                        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADQAAAA0CAYAAADFeBvrAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAadEVYdFNvZnR3YXJlAFBhaW50Lk5FVCB2My41LjExR/NCNwAAB1FJREFUaN7dmvtvFFUUx0l8/Af+xg/6q0GQEI1GDD6iv/gLPvjBH0AJVlEkJGKCiBiMjwgikCBgQUAjEhQhQhqsuH3Q0ncpfdBtaaHdbrfb7ntnd2dmt/u4njO7s3vnztzptLMbwJt+up2Z7s757jn3nDv33kWL/u+NEPIAsB6oBQJA+i5CBM4BnwKLrYhZBvSTe6PJwH7gQTMxfvZdqWyOjMZnSWcoeUe5Hk4RMZ0zEtYDPGQUZv2skFqvRLb1hsi7nQEKv8Gx3+R6+djUHSA/j8VIPJ1lRf3DClpPX5UyObLHGamYYXb5BL5kn5yhTUbXraMF1apXwDFk71B07g/uKEAfs9fKDSMqmNR4ql8Vc38hmymtYUbiiOCH0pZrQfJZX5jsGgiT7XCjTV2VFaNy8KbAeukRFPQ4fWa7rs8YC9oIVI8KZFhIKSGazeUI/JAM/BJms6Q9IJMvb4T5HuN53EQAy3uAR0rTotZqBGE2s/JBH0Ln7ILMk8vlTPPqLMTvGVfcOERtilFxQERR7R2NIEyP/NAqnW/yyzrjcxTKseKxvOfQk3nD/Qbe4pzrZK5zIuWsO2EuqAreUFV8k794XFVIz98MRjSeSYMX3PE0GYA60RtMEWdklvilTFEQEk1llH5VBcaZE5jjmh4LgvSeqaLqTTPlnQyIQRFXp+UCyfzrjEzGYmmNqJ9uxSwI4sMLuQUI0nbCQLKU/71ihjSBgBLJ/Ks3Ly6ZKQlqgyRhyXBDLwXsCCp8SKeezZAMMlS4DUN4NYLxPEJQJ1RBrsSs0h+qbBHQHVsX1OGnhjV5QVt7gppE4IykSP2UDEgKDYVXlaBc6ktB8Oy26yGlIGJp2NEXgtoVIjv7Q2RXf5h8ATUMr7/fZaUf+efTh1TXF6AEfcQIugGJwOGRSZ2CVECGc5ICLQjBBIL9Dr2skqXA62FIIC3QT7+6ETHw6IKSAiWmI6DxEiuoP5Qil8FwHgFG0HxAcTVTotJv7Qvi1CFWUB8Iqp0UC0jM3xLx2xCkcsGT4NSqPJbrkBEoSL0Rtl4QdAkE6JEUMOO1+ZKW6fAniQtqWpYShKONnTBOtJcUqEJKH7NJ4XowSWrcYhmQNGCRpr10CUKP98xlKqgJasXadh+3Fn3MCOoBQRcnxLKDIkXqIW40ph9joo3rwNYT4zG+oEszInmszk1WNnrIay0zZANToVlB3SDoLzCgEnjF0igai/nGgg1o0+tg27Ng41Kw9bvRiLmgJfBPKsvr3eSFpimypjUvjhXUFUiScy6Ry3kbuBMlQZjK32zzkRfBluX1k2SJw13EmiCHHhT3auu0JrY7QNDZcXFO/nTNH59UGmKNxFOKN4zsWrAgPL+qyaPxUDtkpd/HEzr+4GD+P2KRi5AYsA6p7YI3wbVrXiHHgoLoR4c2qOhnxuJl5bwrQaYp7+DtNvT4bApyGKMKUmnxyeQ3MILldIFWuD4GT8HjFsF+gyN0ul32iflwK4sgjodUroLBv96OcxmKpmxNjXaGZfL0lcmSDZUKOZVmeJD75VacC47GF9JwkuXIWJSsaJjU2lDpPnQFBJ0cjXMZnKegKAq5HVXuY2iDQy/MnqBmbZZrBEHHwXAegwvwUBKyW3NQImu7Z0xtKU9SaNaGXMO0RI6OxDQcoxiILLwPYdo+DGG3tCwhx6lDzzEeqgNB1WB4kZsqgkI/DDKzzEOcGew0H35pB25FTL9kWyH3VOOkcuPitDEIOgyGH+FwfDQG2c465yYSSmak+6kMafyVVm9lksIyGP74qVmfazA4PTQslJXDAH4u3arHo5URhDQFSlOvWNEPggHl5uiIoKxP0fXIfh+q0/ch5OvhsGaa9zSMww4MCXycgvl1Dur6D97nNkyBLa2Uh1ZCjZAzpfm2CRiuHID1pH3O8rEf8FKrCriIUDFByEmXoJmkxwe978GIvWUCBSWoJ9aWkMwdMdhK23S2c4mzmprkhOz0A2S23YNRLnsschEmWugM/uNYtDJ1iOaNjmkSSmnWOWHhK0s6wVunYKS9fygv7lsTgSz7IHRrPKKSqukCu7p9emF1qCeanHu4QR2vAVFu6tlfrR/4mgKjYjA2oxHmOJYz+uJ61hNX5jl4Nh0dF3SCHsUhlLpg/HLLlImoiTyOieLfOJCsmU5oJvHL1dqg7zzZOMm1B4WOQMKg2gp14fhv9cyJCWFegtBr+MFvwWCy3i/lM6BNIdzHB4YPejX7RHDh+35V0NvFoQa4aV23z6IgOp7z53C8t6UvoIzBjkE4GFE9JigG5xGKHIJHh60DAfLMFQ83zFWeb54iU7Jmwfggu5NkVL2COzWMRakiJgxSKOU1C6nfDi9Bt+iKJNl9P4vZ3SSrcEcM7alD8A1qvi3WQw6GCgvCENzhDLGewQjfzNvAtJoWpQrDwnbKHVNS5J0Aw9QB/VPQ7/FBMZ/PtcXsCVxYuEe2l22ezyZATBT/Fjbe3S0NPeICdlvaAMgRd1+h+N4NPDyXvf8BMnx2wOGyqGkAAAAASUVORK5CYII="
-                        title="Share on Twitter" class="shareButton" width="26" height="26" onClick="shareTwitter()">
-                    </a>
-                  </span>
-                </td>
-              </tr>
-            </table>
+      <table class="telemetry">
+        <tbody>
+          <tr>
+            <td class="cellLabel">
+              <div class="box">Frame<br />Rate</div>
+            </td>
+            <td class="cellValue">
+              <div class="box"><span id="display_fps">60</span>&nbsp;fps</div>
+            </td>
+            <td class="cellSpacer"></td>
+            <td class="cellLabel">
+              <div class="box">Refresh<br />Rate</div>
+            </td>
+            <td class="cellValue">
+              <div class="box">
+                <span id="display_refresh">60</span>&nbsp;Hz
+              </div>
+            </td>
+            <td class="cellSpacer"></td>
+            <td class="cellLabel">
+              <div class="box">Pixels<br />Per&nbsp;Frame</div>
+            </td>
+            <td class="cellValue">
+              <div class="box"><span id="display_ppf">0</span></div>
+            </td>
+            <td class="cellSpacer"></td>
+            <td class="cellLabel">
+              <div class="box">Pixels<br />Per&nbsp;Sec</div>
+            </td>
+            <td class="cellValue">
+              <div class="box"><span id="display_pps">0</span></div>
+            </td>
+          </tr>
+          <tr>
+            <td
+              colspan="11"
+              class="cellStatus box"
+              id="display_jitter"
+              title="For perfect animations with TestUFO Motion Tests:
+- Close all other apps/tabs.
+- TestUFO should be the only webpage/only app running.
+- Windows, Mac, or iOS. May stutter with Linux/Android.
+- Supported browser. Run directly. Not in Parallels or VMWARE.
+- Internet Explorer 10/11 do not yet support 120Hz animation.
+- Enable GPU acceleration. Check chrome://gpu in Chrome.
+- Enable Aero in Microsoft Windows.
+- Single-monitor is more reliable. Use primary monitor.
+- If using laptop, use &#39;Performance Mode&#39;."
+              style="background-color: blue"
+            >
+              SYNCING:<br />Waiting for browser resize to finish...
+            </td>
+          </tr>
+          <tr>
+            <td colspan="11" class="cellShare box" id="share-box">
+              <span class="shareLabel">Share This Test!</span>
+              <input
+                class="shareText"
+                type="text"
+                title="share"
+                id="share"
+                name="share"
+                required=""
+                readonly="readonly"
+                onclick="shareClick()"
+              />
+              &nbsp;&nbsp;<span class="shareButtonGroup"
+                ><a href="javascript:void(0);"
+                  ><img
+                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADQAAAA0CAYAAADFeBvrAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAALiIAAC4iAari3ZIAAAAadEVYdFNvZnR3YXJlAFBhaW50Lk5FVCB2My41LjExR/NCNwAABTlJREFUaEPtmv1TFVUYx2mayaZ+y2nG/KH6oX+hZprJLCYbU38oJ8ZGgoJCJkCkAkwTCMgSKBt0ahJEUZSGlwi8ghCUouAEKhhvogTC5UVEUejCfd29T89zONzusrv3Ci13obnfmc/Mzu4+5zzfPXte9iXAkwDgEUEUV3f3jT3dem3kWT1pu37rmalp2yrM6SGe3oMJA55EUpEOxI6IiHMp4HSCYHcIN0TReRC3X8R9PGsV4QkbkDFkOYgutAFdrubpS4UH1yNWOnOuRu+YoKltEM4198HZpl6f09jSDzeH7oEgUkPJ1I88x23MCF2uxJ232GEubFJouNIPkcm/wNqQHHhp64+6sib4EGz5uBBKqtvBbhd4li61I49zO6x1kthuLrtDhKy886wQpcL1Jiq1HMYnzDxbl5K4HWaIHDJRy3xz5LxiQUuJiKQysFgdPGumO8gKMvMEQqMZ0x9XjfCyDi0TtOMkZB6uh/K6TuwzA9DSOQyXO4bgYusA1F7sgdKadnj/sxJJTE5xM8/apcDZkc2lmPQKSdBi825CEVy4fBMcAg1anpVyoFYS+0bEUTBN2/hRpliJIbovXw3NlQQtJikH68Bscd0cXrV7f42sDLoYbkqTGMLZWBawWHyaUQkOHHzmo4TMKlk5BRUt/CjTXomhZpxr5gYsBq+H58HoXROv9cEV95VBVlautB8l62KIpoSFKDpN3r+XhKFL7YO8RmVRR7/WOwYdN0ZddP11G0ISi2Vl6W6IJuuJvy28RrnONvXBa2GHFWOV0N0Q9R+bfOniUkTSz4pxauhuaP2HR1QN4WMBbN5+QjFOjSVtiFbTm2MKFOPU8BvSGr8hL/jUEK3av8D1WvoPv7ugSVVtISris0v28UbJ+e6888lPsjp8auiV0ByYnsfi05vSvv9NVseyNrTr22pZHcvakO6LU60NbUsuk9WxrA2FJBbJ6ljWht6OPSmrw6eGaNhOPlALqTg6zZKRW+9x2P7uWIPkfHcC35O/HvCpISX8KwUv+A1pjd+QF/5/hko8GKI3LaE7S2DDtvxFe7+tlSGa497Cc8tqO3k0k9zQ9i8NjI9SKyBkZzF7xqcktPpGtBBD9KaI5qCNkfkQFFcIYbtLISb9FMvz9LluHs2kbmguMUhkSjmE7SqFrfFFELSjEN6MLoBNkccwyaOwLiyPVUrGqXXXBFMiCCU0mxhC56oZopck4ZgsXcQt+OxD7+E+2FMGUXhxlXIiFmxovsSkGyA67RREpVWwhBi4HZ9ZpfpOmwwl4cpCqTw1fGZIjcSsar8hT7gbwqWg9OtDr3FcMUhLtDZU09DDo5mkhiZNVoj7ulIxUCu0NvRnt+TjfQIZWjezPaP9+Q2KgVqhpaGErDOS5y2zxR5Ehh622gXXjdh2fRRi9yoXoAVaGiqv6+KRGOt0CgPD92b+KrHaHOl8P/usf8JwVbEALdDK0D58UHT/rG+xOeqYGdL4pHkVFjbBj7EfL45XtEKsQkH/FbpNpsw2wIsogz4g78n2bigr7wLcd/vGhI0gjo1PBXI7M8J7MRwbx/UzDf36dKVzGPbl1OMteFqx4IUSn1HFJlglPN3u1Hq/NvbIVhrTZvshbuNfGY3OADyQTG75eUxk7PZdExtNLrUP6UJL1zAYRyYU30Xg7Vs5ODr5KLchFa63AiZMlmBBEOk3k6UuAQ1mT5mtK3j66jKO3F9ptto/R2M0+in3YP00jf2iRBDFF3i68xN21KewkLUITcCbkI1821dQfUEI1f08doHHeGoKCgj4B4qP/1au5HxEAAAAAElFTkSuQmCC"
+                    title="Share on Facebook"
+                    class="shareButton"
+                    width="26"
+                    height="26"
+                    onclick="shareFacebook()" /></a
+                >&nbsp;
+                <a href="javascript:void(0);"
+                  ><img
+                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADQAAAA0CAYAAADFeBvrAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAadEVYdFNvZnR3YXJlAFBhaW50Lk5FVCB2My41LjExR/NCNwAAB1FJREFUaN7dmvtvFFUUx0l8/Af+xg/6q0GQEI1GDD6iv/gLPvjBH0AJVlEkJGKCiBiMjwgikCBgQUAjEhQhQhqsuH3Q0ncpfdBtaaHdbrfb7ntnd2dmt/u4njO7s3vnztzptLMbwJt+up2Z7s757jn3nDv33kWL/u+NEPIAsB6oBQJA+i5CBM4BnwKLrYhZBvSTe6PJwH7gQTMxfvZdqWyOjMZnSWcoeUe5Hk4RMZ0zEtYDPGQUZv2skFqvRLb1hsi7nQEKv8Gx3+R6+djUHSA/j8VIPJ1lRf3DClpPX5UyObLHGamYYXb5BL5kn5yhTUbXraMF1apXwDFk71B07g/uKEAfs9fKDSMqmNR4ql8Vc38hmymtYUbiiOCH0pZrQfJZX5jsGgiT7XCjTV2VFaNy8KbAeukRFPQ4fWa7rs8YC9oIVI8KZFhIKSGazeUI/JAM/BJms6Q9IJMvb4T5HuN53EQAy3uAR0rTotZqBGE2s/JBH0Ln7ILMk8vlTPPqLMTvGVfcOERtilFxQERR7R2NIEyP/NAqnW/yyzrjcxTKseKxvOfQk3nD/Qbe4pzrZK5zIuWsO2EuqAreUFV8k794XFVIz98MRjSeSYMX3PE0GYA60RtMEWdklvilTFEQEk1llH5VBcaZE5jjmh4LgvSeqaLqTTPlnQyIQRFXp+UCyfzrjEzGYmmNqJ9uxSwI4sMLuQUI0nbCQLKU/71ihjSBgBLJ/Ks3Ly6ZKQlqgyRhyXBDLwXsCCp8SKeezZAMMlS4DUN4NYLxPEJQJ1RBrsSs0h+qbBHQHVsX1OGnhjV5QVt7gppE4IykSP2UDEgKDYVXlaBc6ktB8Oy26yGlIGJp2NEXgtoVIjv7Q2RXf5h8ATUMr7/fZaUf+efTh1TXF6AEfcQIugGJwOGRSZ2CVECGc5ICLQjBBIL9Dr2skqXA62FIIC3QT7+6ETHw6IKSAiWmI6DxEiuoP5Qil8FwHgFG0HxAcTVTotJv7Qvi1CFWUB8Iqp0UC0jM3xLx2xCkcsGT4NSqPJbrkBEoSL0Rtl4QdAkE6JEUMOO1+ZKW6fAniQtqWpYShKONnTBOtJcUqEJKH7NJ4XowSWrcYhmQNGCRpr10CUKP98xlKqgJasXadh+3Fn3MCOoBQRcnxLKDIkXqIW40ph9joo3rwNYT4zG+oEszInmszk1WNnrIay0zZANToVlB3SDoLzCgEnjF0igai/nGgg1o0+tg27Ng41Kw9bvRiLmgJfBPKsvr3eSFpimypjUvjhXUFUiScy6Ry3kbuBMlQZjK32zzkRfBluX1k2SJw13EmiCHHhT3auu0JrY7QNDZcXFO/nTNH59UGmKNxFOKN4zsWrAgPL+qyaPxUDtkpd/HEzr+4GD+P2KRi5AYsA6p7YI3wbVrXiHHgoLoR4c2qOhnxuJl5bwrQaYp7+DtNvT4bApyGKMKUmnxyeQ3MILldIFWuD4GT8HjFsF+gyN0ul32iflwK4sgjodUroLBv96OcxmKpmxNjXaGZfL0lcmSDZUKOZVmeJD75VacC47GF9JwkuXIWJSsaJjU2lDpPnQFBJ0cjXMZnKegKAq5HVXuY2iDQy/MnqBmbZZrBEHHwXAegwvwUBKyW3NQImu7Z0xtKU9SaNaGXMO0RI6OxDQcoxiILLwPYdo+DGG3tCwhx6lDzzEeqgNB1WB4kZsqgkI/DDKzzEOcGew0H35pB25FTL9kWyH3VOOkcuPitDEIOgyGH+FwfDQG2c465yYSSmak+6kMafyVVm9lksIyGP74qVmfazA4PTQslJXDAH4u3arHo5URhDQFSlOvWNEPggHl5uiIoKxP0fXIfh+q0/ch5OvhsGaa9zSMww4MCXycgvl1Dur6D97nNkyBLa2Uh1ZCjZAzpfm2CRiuHID1pH3O8rEf8FKrCriIUDFByEmXoJmkxwe978GIvWUCBSWoJ9aWkMwdMdhK23S2c4mzmprkhOz0A2S23YNRLnsschEmWugM/uNYtDJ1iOaNjmkSSmnWOWHhK0s6wVunYKS9fygv7lsTgSz7IHRrPKKSqukCu7p9emF1qCeanHu4QR2vAVFu6tlfrR/4mgKjYjA2oxHmOJYz+uJ61hNX5jl4Nh0dF3SCHsUhlLpg/HLLlImoiTyOieLfOJCsmU5oJvHL1dqg7zzZOMm1B4WOQMKg2gp14fhv9cyJCWFegtBr+MFvwWCy3i/lM6BNIdzHB4YPejX7RHDh+35V0NvFoQa4aV23z6IgOp7z53C8t6UvoIzBjkE4GFE9JigG5xGKHIJHh60DAfLMFQ83zFWeb54iU7Jmwfggu5NkVL2COzWMRakiJgxSKOU1C6nfDi9Bt+iKJNl9P4vZ3SSrcEcM7alD8A1qvi3WQw6GCgvCENzhDLGewQjfzNvAtJoWpQrDwnbKHVNS5J0Aw9QB/VPQ7/FBMZ/PtcXsCVxYuEe2l22ezyZATBT/Fjbe3S0NPeICdlvaAMgRd1+h+N4NPDyXvf8BMnx2wOGyqGkAAAAASUVORK5CYII="
+                    title="Share on Twitter"
+                    class="shareButton"
+                    width="26"
+                    height="26"
+                    onclick="shareTwitter()" /></a
+              ></span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
       <p class="noticeText">
         <b
@@ -1875,227 +1879,227 @@ Windows Classic mode makes web browser animations choppy. Also:
       var draw = new Draw();
       var Params = new HashEngine();
       function CanvasHelper() {
-        this['canvas'] = null;
-        this['surface'] = null;
-        this['message'] = '';
-        this['backingStoreRatio'] = 1;
-        this['devicePixelRatio'] = 1;
-        this['initialized'] = false;
-        this['init'] = function (_0x943fx8) {
+        this[fnNames[0]] = null;
+        this[fnNames[1]] = null;
+        this[fnNames[2]] = fnNames[3];
+        this[fnNames[4]] = 1;
+        this[fnNames[5]] = 1;
+        this[fnNames[6]] = false;
+        this[fnNames[7]] = function (_0x943fx8) {
           try {
-            this['canvas'] = document['getElementById'](_0x943fx8);
-            this['surface'] = this['canvas']['getContext']('2d');
-            this['surface']['viewportWidth'] = this['canvas']['width'];
-            this['surface']['viewportHeight'] = this['canvas']['height'];
-            this['smoothingEnable'](false);
-            this['devicePixelRatio'] = window['devicePixelRatio'] || 1;
-            this['backingStoreRatio'] =
-              this['surface']['webkitBackingStorePixelRatio'] ||
-              this['surface']['mozBackingStorePixelRatio'] ||
-              this['surface']['msBackingStorePixelRatio'] ||
-              this['surface']['oBackingStorePixelRatio'] ||
-              this['surface']['backingStorePixelRatio'] ||
+            this[fnNames[0]] = document[fnNames[8]](_0x943fx8);
+            this[fnNames[1]] = this[fnNames[0]][fnNames[10]](fnNames[9]);
+            this[fnNames[1]][fnNames[11]] = this[fnNames[0]][fnNames[12]];
+            this[fnNames[1]][fnNames[13]] = this[fnNames[0]][fnNames[14]];
+            this[fnNames[15]](false);
+            this[fnNames[5]] = window[fnNames[5]] || 1;
+            this[fnNames[4]] =
+              this[fnNames[1]][fnNames[16]] ||
+              this[fnNames[1]][fnNames[17]] ||
+              this[fnNames[1]][fnNames[18]] ||
+              this[fnNames[1]][fnNames[19]] ||
+              this[fnNames[1]][fnNames[20]] ||
               1;
-            if (!this['initialized']) {
-              window['requestAnimFrame'] = (function () {
+            if (!this[fnNames[6]]) {
+              window[fnNames[21]] = (function () {
                 return (
-                  window['requestAnimationFrame'] ||
-                  window['webkitRequestAnimationFrame'] ||
-                  window['mozRequestAnimationFrame'] ||
-                  window['oRequestAnimationFrame'] ||
-                  window['msRequestAnimationFrame'] ||
+                  window[fnNames[22]] ||
+                  window[fnNames[23]] ||
+                  window[fnNames[24]] ||
+                  window[fnNames[25]] ||
+                  window[fnNames[26]] ||
                   function (_0x943fx9, _0x943fx8) {
-                    return window['setTimeout'](_0x943fx9, 1000 / 60);
+                    return window[fnNames[27]](_0x943fx9, 1000 / 60);
                   }
                 );
               })();
-              window['cancelAnimFrame'] = (function () {
+              window[fnNames[28]] = (function () {
                 return (
-                  window['cancelAnimationFrame'] ||
-                  window['webkitCancelAnimationFrame'] ||
-                  window['mozCancelAnimationFrame'] ||
-                  window['oCancelAnimationFrame'] ||
-                  window['msCancelAnimationFrame'] ||
-                  window['clearTimeout']
+                  window[fnNames[29]] ||
+                  window[fnNames[30]] ||
+                  window[fnNames[31]] ||
+                  window[fnNames[32]] ||
+                  window[fnNames[33]] ||
+                  window[fnNames[34]]
                 );
               })();
             }
-            this['initialized'] = true;
+            this[fnNames[6]] = true;
             return true;
           } catch (e) {
-            this['message'] = 'Your web browser does not support HTML5. Please upgrade.';
+            this[fnNames[2]] = fnNames[35];
             return false;
           }
         };
-        this['smoothingEnable'] = function (_0x943fxa) {
-          if (this['surface']) {
-            this['surface']['imageSmoothingEnabled'] = _0x943fxa;
-            this['surface']['mozImageSmoothingEnabled'] = _0x943fxa;
-            this['surface']['oImageSmoothingEnabled'] = _0x943fxa;
-            this['surface']['webkitImageSmoothingEnabled'] = _0x943fxa;
+        this[fnNames[15]] = function (_0x943fxa) {
+          if (this[fnNames[1]]) {
+            this[fnNames[1]][fnNames[36]] = _0x943fxa;
+            this[fnNames[1]][fnNames[37]] = _0x943fxa;
+            this[fnNames[1]][fnNames[38]] = _0x943fxa;
+            this[fnNames[1]][fnNames[39]] = _0x943fxa;
           }
         };
       }
       function HashEngine() {
-        this['params'] = {};
-        this['currentHash'] = '';
-        this['tempCount'] = 0;
-        this['paramCount'] = 0;
+        this[fnNames[40]] = {};
+        this[fnNames[41]] = fnNames[3];
+        this[fnNames[42]] = 0;
+        this[fnNames[43]] = 0;
         var _0x943fxc = null;
         var _0x943fxd = null;
-        this['clearParams'] = function () {
-          delete this['params'];
-          this['params'] = {};
-          this['paramCount'] = 0;
+        this[fnNames[44]] = function () {
+          delete this[fnNames[40]];
+          this[fnNames[40]] = {};
+          this[fnNames[43]] = 0;
         };
-        this['decodeHash'] = function () {
+        this[fnNames[45]] = function () {
           var _0x943fxe = /([^&=]+)=?([^&]*)/g;
           var _0x943fxf = function (_0x943fx10) {
             if (_0x943fx10) {
               return decodeURIComponent(
-                _0x943fx10.toString()['replace'](/\+/g, ' ')
+                _0x943fx10.toString()[fnNames[47]](/\+/g, fnNames[46])
               );
             }
-            return '';
+            return fnNames[3];
           };
-          var _0x943fx11 = window['location']['hash']['substring'](1);
+          var _0x943fx11 = window[fnNames[50]][fnNames[49]][fnNames[48]](1);
           var _0x943fx12;
-          while ((_0x943fx12 = _0x943fxe['exec'](_0x943fx11))) {
-            this['params'][_0x943fxf(_0x943fx12[1])] = _0x943fxf(
+          while ((_0x943fx12 = _0x943fxe[fnNames[51]](_0x943fx11))) {
+            this[fnNames[40]][_0x943fxf(_0x943fx12[1])] = _0x943fxf(
               _0x943fx12[2]
             );
           }
-          this['currentHash'] = window['location']['hash'];
+          this[fnNames[41]] = window[fnNames[50]][fnNames[49]];
         };
-        this['encodeHash'] = function (_0x943fx13) {
-          this['currentHash'] = this['getHash'](_0x943fx13);
-          this['paramCount'] = this['tempCount'];
+        this[fnNames[52]] = function (_0x943fx13) {
+          this[fnNames[41]] = this[fnNames[53]](_0x943fx13);
+          this[fnNames[43]] = this[fnNames[42]];
         };
-        this['commitHash'] = function () {
-          if (this['currentHash'] === '#') {
-            windows['location']['hash'] = '';
+        this[fnNames[54]] = function () {
+          if (this[fnNames[41]] === fnNames[55]) {
+            windows[fnNames[50]][fnNames[49]] = fnNames[3];
           } else {
-            window['location']['hash'] = this['currentHash'];
+            window[fnNames[50]][fnNames[49]] = this[fnNames[41]];
           }
         };
-        this['getHash'] = function (_0x943fx13) {
+        this[fnNames[53]] = function (_0x943fx13) {
           var _0x943fx14 = function (_0x943fx10) {
             if (_0x943fx10) {
               return encodeURIComponent(
-                _0x943fx10.toString()['replace'](/ /g, '+')
+                _0x943fx10.toString()[fnNames[47]](/ /g, fnNames[56])
               );
             }
-            return '';
+            return fnNames[3];
           };
-          var _0x943fx15 = '';
-          this['tempCount'] = 0;
-          for (var _0x943fx16 in this['params']) {
+          var _0x943fx15 = fnNames[3];
+          this[fnNames[42]] = 0;
+          for (var _0x943fx16 in this[fnNames[40]]) {
             if (
-              this['params']['hasOwnProperty'](_0x943fx16) &&
-              this['params'][_0x943fx16] &&
+              this[fnNames[40]][fnNames[57]](_0x943fx16) &&
+              this[fnNames[40]][_0x943fx16] &&
               _0x943fx16 !== _0x943fx13
             ) {
               if (_0x943fx15) {
-                _0x943fx15 += '&';
+                _0x943fx15 += fnNames[58];
               }
               _0x943fx15 +=
                 _0x943fx14(_0x943fx16) +
-                '=' +
-                _0x943fx14(this['params'][_0x943fx16]);
-              this['tempCount']++;
+                fnNames[59] +
+                _0x943fx14(this[fnNames[40]][_0x943fx16]);
+              this[fnNames[42]]++;
             }
           }
           if (_0x943fx15) {
-            _0x943fx15 = '#' + _0x943fx15;
+            _0x943fx15 = fnNames[55] + _0x943fx15;
           }
           return _0x943fx15;
         };
-        this['setScope'] = function (_0x943fx17) {
+        this[fnNames[60]] = function (_0x943fx17) {
           _0x943fxc = _0x943fx17;
-          var _0x943fx18 = document['getElementById'](_0x943fxc);
+          var _0x943fx18 = document[fnNames[8]](_0x943fxc);
           if (!_0x943fx18) {
             return;
           }
-          _0x943fxd = _0x943fx18['getElementsByClassName']('setting');
+          _0x943fxd = _0x943fx18[fnNames[62]](fnNames[61]);
         };
-        this['getSelections'] = function () {
+        this[fnNames[63]] = function () {
           return _0x943fxd;
         };
-        this['loadDefaults'] = function () {
+        this[fnNames[64]] = function () {
           for (
             var _0x943fx19 = 0;
-            _0x943fx19 < _0x943fxd['length'];
+            _0x943fx19 < _0x943fxd[fnNames[65]];
             _0x943fx19++
           ) {
-            var _0x943fx1a = _0x943fxd[_0x943fx19]['id'];
-            var _0x943fx1b = _0x943fxd[_0x943fx19]['getAttribute']('data-default');
+            var _0x943fx1a = _0x943fxd[_0x943fx19][fnNames[66]];
+            var _0x943fx1b = _0x943fxd[_0x943fx19][fnNames[68]](fnNames[67]);
             if (
               _0x943fx1a !== null &&
               _0x943fx1b !== null &&
-              this['params'][_0x943fx1a] == null
+              this[fnNames[40]][_0x943fx1a] == null
             ) {
-              this['params'][_0x943fx1a] = _0x943fx1b;
+              this[fnNames[40]][_0x943fx1a] = _0x943fx1b;
             }
           }
         };
-        this['saveSelections'] = function () {
+        this[fnNames[69]] = function () {
           for (
             var _0x943fx19 = 0;
-            _0x943fx19 < _0x943fxd['length'];
+            _0x943fx19 < _0x943fxd[fnNames[65]];
             _0x943fx19++
           ) {
-            var _0x943fx1a = _0x943fxd[_0x943fx19]['id'];
-            var _0x943fx1c = _0x943fxd[_0x943fx19]['value'];
+            var _0x943fx1a = _0x943fxd[_0x943fx19][fnNames[66]];
+            var _0x943fx1c = _0x943fxd[_0x943fx19][fnNames[70]];
             if (
-              _0x943fxd[_0x943fx19]['getAttribute']('data-format') === 'color'
+              _0x943fxd[_0x943fx19][fnNames[68]](fnNames[71]) === fnNames[72]
             ) {
-              if (_0x943fx1c['charAt'](0) === '#') {
-                _0x943fx1c = _0x943fx1c['substring'](1);
+              if (_0x943fx1c[fnNames[73]](0) === fnNames[55]) {
+                _0x943fx1c = _0x943fx1c[fnNames[48]](1);
               }
             }
             if (_0x943fx1a !== null && _0x943fx1c !== null) {
-              this['params'][_0x943fx1a] = _0x943fx1c;
+              this[fnNames[40]][_0x943fx1a] = _0x943fx1c;
             }
           }
         };
-        this['resetSelections'] = function () {
+        this[fnNames[74]] = function () {
           for (
             var _0x943fx19 = 0;
-            _0x943fx19 < _0x943fxd['length'];
+            _0x943fx19 < _0x943fxd[fnNames[65]];
             _0x943fx19++
           ) {
-            var _0x943fx1a = _0x943fxd[_0x943fx19]['id'];
-            if (_0x943fxd[_0x943fx19]['tagName'] === 'INPUT') {
+            var _0x943fx1a = _0x943fxd[_0x943fx19][fnNames[66]];
+            if (_0x943fxd[_0x943fx19][fnNames[75]] === fnNames[76]) {
               if (
-                _0x943fxd[_0x943fx19]['getAttribute']('data-format') === 'color'
+                _0x943fxd[_0x943fx19][fnNames[68]](fnNames[71]) === fnNames[72]
               ) {
-                var _0x943fx1d = this['params'][_0x943fx1a];
-                if (_0x943fx1d['charAt'](0) !== '#') {
-                  _0x943fx1d = '#' + _0x943fx1d;
+                var _0x943fx1d = this[fnNames[40]][_0x943fx1a];
+                if (_0x943fx1d[fnNames[73]](0) !== fnNames[55]) {
+                  _0x943fx1d = fnNames[55] + _0x943fx1d;
                 }
-                _0x943fxd[_0x943fx19]['value'] = _0x943fx1d;
+                _0x943fxd[_0x943fx19][fnNames[70]] = _0x943fx1d;
               } else {
-                _0x943fxd[_0x943fx19]['value'] =
-                  this['params'][_0x943fx1a];
+                _0x943fxd[_0x943fx19][fnNames[70]] =
+                  this[fnNames[40]][_0x943fx1a];
               }
             } else {
-              if (_0x943fxd[_0x943fx19]['tagName'] === 'SELECT') {
-                var _0x943fx1e = _0x943fxd[_0x943fx19]['getElementsByTagName'](
-                  'option'
+              if (_0x943fxd[_0x943fx19][fnNames[75]] === fnNames[77]) {
+                var _0x943fx1e = _0x943fxd[_0x943fx19][fnNames[79]](
+                  fnNames[78]
                 );
                 if (!_0x943fx1e) {
                   continue;
                 }
                 for (
                   var _0x943fx1f = 0;
-                  _0x943fx1f < _0x943fx1e['length'];
+                  _0x943fx1f < _0x943fx1e[fnNames[65]];
                   _0x943fx1f++
                 ) {
                   if (
-                    _0x943fx1e[_0x943fx1f]['value'] ===
-                    this['params'][_0x943fx1a]
+                    _0x943fx1e[_0x943fx1f][fnNames[70]] ===
+                    this[fnNames[40]][_0x943fx1a]
                   ) {
-                    _0x943fx1e[_0x943fx1f]['selected'] = true;
+                    _0x943fx1e[_0x943fx1f][fnNames[80]] = true;
                     break;
                   }
                 }
@@ -2106,10 +2110,10 @@ Windows Classic mode makes web browser animations choppy. Also:
         function _0x943fx20(_0x943fx21) {
           for (
             var _0x943fx19 = 0;
-            _0x943fx19 < _0x943fxd['length'];
+            _0x943fx19 < _0x943fxd[fnNames[65]];
             _0x943fx19++
           ) {
-            if (_0x943fxd[_0x943fx19]['id'] === _0x943fx21) {
+            if (_0x943fxd[_0x943fx19][fnNames[66]] === _0x943fx21) {
               return _0x943fxd[_0x943fx19];
             }
           }
@@ -2118,193 +2122,193 @@ Windows Classic mode makes web browser animations choppy. Also:
         function _0x943fx22(_0x943fx21) {
           for (
             var _0x943fx19 = 0;
-            _0x943fx19 < _0x943fxd['length'];
+            _0x943fx19 < _0x943fxd[fnNames[65]];
             _0x943fx19++
           ) {
-            if (_0x943fxd[_0x943fx19]['id'] === _0x943fx21) {
-              return _0x943fxd[_0x943fx19]['getElementsByTagName']('option');
+            if (_0x943fxd[_0x943fx19][fnNames[66]] === _0x943fx21) {
+              return _0x943fxd[_0x943fx19][fnNames[79]](fnNames[78]);
             }
           }
           return null;
         }
-        this['setDefault'] = function (_0x943fx21, _0x943fx1c) {
+        this[fnNames[81]] = function (_0x943fx21, _0x943fx1c) {
           var _0x943fx23 = _0x943fx22(_0x943fx21);
           if (_0x943fx23 === null) {
             return;
           }
           for (
             var _0x943fx19 = 0;
-            _0x943fx19 < _0x943fx23['length'];
+            _0x943fx19 < _0x943fx23[fnNames[65]];
             _0x943fx19++
           ) {
-            if (_0x943fx23[_0x943fx19]['value'] === _0x943fx1c) {
-              if (this['params'][_0x943fx21] === null) {
-                _0x943fx23[_0x943fx19]['selected'] = true;
-                this['params'][_0x943fx21] = _0x943fx1c;
+            if (_0x943fx23[_0x943fx19][fnNames[70]] === _0x943fx1c) {
+              if (this[fnNames[40]][_0x943fx21] === null) {
+                _0x943fx23[_0x943fx19][fnNames[80]] = true;
+                this[fnNames[40]][_0x943fx21] = _0x943fx1c;
               }
               break;
             }
           }
         };
-        this['selectIndex'] = function (_0x943fx21, _0x943fx24) {
+        this[fnNames[82]] = function (_0x943fx21, _0x943fx24) {
           var _0x943fx23 = _0x943fx22(_0x943fx21);
           if (_0x943fx23 === null) {
             return;
           }
-          if (_0x943fx24 >= 0 && _0x943fx24 < _0x943fx23['length']) {
-            _0x943fx23['selectedIndex'] = _0x943fx24;
+          if (_0x943fx24 >= 0 && _0x943fx24 < _0x943fx23[fnNames[65]]) {
+            _0x943fx23[fnNames[83]] = _0x943fx24;
           }
         };
-        this['selectValue'] = function (_0x943fx21, _0x943fx1c) {
+        this[fnNames[84]] = function (_0x943fx21, _0x943fx1c) {
           var _0x943fx23 = _0x943fx22(_0x943fx21);
           if (_0x943fx23 === null) {
             return false;
           }
           for (
             var _0x943fx19 = 0;
-            _0x943fx19 < _0x943fx23['length'];
+            _0x943fx19 < _0x943fx23[fnNames[65]];
             _0x943fx19++
           ) {
-            if (_0x943fx23[_0x943fx19]['value'] === _0x943fx1c) {
-              _0x943fx23[_0x943fx19]['selected'] = true;
+            if (_0x943fx23[_0x943fx19][fnNames[70]] === _0x943fx1c) {
+              _0x943fx23[_0x943fx19][fnNames[80]] = true;
               return true;
             }
           }
           return false;
         };
-        this['getSelectedIndex'] = function (_0x943fx21) {
+        this[fnNames[85]] = function (_0x943fx21) {
           var _0x943fx23 = _0x943fx22(_0x943fx21);
           if (_0x943fx23 === null) {
             return null;
           }
-          return _0x943fx23['selectedIndex'];
+          return _0x943fx23[fnNames[83]];
         };
-        this['getSelectedValue'] = function (_0x943fx21) {
+        this[fnNames[86]] = function (_0x943fx21) {
           var _0x943fx23 = _0x943fx22(_0x943fx21);
           if (_0x943fx23 === null) {
             return null;
           }
-          return _0x943fx23[_0x943fx23['selectedIndex']]['value'];
+          return _0x943fx23[_0x943fx23[fnNames[83]]][fnNames[70]];
         };
       }
       function BrowserAgentDetector() {
-        this['init'] = function () {
-          this['infoBrowser'] = this['searchString'](this['dataBrowser']);
-          if (this['infoBrowser']) {
-            this['browser'] = this['infoBrowser']['identity'] || 'unknown';
+        this[fnNames[7]] = function () {
+          this[fnNames[87]] = this[fnNames[89]](this[fnNames[88]]);
+          if (this[fnNames[87]]) {
+            this[fnNames[90]] = this[fnNames[87]][fnNames[91]] || fnNames[92];
           } else {
-            this['browser'] = 'unknown';
+            this[fnNames[90]] = fnNames[92];
           }
-          this['versionLong'] = '';
-          this['versionOS'] = -1;
-          this['versionLong'] =
-            this['searchVersion'](navigator['userAgent']) ||
-            this['searchVersion'](navigator['appVersion']) ||
-            '-1';
-          this['version'] = parseFloat(this['versionLong']);
-          this['infoOS'] = this['searchString'](this['dataOS']);
-          if (this['infoOS']) {
-            this['OS'] = this['infoOS']['identity'] || 'unknown';
-            this['mobile'] = this['infoOS']['mobile'];
-            if (this['infoOS']['versionSearch']) {
-              this['versionOS'] =
-                parseFloat(this['searchVersion'](navigator['userAgent'])) || -1;
-              if (this['version'] === -1) {
-                this['version'] = this['versionOS'];
+          this[fnNames[93]] = fnNames[3];
+          this[fnNames[94]] = -1;
+          this[fnNames[93]] =
+            this[fnNames[96]](navigator[fnNames[95]]) ||
+            this[fnNames[96]](navigator[fnNames[97]]) ||
+            fnNames[98];
+          this[fnNames[99]] = parseFloat(this[fnNames[93]]);
+          this[fnNames[100]] = this[fnNames[89]](this[fnNames[101]]);
+          if (this[fnNames[100]]) {
+            this[fnNames[102]] = this[fnNames[100]][fnNames[91]] || fnNames[92];
+            this[fnNames[103]] = this[fnNames[100]][fnNames[103]];
+            if (this[fnNames[100]][fnNames[104]]) {
+              this[fnNames[94]] =
+                parseFloat(this[fnNames[96]](navigator[fnNames[95]])) || -1;
+              if (this[fnNames[99]] === -1) {
+                this[fnNames[99]] = this[fnNames[94]];
               }
             }
           } else {
-            this['infoOS'] = 'unknown';
+            this[fnNames[100]] = fnNames[92];
           }
-          this['vsyncCheck']();
+          this[fnNames[105]]();
         };
-        this['vsyncCheck'] = function () {
+        this[fnNames[105]] = function () {
           if (
-            this['browser'] === 'Firefox' &&
-            !Boolean('MozBoxSizing' in document['body']['style'])
+            this[fnNames[90]] === fnNames[106] &&
+            !Boolean(fnNames[107] in document[fnNames[109]][fnNames[108]])
           ) {
-            this['vsyncInfo'] = 'Browser spoofing Firefox. VSYNC support unknown.';
-            this['vsync'] = 'no';
+            this[fnNames[110]] = fnNames[111];
+            this[fnNames[112]] = fnNames[113];
           } else {
             if (
-              this['browser'] === 'Explorer' &&
-              this['version'] >= 9 &&
-              !Boolean('msTransform' in document['body']['style'])
+              this[fnNames[90]] === fnNames[114] &&
+              this[fnNames[99]] >= 9 &&
+              !Boolean(fnNames[115] in document[fnNames[109]][fnNames[108]])
             ) {
-              this['vsyncInfo'] = 'Browser spoofing Internet Explorer. VSYNC support unknown.';
-              this['vsync'] = 'no';
+              this[fnNames[110]] = fnNames[116];
+              this[fnNames[112]] = fnNames[113];
             } else {
               if (
-                this['infoOS'] &&
-                this['infoOS']['vsync'] &&
-                this['infoOS']['vsync'] === 'no'
+                this[fnNames[100]] &&
+                this[fnNames[100]][fnNames[112]] &&
+                this[fnNames[100]][fnNames[112]] === fnNames[113]
               ) {
-                this['vsyncInfo'] =
-                  'VSYNC is not available on the ' + this['infoOS']['identity'] + ' platform.';
-                this['vsync'] = 'no';
+                this[fnNames[110]] =
+                  fnNames[117] + this[fnNames[100]][fnNames[91]] + fnNames[118];
+                this[fnNames[112]] = fnNames[113];
               } else {
-                if (!this['infoBrowser'] || !this['infoBrowser']['vsync']) {
-                  this['vsyncInfo'] =
-                    'VSYNC support is untested in ' + this['browser'] + '.';
-                  this['vsync'] = 'unknown';
+                if (!this[fnNames[87]] || !this[fnNames[87]][fnNames[112]]) {
+                  this[fnNames[110]] =
+                    fnNames[119] + this[fnNames[90]] + fnNames[120];
+                  this[fnNames[112]] = fnNames[92];
                 } else {
-                  if (this['infoBrowser']['vsync'] !== 'yes') {
-                    this['vsyncInfo'] =
-                      this['infoBrowser']['vsync'] === 'no'
-                        ? this['browser'] + " can't directly access VSYNC."
-                        : 'VSYNC support is untested in ' + this['browser'] + '.';
-                    this['vsync'] = this['infoBrowser']['vsync'];
+                  if (this[fnNames[87]][fnNames[112]] !== fnNames[121]) {
+                    this[fnNames[110]] =
+                      this[fnNames[87]][fnNames[112]] === fnNames[113]
+                        ? this[fnNames[90]] + fnNames[122]
+                        : fnNames[119] + this[fnNames[90]] + fnNames[120];
+                    this[fnNames[112]] = this[fnNames[87]][fnNames[112]];
                   } else {
                     if (
-                      this['infoBrowser']['vsyncBadOS'] &&
-                      this['infoBrowser']['vsyncBadOS'] === this['OS']
+                      this[fnNames[87]][fnNames[123]] &&
+                      this[fnNames[87]][fnNames[123]] === this[fnNames[102]]
                     ) {
-                      this['vsyncInfo'] =
-                        this['browser'] +
-                        " can't access VSYNC on " +
-                        this['OS'] +
-                        '.';
-                      this['vsync'] = 'no';
+                      this[fnNames[110]] =
+                        this[fnNames[90]] +
+                        fnNames[124] +
+                        this[fnNames[102]] +
+                        fnNames[120];
+                      this[fnNames[112]] = fnNames[113];
                     } else {
                       if (
-                        this['version'] > 0 &&
-                        this['infoBrowser']['vsyncMinVersion'] &&
-                        parseFloat(this['infoBrowser']['vsyncMinVersion']) >
-                          this['version']
+                        this[fnNames[99]] > 0 &&
+                        this[fnNames[87]][fnNames[125]] &&
+                        parseFloat(this[fnNames[87]][fnNames[125]]) >
+                          this[fnNames[99]]
                       ) {
-                        this['vsyncInfo'] =
-                          'Update ' +
-                          this['infoBrowser']['identity'] +
-                          ' to version ' +
-                          this['infoBrowser']['vsyncMinVersion'] +
-                          '+ for VSYNC support.';
-                        this['vsync'] = 'no';
+                        this[fnNames[110]] =
+                          fnNames[126] +
+                          this[fnNames[87]][fnNames[91]] +
+                          fnNames[127] +
+                          this[fnNames[87]][fnNames[125]] +
+                          fnNames[128];
+                        this[fnNames[112]] = fnNames[113];
                       } else {
                         if (
-                          this['browser'] === 'Explorer' &&
-                          (this['version'] === 10 || this['version'] === 11)
+                          this[fnNames[90]] === fnNames[114] &&
+                          (this[fnNames[99]] === 10 || this[fnNames[99]] === 11)
                         ) {
-                          this['vsyncInfo'] = 'Internet Explorer supports VSYNC only up to 100Hz.';
-                          this['vsync'] = 'yes';
+                          this[fnNames[110]] = fnNames[129];
+                          this[fnNames[112]] = fnNames[121];
                         } else {
                           if (
-                            this['OS'] === 'Windows' &&
-                            this['versionOS'] < 5
+                            this[fnNames[102]] === fnNames[130] &&
+                            this[fnNames[94]] < 5
                           ) {
-                            this['vsyncInfo'] = 'Your version of Windows is too old for smooth VSYNC.';
-                            this['vsync'] = 'no';
+                            this[fnNames[110]] = fnNames[131];
+                            this[fnNames[112]] = fnNames[113];
                           } else {
                             if (
-                              this['browser'] === 'Firefox' &&
-                              this['OS'] !== 'Windows' &&
-                              this['version'] >= 24
+                              this[fnNames[90]] === fnNames[106] &&
+                              this[fnNames[102]] !== fnNames[130] &&
+                              this[fnNames[99]] >= 24
                             ) {
-                              this['vsyncInfo'] =
-                                'FireFox supports VSYNC only at 60Hz on ' + this['OS'];
-                              this['vsync'] = 'yes';
+                              this[fnNames[110]] =
+                                fnNames[132] + this[fnNames[102]];
+                              this[fnNames[112]] = fnNames[121];
                             } else {
-                              this['vsyncInfo'] = '';
-                              this['vsync'] = 'yes';
+                              this[fnNames[110]] = fnNames[3];
+                              this[fnNames[112]] = fnNames[121];
                             }
                           }
                         }
@@ -2316,20 +2320,20 @@ Windows Classic mode makes web browser animations choppy. Also:
             }
           }
         };
-        this['searchString'] = function (_0x943fx26) {
-          this['versionSearchString'] = null;
+        this[fnNames[89]] = function (_0x943fx26) {
+          this[fnNames[133]] = null;
           for (
             var _0x943fx19 = 0;
-            _0x943fx19 < _0x943fx26['length'];
+            _0x943fx19 < _0x943fx26[fnNames[65]];
             _0x943fx19++
           ) {
-            var _0x943fx27 = _0x943fx26[_0x943fx19]['string'];
-            var _0x943fx28 = _0x943fx26[_0x943fx19]['prop'];
-            this['versionSearchString'] = _0x943fx26[_0x943fx19]['versionSearch'];
+            var _0x943fx27 = _0x943fx26[_0x943fx19][fnNames[134]];
+            var _0x943fx28 = _0x943fx26[_0x943fx19][fnNames[135]];
+            this[fnNames[133]] = _0x943fx26[_0x943fx19][fnNames[104]];
             if (_0x943fx27) {
               if (
-                _0x943fx27['indexOf'](
-                  _0x943fx26[_0x943fx19]['subString']
+                _0x943fx27[fnNames[137]](
+                  _0x943fx26[_0x943fx19][fnNames[136]]
                 ) !== -1
               ) {
                 return _0x943fx26[_0x943fx19];
@@ -2342,280 +2346,280 @@ Windows Classic mode makes web browser animations choppy. Also:
           }
           return null;
         };
-        this['searchVersion'] = function (_0x943fx27) {
-          if (!this['versionSearchString']) {
+        this[fnNames[96]] = function (_0x943fx27) {
+          if (!this[fnNames[133]]) {
             return null;
           }
-          var _0x943fx24 = _0x943fx27['indexOf'](this['versionSearchString']);
+          var _0x943fx24 = _0x943fx27[fnNames[137]](this[fnNames[133]]);
           if (_0x943fx24 === -1) {
             return null;
           }
-          var _0x943fx29 = _0x943fx27['substring'](
-            _0x943fx24 + this['versionSearchString']['length'] + 1
+          var _0x943fx29 = _0x943fx27[fnNames[48]](
+            _0x943fx24 + this[fnNames[133]][fnNames[65]] + 1
           );
-          _0x943fx24 = _0x943fx29['indexOf'](' ');
+          _0x943fx24 = _0x943fx29[fnNames[137]](fnNames[46]);
           if (_0x943fx24 > 0) {
-            _0x943fx29 = _0x943fx29['substring'](0, _0x943fx24);
+            _0x943fx29 = _0x943fx29[fnNames[48]](0, _0x943fx24);
           }
-          _0x943fx24 = _0x943fx29['indexOf'](';');
+          _0x943fx24 = _0x943fx29[fnNames[137]](fnNames[138]);
           if (_0x943fx24 > 0) {
-            _0x943fx29 = _0x943fx29['substring'](0, _0x943fx24);
+            _0x943fx29 = _0x943fx29[fnNames[48]](0, _0x943fx24);
           }
           return _0x943fx29;
         };
-        this['dataBrowser'] = [
+        this[fnNames[88]] = [
           {
-            string: navigator['userAgent'],
-            subString: 'OPR',
-            identity: 'Opera',
-            versionSearch: ' OPR',
-            vsync: 'yes',
+            string: navigator[fnNames[95]],
+            subString: fnNames[139],
+            identity: fnNames[140],
+            versionSearch: fnNames[141],
+            vsync: fnNames[121],
             vsyncMinVersion: 15,
           },
           {
-            string: navigator['userAgent'],
-            subString: 'Edge',
-            identity: 'Edge',
-            versionSearch: 'Edge',
-            vsync: 'yes',
+            string: navigator[fnNames[95]],
+            subString: fnNames[142],
+            identity: fnNames[142],
+            versionSearch: fnNames[142],
+            vsync: fnNames[121],
             vsyncMinVersion: 15,
           },
           {
-            string: navigator['userAgent'],
-            subString: 'MSIE',
-            identity: 'Explorer',
-            versionSearch: 'MSIE',
-            vsync: 'yes',
+            string: navigator[fnNames[95]],
+            subString: fnNames[143],
+            identity: fnNames[114],
+            versionSearch: fnNames[143],
+            vsync: fnNames[121],
             vsyncMinVersion: 10,
           },
           {
-            string: navigator['userAgent'],
-            subString: 'Trident',
-            identity: 'Explorer',
-            versionSearch: 'rv',
-            vsync: 'yes',
+            string: navigator[fnNames[95]],
+            subString: fnNames[144],
+            identity: fnNames[114],
+            versionSearch: fnNames[145],
+            vsync: fnNames[121],
             vsyncMinVersion: 11,
           },
           {
-            string: navigator['userAgent'],
-            subString: 'Firefox',
-            identity: 'Firefox',
-            versionSearch: 'Firefox',
-            vsync: 'yes',
+            string: navigator[fnNames[95]],
+            subString: fnNames[106],
+            identity: fnNames[106],
+            versionSearch: fnNames[106],
+            vsync: fnNames[121],
             vsyncMinVersion: 24,
           },
           {
-            string: navigator['vendor'],
-            subString: 'Apple',
-            identity: 'Safari',
-            vsync: 'yes',
+            string: navigator[fnNames[146]],
+            subString: fnNames[147],
+            identity: fnNames[148],
+            vsync: fnNames[121],
             vsyncMinVersion: 6,
-            vsyncBadOS: 'Windows',
+            vsyncBadOS: fnNames[130],
           },
           {
-            prop: window['chrome'],
-            identity: 'Chrome',
-            versionSearch: 'Chrome',
-            vsync: 'yes',
+            prop: window[fnNames[149]],
+            identity: fnNames[150],
+            versionSearch: fnNames[150],
+            vsync: fnNames[121],
             vsyncMinVersion: 19,
           },
           {
-            prop: window['opera'],
-            identity: 'Opera',
-            versionSearch: 'Version',
-            vsync: 'yes',
+            prop: window[fnNames[151]],
+            identity: fnNames[140],
+            versionSearch: fnNames[152],
+            vsync: fnNames[121],
             vsyncMinVersion: 15,
           },
           {
-            string: navigator['userAgent'],
-            subString: 'BlackBerry',
-            identity: 'BlackBerry',
-            versionSearch: 'Version',
-            vsync: 'no',
+            string: navigator[fnNames[95]],
+            subString: fnNames[153],
+            identity: fnNames[153],
+            versionSearch: fnNames[152],
+            vsync: fnNames[113],
           },
           {
-            string: navigator['userAgent'],
-            subString: 'PlayBook',
-            identity: 'PlayBook',
-            versionSearch: 'Version',
-            vsync: 'no',
+            string: navigator[fnNames[95]],
+            subString: fnNames[154],
+            identity: fnNames[154],
+            versionSearch: fnNames[152],
+            vsync: fnNames[113],
           },
           {
-            string: navigator['userAgent'],
-            subString: 'BB10',
-            identity: 'BlackBerry 10',
-            versionSearch: 'Version',
-            vsync: 'yes',
+            string: navigator[fnNames[95]],
+            subString: fnNames[155],
+            identity: fnNames[156],
+            versionSearch: fnNames[152],
+            vsync: fnNames[121],
           },
           {
-            string: navigator['vendor'],
-            subString: 'iCab',
-            identity: 'iCab',
-            versionSearch: 'iCab',
-            vsync: 'no',
+            string: navigator[fnNames[146]],
+            subString: fnNames[157],
+            identity: fnNames[157],
+            versionSearch: fnNames[157],
+            vsync: fnNames[113],
           },
           {
-            string: navigator['vendor'],
-            subString: 'KDE',
-            identity: 'Konqueror',
-            versionSearch: 'Konqueror',
-            vsync: 'no',
+            string: navigator[fnNames[146]],
+            subString: fnNames[158],
+            identity: fnNames[159],
+            versionSearch: fnNames[159],
+            vsync: fnNames[113],
           },
           {
-            string: navigator['vendor'],
-            subString: 'Camino',
-            identity: 'Camino',
-            versionSearch: 'Camino',
-            vsync: 'unknown',
+            string: navigator[fnNames[146]],
+            subString: fnNames[160],
+            identity: fnNames[160],
+            versionSearch: fnNames[160],
+            vsync: fnNames[92],
           },
           {
-            string: navigator['userAgent'],
-            subString: 'Netscape',
-            identity: 'Netscape',
-            versionSearch: 'Netscape',
-            vsync: 'no',
+            string: navigator[fnNames[95]],
+            subString: fnNames[161],
+            identity: fnNames[161],
+            versionSearch: fnNames[161],
+            vsync: fnNames[113],
           },
           {
-            string: navigator['userAgent'],
-            subString: 'AppleWebKit',
-            identity: 'Generic Webkit',
-            versionSearch: 'AppleWebKit',
-            vsync: 'no',
+            string: navigator[fnNames[95]],
+            subString: fnNames[162],
+            identity: fnNames[163],
+            versionSearch: fnNames[162],
+            vsync: fnNames[113],
           },
           {
-            string: navigator['userAgent'],
-            subString: 'Gecko',
-            identity: 'Mozilla',
-            versionSearch: 'rv',
-            vsync: 'no',
+            string: navigator[fnNames[95]],
+            subString: fnNames[164],
+            identity: fnNames[165],
+            versionSearch: fnNames[145],
+            vsync: fnNames[113],
           },
           {
-            string: navigator['userAgent'],
-            subString: 'Mozilla',
-            identity: 'Mozilla',
-            versionSearch: 'Mozilla',
-            vsync: 'no',
+            string: navigator[fnNames[95]],
+            subString: fnNames[165],
+            identity: fnNames[165],
+            versionSearch: fnNames[165],
+            vsync: fnNames[113],
           },
           {
-            string: navigator['userAgent'],
-            subString: 'OmniWeb',
-            identity: 'OmniWeb',
-            versionSearch: 'OmniWeb',
-            vsync: 'unknown',
+            string: navigator[fnNames[95]],
+            subString: fnNames[166],
+            identity: fnNames[166],
+            versionSearch: fnNames[166],
+            vsync: fnNames[92],
           },
         ];
-        this['dataOS'] = [
+        this[fnNames[101]] = [
           {
-            string: navigator['platform'],
-            subString: 'Win',
-            identity: 'Windows',
-            versionSearch: 'Windows NT',
-            mobile: 'no',
+            string: navigator[fnNames[167]],
+            subString: fnNames[168],
+            identity: fnNames[130],
+            versionSearch: fnNames[169],
+            mobile: fnNames[113],
           },
           {
-            string: navigator['userAgent'],
-            subString: 'iPhone',
-            identity: 'iPhone',
-            versionSearch: ' OS',
-            mobile: 'yes',
+            string: navigator[fnNames[95]],
+            subString: fnNames[170],
+            identity: fnNames[170],
+            versionSearch: fnNames[171],
+            mobile: fnNames[121],
           },
           {
-            string: navigator['userAgent'],
-            subString: 'iPad',
-            identity: 'iPad',
-            versionSearch: ' OS',
-            mobile: 'yes',
+            string: navigator[fnNames[95]],
+            subString: fnNames[172],
+            identity: fnNames[172],
+            versionSearch: fnNames[171],
+            mobile: fnNames[121],
           },
           {
-            string: navigator['userAgent'],
-            subString: 'iPod',
-            identity: 'iPod',
-            versionSearch: ' OS',
-            mobile: 'yes',
+            string: navigator[fnNames[95]],
+            subString: fnNames[173],
+            identity: fnNames[173],
+            versionSearch: fnNames[171],
+            mobile: fnNames[121],
           },
           {
-            string: navigator['platform'],
-            subString: 'Mac',
-            identity: 'Mac',
-            versionSearch: 'Version',
-            mobile: 'no',
+            string: navigator[fnNames[167]],
+            subString: fnNames[174],
+            identity: fnNames[174],
+            versionSearch: fnNames[152],
+            mobile: fnNames[113],
           },
           {
-            string: navigator['userAgent'],
-            subString: 'Android',
-            identity: 'Android',
-            versionSearch: 'Android',
-            mobile: 'yes',
+            string: navigator[fnNames[95]],
+            subString: fnNames[175],
+            identity: fnNames[175],
+            versionSearch: fnNames[175],
+            mobile: fnNames[121],
           },
           {
-            string: navigator['userAgent'],
-            subString: 'RIM',
-            identity: 'RIM',
-            vsync: 'no',
-            versionSearch: 'Version',
-            mobile: 'yes',
+            string: navigator[fnNames[95]],
+            subString: fnNames[176],
+            identity: fnNames[176],
+            vsync: fnNames[113],
+            versionSearch: fnNames[152],
+            mobile: fnNames[121],
           },
           {
-            string: navigator['userAgent'],
-            subString: 'BlackBerry',
-            identity: 'RIM',
-            vsync: 'no',
-            mobile: 'yes',
+            string: navigator[fnNames[95]],
+            subString: fnNames[153],
+            identity: fnNames[176],
+            vsync: fnNames[113],
+            mobile: fnNames[121],
           },
           {
-            string: navigator['userAgent'],
-            subString: 'Linux',
-            identity: 'Linux',
-            vsync: 'no',
-            mobile: 'no',
+            string: navigator[fnNames[95]],
+            subString: fnNames[177],
+            identity: fnNames[177],
+            vsync: fnNames[113],
+            mobile: fnNames[113],
           },
         ];
       }
       function FrameTiming() {
-        this['RESYNC'] = { NONE: 0, SOFT: 1, HARD: 2 };
-        this['STATUS'] = {
-          PERFORMANCE: { value: -6, color: 'red', name: 'POOR PERFORMANCE' },
-          HIGH_CPU: { value: -5, color: 'orange', name: 'HIGH CPU CONSUMPTION' },
-          SYNCFAIL: { value: -4, color: 'red', name: 'SYNC FAILURE' },
-          BROWSERBAD: { value: -3, color: 'red', name: 'UNSUPPORTED' },
+        this[fnNames[178]] = { NONE: 0, SOFT: 1, HARD: 2 };
+        this[fnNames[179]] = {
+          PERFORMANCE: { value: -6, color: fnNames[180], name: fnNames[181] },
+          HIGH_CPU: { value: -5, color: fnNames[182], name: fnNames[183] },
+          SYNCFAIL: { value: -4, color: fnNames[180], name: fnNames[184] },
+          BROWSERBAD: { value: -3, color: fnNames[180], name: fnNames[185] },
           BROWSERUNKNOWN: {
             value: -2,
-            color: 'red',
-            name: 'BROWSER UNKNOWN',
+            color: fnNames[180],
+            name: fnNames[186],
           },
-          ERROR: { value: -1, color: 'red', name: 'ERROR' },
-          GOOD: { value: 0, color: 'green', name: 'READY*' },
-          SYNCING: { value: 1, color: 'blue', name: 'SYNCING' },
+          ERROR: { value: -1, color: fnNames[180], name: fnNames[187] },
+          GOOD: { value: 0, color: fnNames[188], name: fnNames[189] },
+          SYNCING: { value: 1, color: fnNames[190], name: fnNames[191] },
           STUTTER_CAUTION: {
             value: 2,
-            color: 'orange',
-            name: 'PERFORMANCE WARNING',
+            color: fnNames[182],
+            name: fnNames[192],
           },
           STUTTER_DETECTED: {
             value: 3,
-            color: 'orange',
-            name: 'STUTTER WARNING',
+            color: fnNames[182],
+            name: fnNames[193],
           },
-          STUTTER_MAJOR: { value: 4, color: 'red', name: 'MAJOR STUTTERING' },
-          STUTTER_BUG: { value: 4, color: 'red', name: 'BROWSER BUG' },
+          STUTTER_MAJOR: { value: 4, color: fnNames[180], name: fnNames[194] },
+          STUTTER_BUG: { value: 4, color: fnNames[180], name: fnNames[195] },
         };
-        this['frameTime'] = 0;
-        this['frameTimePrev'] = 0;
-        this['frameCounter'] = 0;
-        this['timePeriodFrameStart'] = 0;
-        this['timePeriodFrameRender'] = 0;
-        this['timePeriodAccuracyChecker'] = 0;
-        this['fps'] = 0;
-        this['refreshRate'] = 0;
-        this['refreshRateFloat'] = 0;
-        this['refreshDisplayed'] = 0;
-        this['jitter'] = 0;
-        this['status'] = this['STATUS']['SYNCING'];
-        this['message'] = '';
-        this['pixelsPerSec'] = -1;
-        this['pixelsPerFrame'] = -1;
-        this['autoPPS'] = true;
-        this['strictSync'] = false;
+        this[fnNames[196]] = 0;
+        this[fnNames[197]] = 0;
+        this[fnNames[198]] = 0;
+        this[fnNames[199]] = 0;
+        this[fnNames[200]] = 0;
+        this[fnNames[201]] = 0;
+        this[fnNames[202]] = 0;
+        this[fnNames[203]] = 0;
+        this[fnNames[204]] = 0;
+        this[fnNames[205]] = 0;
+        this[fnNames[206]] = 0;
+        this[fnNames[207]] = this[fnNames[179]][fnNames[191]];
+        this[fnNames[2]] = fnNames[3];
+        this[fnNames[208]] = -1;
+        this[fnNames[209]] = -1;
+        this[fnNames[210]] = true;
+        this[fnNames[211]] = false;
         var _0x943fx2b = 15;
         var _0x943fx2c = 20;
         var _0x943fx2d = 10;
@@ -2623,7 +2627,7 @@ Windows Classic mode makes web browser animations choppy. Also:
         var _0x943fx2f = 500;
         var _0x943fx30 = 12;
         var _0x943fx31 = 500;
-        var _0x943fx32 = ':<br>';
+        var _0x943fx32 = fnNames[212];
         var _0x943fx33 = false;
         var _0x943fx34 = 0;
         var _0x943fx35 = 0;
@@ -2645,23 +2649,23 @@ Windows Classic mode makes web browser animations choppy. Also:
         var _0x943fx45 = 0;
         var _0x943fx46 = 0;
         var _0x943fx47 = 0;
-        var refreshRateValue = 0;
+        var _0x943fx48 = 0;
         var _0x943fx49 = 0;
         var _0x943fx4a = 0;
         var _0x943fx4b = 0;
-        var innerWidth = 0;
-        var innerHeight = 0;
-        var screenLeft = 0;
-        var screenTop = 0;
-        var pageXOffset = 0;
-        var pageYOffset = 0;
+        var _0x943fx4c = 0;
+        var _0x943fx4d = 0;
+        var _0x943fx4e = 0;
+        var _0x943fx4f = 0;
+        var _0x943fx50 = 0;
+        var _0x943fx51 = 0;
         var _0x943fx52 = 0;
         var _0x943fx53 = 0;
         var _0x943fx54 = 0;
         var _0x943fx55 = 0;
         var _0x943fx56 = 0;
         var _0x943fx57 = 0;
-        var _0x943fx58 = this['RESYNC']['NONE'];
+        var _0x943fx58 = this[fnNames[178]][fnNames[213]];
         var _0x943fx59 = true;
         var _0x943fx5a = 0;
         var _0x943fx5b = false;
@@ -2675,10 +2679,10 @@ Windows Classic mode makes web browser animations choppy. Also:
         var _0x943fx63 = false;
         var _0x943fx64 = 0;
         var _0x943fx65 = new Hertz();
-        function setHTMLByID(id, value) {
-          var _0x943fx68 = document['getElementById'](id);
+        function _0x943fx66(_0x943fx67, _0x943fx1c) {
+          var _0x943fx68 = document[fnNames[8]](_0x943fx67);
           if (_0x943fx68) {
-            _0x943fx68['innerHTML'] = value;
+            _0x943fx68[fnNames[214]] = _0x943fx1c;
           }
           if (_0x943fx38 > 200) {
             _0x943fx5f = 4;
@@ -2695,9 +2699,9 @@ Windows Classic mode makes web browser animations choppy. Also:
           }
         }
         function _0x943fx69(_0x943fx67, _0x943fx6a) {
-          var _0x943fx68 = document['getElementById'](_0x943fx67);
+          var _0x943fx68 = document[fnNames[8]](_0x943fx67);
           if (_0x943fx68) {
-            _0x943fx68['style']['backgroundColor'] = _0x943fx6a;
+            _0x943fx68[fnNames[108]][fnNames[215]] = _0x943fx6a;
           }
           if (_0x943fx38 > 200) {
             _0x943fx5f = 4;
@@ -2713,124 +2717,124 @@ Windows Classic mode makes web browser animations choppy. Also:
             }
           }
         }
-        this['updateTime'] = function () {
-          this['frameTime'] = performance['now']();
-          if (this['frameTimePrev'] !== 0) {
-            this['timePeriodFrameStart'] = this['frameTime'] - this['frameTimePrev'];
+        this[fnNames[216]] = function () {
+          this[fnNames[196]] = performance[fnNames[217]]();
+          if (this[fnNames[197]] !== 0) {
+            this[fnNames[199]] = this[fnNames[196]] - this[fnNames[197]];
           }
-          this['frameTimePrev'] = this['frameTime'];
+          this[fnNames[197]] = this[fnNames[196]];
         };
-        this['init'] = function () {
-          this['strictSync'] = false;
-          this['autoPPS'] = true;
+        this[fnNames[7]] = function () {
+          this[fnNames[211]] = false;
+          this[fnNames[210]] = true;
           if (!_0x943fx33) {
-            window['performance'] = window['performance'] || {};
-            performance['now'] = (function () {
+            window[fnNames[218]] = window[fnNames[218]] || {};
+            performance[fnNames[217]] = (function () {
               return (
-                performance['now'] ||
-                performance['mozNow'] ||
-                performance['webkitNow'] ||
+                performance[fnNames[217]] ||
+                performance[fnNames[219]] ||
+                performance[fnNames[220]] ||
                 function () {
-                  return new Date()['getTime']();
+                  return new Date()[fnNames[221]]();
                 }
               );
             })();
           }
           _0x943fx33 = true;
         };
-        this['sync'] = function (_0x943fx6b, _0x943fx6c) {
+        this[fnNames[222]] = function (_0x943fx6b, _0x943fx6c) {
           _0x943fx58 = _0x943fx6c;
-          this['message'] = _0x943fx6b;
-          this['updateStatus'](this['STATUS'].SYNCING);
+          this[fnNames[2]] = _0x943fx6b;
+          this[fnNames[223]](this[fnNames[179]].SYNCING);
         };
-        this['error'] = function (_0x943fx6b) {
-          this['message'] = _0x943fx6b;
-          this['updateStatus'](this['STATUS'].ERROR);
+        this[fnNames[224]] = function (_0x943fx6b) {
+          this[fnNames[2]] = _0x943fx6b;
+          this[fnNames[223]](this[fnNames[179]].ERROR);
         };
-        this['windowCheck'] = function () {
-          innerWidth = window['innerWidth'];
-          innerHeight = window['innerHeight'];
-          pageXOffset = window['pageXOffset'];
-          pageYOffset = window['pageYOffset'];
-          screenLeft = window['screenLeft'];
-          screenTop = window['screenTop'];
+        this[fnNames[225]] = function () {
+          _0x943fx4c = window[fnNames[226]];
+          _0x943fx4d = window[fnNames[227]];
+          _0x943fx50 = window[fnNames[228]];
+          _0x943fx51 = window[fnNames[229]];
+          _0x943fx4e = window[fnNames[230]];
+          _0x943fx4f = window[fnNames[231]];
           if (!_0x943fx58) {
-            if (innerWidth !== _0x943fx52 || innerHeight !== _0x943fx53) {
+            if (_0x943fx4c !== _0x943fx52 || _0x943fx4d !== _0x943fx53) {
               _0x943fx61 = true;
-              this['sync']('Waiting for browser resize to finish...', this['RESYNC'].HARD);
+              this[fnNames[222]](fnNames[232], this[fnNames[178]].HARD);
             } else {
-              if (screenLeft !== _0x943fx54 || screenTop !== _0x943fx55) {
+              if (_0x943fx4e !== _0x943fx54 || _0x943fx4f !== _0x943fx55) {
                 _0x943fx61 = true;
-                this['sync']('Waiting for browser move to finish...', this['RESYNC'].SOFT);
+                this[fnNames[222]](fnNames[233], this[fnNames[178]].SOFT);
               } else {
-                if (pageXOffset !== _0x943fx56 || pageYOffset !== _0x943fx57) {
+                if (_0x943fx50 !== _0x943fx56 || _0x943fx51 !== _0x943fx57) {
                   _0x943fx61 = true;
-                  this['sync']('Waiting for browser scroll to finish...', this['RESYNC'].SOFT);
+                  this[fnNames[222]](fnNames[234], this[fnNames[178]].SOFT);
                 } else {
                   if (
-                    screenLeft + innerWidth < 0 ||
-                    screenLeft + innerHeight < 0 ||
-                    screenLeft > screen['width'] ||
-                    screenTop > screen['height']
+                    _0x943fx4e + _0x943fx4c < 0 ||
+                    _0x943fx4e + _0x943fx4d < 0 ||
+                    _0x943fx4e > screen[fnNames[12]] ||
+                    _0x943fx4f > screen[fnNames[14]]
                   ) {
                     if (
-                      this['status'] !== this['STATUS']['SYNCING']
+                      this[fnNames[207]] !== this[fnNames[179]][fnNames[191]]
                     ) {
-                      this['updateRefresh'](0);
-                      this['fail']();
-                      this['message'] = 'Move all apps and browser windows to primary monitor #1.';
-                      this['updateStatus'](this['STATUS'].SYNCFAIL);
+                      this[fnNames[235]](0);
+                      this[fnNames[236]]();
+                      this[fnNames[2]] = fnNames[237];
+                      this[fnNames[223]](this[fnNames[179]].SYNCFAIL);
                     }
                   }
                 }
               }
             }
           }
-          _0x943fx52 = innerWidth;
-          _0x943fx53 = innerHeight;
-          _0x943fx56 = pageXOffset;
-          _0x943fx57 = pageYOffset;
-          _0x943fx54 = screenLeft;
-          _0x943fx55 = screenTop;
+          _0x943fx52 = _0x943fx4c;
+          _0x943fx53 = _0x943fx4d;
+          _0x943fx56 = _0x943fx50;
+          _0x943fx57 = _0x943fx51;
+          _0x943fx54 = _0x943fx4e;
+          _0x943fx55 = _0x943fx4f;
         };
-        this['updateStatus'] = function (_0x943fx6d) {
+        this[fnNames[223]] = function (_0x943fx6d) {
           if (
-            this['status'] !== _0x943fx6d ||
-            this['message'] !== _0x943fx3d
+            this[fnNames[207]] !== _0x943fx6d ||
+            this[fnNames[2]] !== _0x943fx3d
           ) {
-            this['status'] = _0x943fx6d;
-            if (this['message'] !== '') {
-              setHTMLByID(
-                'display_jitter',
-                _0x943fx6d['name'] + _0x943fx32 + this['message']
+            this[fnNames[207]] = _0x943fx6d;
+            if (this[fnNames[2]] !== fnNames[3]) {
+              _0x943fx66(
+                fnNames[238],
+                _0x943fx6d[fnNames[239]] + _0x943fx32 + this[fnNames[2]]
               );
             } else {
-              setHTMLByID('display_jitter', _0x943fx6d['name']);
+              _0x943fx66(fnNames[238], _0x943fx6d[fnNames[239]]);
             }
-            _0x943fx69('display_jitter', _0x943fx6d['color']);
-            _0x943fx3d = this['message'];
+            _0x943fx69(fnNames[238], _0x943fx6d[fnNames[72]]);
+            _0x943fx3d = this[fnNames[2]];
           }
         };
-        this['updateFPS'] = function (_0x943fx6e) {
-          this['fps'] = _0x943fx6e;
+        this[fnNames[240]] = function (_0x943fx6e) {
+          this[fnNames[202]] = _0x943fx6e;
           var _0x943fx6f = _0x943fx38;
-          if (isNaN(this['fps']) || this['fps'] <= 1) {
+          if (isNaN(this[fnNames[202]]) || this[fnNames[202]] <= 1) {
             _0x943fx6f = 0;
           } else {
             if (_0x943fx36 >= 2) {
               _0x943fx37++;
-              var _0x943fx70 = Math['abs'](
-                this['fps'] - _0x943fx38
+              var _0x943fx70 = Math[fnNames[241]](
+                this[fnNames[202]] - _0x943fx38
               );
               if (_0x943fx70 >= 2 || (_0x943fx70 === 1 && _0x943fx5f)) {
-                _0x943fx6f = this['fps'];
+                _0x943fx6f = this[fnNames[202]];
               } else {
                 if (
                   _0x943fx70 >= 1 &&
-                  !(this['fps'] % 10) &&
+                  !(this[fnNames[202]] % 10) &&
                   _0x943fx38 % 10
                 ) {
-                  _0x943fx6f = this['fps'];
+                  _0x943fx6f = this[fnNames[202]];
                 }
               }
             }
@@ -2838,55 +2842,55 @@ Windows Classic mode makes web browser animations choppy. Also:
           if (_0x943fx6f !== _0x943fx38) {
             _0x943fx37 = 0;
             _0x943fx38 = _0x943fx6f;
-            setHTMLByID(
-              'display_fps',
-              _0x943fx38 === 0 ? '-' : this['fps'].toString()
+            _0x943fx66(
+              fnNames[242],
+              _0x943fx38 === 0 ? fnNames[243] : this[fnNames[202]].toString()
             );
           }
         };
-        this['getDisplayableFPS'] = function (_0x943fx71) {
+        this[fnNames[244]] = function (_0x943fx71) {
           if (!_0x943fx71) {
             _0x943fx71 = 1;
           }
           var _0x943fx72 = 0;
-          if (this['refreshDisplayed'] > 0) {
-            _0x943fx72 = this['refreshDisplayed'] / _0x943fx71;
+          if (this[fnNames[205]] > 0) {
+            _0x943fx72 = this[fnNames[205]] / _0x943fx71;
           } else {
-            if (this['fps'] > 0) {
-              _0x943fx72 = this['fps'] / _0x943fx71;
+            if (this[fnNames[202]] > 0) {
+              _0x943fx72 = this[fnNames[202]] / _0x943fx71;
             } else {
               return 0;
             }
           }
           if (_0x943fx72 >= 10) {
-            return Math['round'](_0x943fx72);
+            return Math[fnNames[245]](_0x943fx72);
           } else {
-            return Math['round'](_0x943fx72 * 10) / 10;
+            return Math[fnNames[245]](_0x943fx72 * 10) / 10;
           }
         };
-        this['addHistoricalFPS'] = function (_0x943fx73, _0x943fx74) {
-          _0x943fx39['push'](_0x943fx73 << 0);
-          _0x943fx3c['push'](_0x943fx74 << 0);
-          while (_0x943fx39['length'] >= 30) {
-            _0x943fx39['shift']();
+        this[fnNames[246]] = function (_0x943fx73, _0x943fx74) {
+          _0x943fx39[fnNames[247]](_0x943fx73 << 0);
+          _0x943fx3c[fnNames[247]](_0x943fx74 << 0);
+          while (_0x943fx39[fnNames[65]] >= 30) {
+            _0x943fx39[fnNames[248]]();
           }
-          while (_0x943fx3c['length'] >= 30) {
-            _0x943fx3c['shift']();
+          while (_0x943fx3c[fnNames[65]] >= 30) {
+            _0x943fx3c[fnNames[248]]();
           }
-          if (!_0x943fx63 && !_0x943fx5d && _0x943fx39['length'] >= 15) {
-            this['logFPS']('Framerate Still Syncing');
+          if (!_0x943fx63 && !_0x943fx5d && _0x943fx39[fnNames[65]] >= 15) {
+            this[fnNames[250]](fnNames[249]);
             _0x943fx5d = true;
           }
         };
-        this['getAverageFPS'] = function (_0x943fx75, _0x943fx76) {
-          return Math['round'](this['getAverageFPSdecimal'](_0x943fx75, _0x943fx76));
+        this[fnNames[251]] = function (_0x943fx75, _0x943fx76) {
+          return Math[fnNames[245]](this[fnNames[252]](_0x943fx75, _0x943fx76));
         };
-        this['getAverageFPSdecimal'] = function (_0x943fx75, _0x943fx76) {
+        this[fnNames[252]] = function (_0x943fx75, _0x943fx76) {
           var _0x943fx77 = 0;
           var _0x943fx48 = 0;
           var _0x943fx78 = 0;
           for (
-            var _0x943fx19 = _0x943fx39['length'] - 1;
+            var _0x943fx19 = _0x943fx39[fnNames[65]] - 1;
             _0x943fx19 >= 0;
             _0x943fx19--
           ) {
@@ -2911,15 +2915,15 @@ Windows Classic mode makes web browser animations choppy. Also:
           }
           return _0x943fx77 / _0x943fx48;
         };
-        this['getFPSvolatilityIndex'] = function (_0x943fx75) {
+        this[fnNames[253]] = function (_0x943fx75) {
           var _0x943fx79 = 0;
           var _0x943fx48 = 0;
           var _0x943fx7a =
-            this['refreshDisplayed'] > 0
-              ? this['refreshDisplayed']
-              : _0x943fx65['getCurrentFrequency']();
+            this[fnNames[205]] > 0
+              ? this[fnNames[205]]
+              : _0x943fx65[fnNames[254]]();
           for (
-            var _0x943fx19 = _0x943fx39['length'] - 1;
+            var _0x943fx19 = _0x943fx39[fnNames[65]] - 1;
             _0x943fx19 >= 0;
             _0x943fx19--
           ) {
@@ -2931,7 +2935,7 @@ Windows Classic mode makes web browser animations choppy. Also:
             }
             _0x943fx79 =
               _0x943fx79 *
-              Math['abs'](_0x943fx39[_0x943fx19] - _0x943fx7a);
+              Math[fnNames[241]](_0x943fx39[_0x943fx19] - _0x943fx7a);
             _0x943fx48++;
             if (_0x943fx48 >= _0x943fx75) {
               break;
@@ -2939,11 +2943,11 @@ Windows Classic mode makes web browser animations choppy. Also:
           }
           return _0x943fx79;
         };
-        this['getAveragePerformance'] = function (_0x943fx75) {
+        this[fnNames[255]] = function (_0x943fx75) {
           var _0x943fx77 = 0;
           var _0x943fx48 = 0;
           for (
-            var _0x943fx19 = _0x943fx3c['length'] - 1;
+            var _0x943fx19 = _0x943fx3c[fnNames[65]] - 1;
             _0x943fx19 >= 0;
             _0x943fx19--
           ) {
@@ -2953,160 +2957,160 @@ Windows Classic mode makes web browser animations choppy. Also:
               break;
             }
           }
-          return Math['round'](_0x943fx77 / _0x943fx48);
+          return Math[fnNames[245]](_0x943fx77 / _0x943fx48);
         };
-        this['getVarianceOfFPS'] = function (count) {
-          var min = 0;
-          var max = 0;
+        this[fnNames[256]] = function (_0x943fx75) {
+          var _0x943fx7b = 0;
+          var _0x943fx7c = 0;
           for (
-            var i = _0x943fx39['length'] - 1;
-            i >= 0;
-            i--
+            var _0x943fx19 = _0x943fx39[fnNames[65]] - 1;
+            _0x943fx19 >= 0;
+            _0x943fx19--
           ) {
-            if (min === 0 || _0x943fx39[i] < min) {
-              min = _0x943fx39[i];
+            if (_0x943fx7b === 0 || _0x943fx39[_0x943fx19] < _0x943fx7b) {
+              _0x943fx7b = _0x943fx39[_0x943fx19];
             }
-            if (max === 0 || _0x943fx39[i] > max) {
-              max = _0x943fx39[i];
+            if (_0x943fx7c === 0 || _0x943fx39[_0x943fx19] > _0x943fx7c) {
+              _0x943fx7c = _0x943fx39[_0x943fx19];
             }
-            count--;
-            if (count <= 0) {
+            _0x943fx75--;
+            if (_0x943fx75 <= 0) {
               break;
             }
           }
-          return max - min;
+          return _0x943fx7c - _0x943fx7b;
         };
-        this['getGoodSeconds'] = function () {
+        this[fnNames[257]] = function () {
           return _0x943fx49;
         };
-        this['getCurrentFloatRefreshRate'] = function () {
-          return _0x943fx65['getCurrentFrequency']();
+        this[fnNames[258]] = function () {
+          return _0x943fx65[fnNames[254]]();
         };
-        this['logFPS'] = function (_0x943fx7d) {
+        this[fnNames[250]] = function (_0x943fx7d) {
           var _0x943fx7e =
-            'FPS:' +
+            fnNames[259] +
             _0x943fx39.toString() +
-            ' / CPU:' +
+            fnNames[260] +
             _0x943fx3c.toString() +
-            ' (' +
-            browserDetect['browser'] +
-            ' ' +
-            browserDetect['versionLong'] +
-            ',' +
-            browserDetect['OS'] +
-            ')' +
-            (this['message'] !== ''
-              ? ' (' + this['message'] + ')'
-              : '');
+            fnNames[261] +
+            browserDetect[fnNames[90]] +
+            fnNames[46] +
+            browserDetect[fnNames[93]] +
+            fnNames[262] +
+            browserDetect[fnNames[102]] +
+            fnNames[263] +
+            (this[fnNames[2]] !== fnNames[3]
+              ? fnNames[261] + this[fnNames[2]] + fnNames[263]
+              : fnNames[3]);
           if (_gaq !== null) {
-            _gaq['push'](['_trackEvent', _0x943fx7d, _0x943fx7e]);
+            _gaq[fnNames[247]]([fnNames[264], _0x943fx7d, _0x943fx7e]);
           }
         };
-        this['updatePixelsPerSec'] = function (_0x943fx7f) {
+        this[fnNames[265]] = function (_0x943fx7f) {
           if (isNaN(_0x943fx7f)) {
             _0x943fx7f = 0;
           }
           var _0x943fx80 = 0;
           if (_0x943fx7f !== 0) {
             var _0x943fx81 =
-              this['status'] === this['STATUS']['GOOD'];
+              this[fnNames[207]] === this[fnNames[179]][fnNames[266]];
             if (!_0x943fx81) {
-              _0x943fx81 = this['getFPSvolatilityIndex'](3) < 10000;
+              _0x943fx81 = this[fnNames[253]](3) < 10000;
             }
-            if (_0x943fx81 && this['refreshDisplayed'] > 0) {
-              _0x943fx80 = Math['round'](_0x943fx7f / this['refreshDisplayed']);
+            if (_0x943fx81 && this[fnNames[205]] > 0) {
+              _0x943fx80 = Math[fnNames[245]](_0x943fx7f / this[fnNames[205]]);
             } else {
-              if (_0x943fx39['length'] > 0) {
-                _0x943fx80 = Math['round'](
-                  _0x943fx7f / this['getAverageFPS'](5, true)
+              if (_0x943fx39[fnNames[65]] > 0) {
+                _0x943fx80 = Math[fnNames[245]](
+                  _0x943fx7f / this[fnNames[251]](5, true)
                 );
               } else {
-                var _0x943fx82 = _0x943fx65['getCurrentFrequency']();
+                var _0x943fx82 = _0x943fx65[fnNames[254]]();
                 if (_0x943fx82 > 0) {
-                  _0x943fx80 = Math['round'](_0x943fx7f / _0x943fx82);
+                  _0x943fx80 = Math[fnNames[245]](_0x943fx7f / _0x943fx82);
                 }
               }
             }
             if (_0x943fx80 === 0) {
-              _0x943fx80 = Math['round'](_0x943fx7f / 60);
+              _0x943fx80 = Math[fnNames[245]](_0x943fx7f / 60);
             }
           }
           if (isNaN(_0x943fx80)) {
             return;
           }
           if (
-            _0x943fx7f !== this['pixelsPerSec'] ||
-            _0x943fx80 !== this['pixelsPerFrame']
+            _0x943fx7f !== this[fnNames[208]] ||
+            _0x943fx80 !== this[fnNames[209]]
           ) {
-            this['pixelsPerSec'] = _0x943fx7f;
-            this['pixelsPerFrame'] = _0x943fx80;
-            setHTMLByID('display_pps', this['pixelsPerSec']);
-            setHTMLByID('display_ppf', this['pixelsPerFrame']);
+            this[fnNames[208]] = _0x943fx7f;
+            this[fnNames[209]] = _0x943fx80;
+            _0x943fx66(fnNames[267], this[fnNames[208]]);
+            _0x943fx66(fnNames[268], this[fnNames[209]]);
           }
         };
-        this['updatePixelsPerFrame'] = function (_0x943fx80) {
-          var _0x943fx7f = this['pixelsPerSec'];
-          if (this['refreshDisplayed'] > 0) {
-            _0x943fx7f = Math['round'](_0x943fx80 * this['refreshDisplayed']);
+        this[fnNames[269]] = function (_0x943fx80) {
+          var _0x943fx7f = this[fnNames[208]];
+          if (this[fnNames[205]] > 0) {
+            _0x943fx7f = Math[fnNames[245]](_0x943fx80 * this[fnNames[205]]);
           } else {
-            if (_0x943fx39['length'] > 0) {
-              _0x943fx7f = Math['round'](
-                _0x943fx80 * this['getAverageFPS'](5, true)
+            if (_0x943fx39[fnNames[65]] > 0) {
+              _0x943fx7f = Math[fnNames[245]](
+                _0x943fx80 * this[fnNames[251]](5, true)
               );
             } else {
-              var _0x943fx82 = _0x943fx65['getCurrentFrequency']();
+              var _0x943fx82 = _0x943fx65[fnNames[254]]();
               if (_0x943fx82 > 0) {
-                _0x943fx7f = Math['round'](_0x943fx80 * _0x943fx82);
+                _0x943fx7f = Math[fnNames[245]](_0x943fx80 * _0x943fx82);
               }
             }
           }
           if (
-            _0x943fx7f !== this['pixelsPerSec'] ||
-            _0x943fx80 !== this['pixelsPerFrame']
+            _0x943fx7f !== this[fnNames[208]] ||
+            _0x943fx80 !== this[fnNames[209]]
           ) {
-            this['pixelsPerSec'] = _0x943fx7f;
-            this['pixelsPerFrame'] = _0x943fx80;
-            setHTMLByID('display_pps', this['pixelsPerSec']);
-            setHTMLByID('display_ppf', this['pixelsPerFrame']);
+            this[fnNames[208]] = _0x943fx7f;
+            this[fnNames[209]] = _0x943fx80;
+            _0x943fx66(fnNames[267], this[fnNames[208]]);
+            _0x943fx66(fnNames[268], this[fnNames[209]]);
           }
         };
-        this['updatePixelsPer'] = function () {
-          if (this['autoPPS'] === true) {
-            this['updatePixelsPerSec'](this['pixelsPerSec']);
+        this[fnNames[270]] = function () {
+          if (this[fnNames[210]] === true) {
+            this[fnNames[265]](this[fnNames[208]]);
           } else {
-            this['updatePixelsPerFrame'](this['pixelsPerFrame']);
+            this[fnNames[269]](this[fnNames[209]]);
           }
         };
-        this['updateRefresh'] = function (_0x943fx83) {
+        this[fnNames[235]] = function (_0x943fx83) {
           if (_0x943fx83 <= 1) {
-            setHTMLByID('display_refresh', '?');
-            this['refreshDisplayed'] = 0;
-            this['refreshRateFloat'] = 0;
+            _0x943fx66(fnNames[271], fnNames[272]);
+            this[fnNames[205]] = 0;
+            this[fnNames[204]] = 0;
             _0x943fx63 = false;
           } else {
             if (_0x943fx36 >= 2) {
-              var _0x943fx70 = Math['abs'](
-                _0x943fx83 - this['refreshDisplayed']
+              var _0x943fx70 = Math[fnNames[241]](
+                _0x943fx83 - this[fnNames[205]]
               );
               if (_0x943fx70 >= 2) {
-                setHTMLByID('display_refresh', this['refreshRate'].toString());
-                this['refreshDisplayed'] = _0x943fx83;
+                _0x943fx66(fnNames[271], this[fnNames[203]].toString());
+                this[fnNames[205]] = _0x943fx83;
                 try {
-                  if (parent['onRefreshRateChange']) {
-                    parent['onRefreshRateChange']();
+                  if (parent[fnNames[273]]) {
+                    parent[fnNames[273]]();
                   }
                 } catch (e) {}
               } else {
                 if (
                   _0x943fx70 >= 1 &&
-                  !(this['refreshRate'] % 10) &&
-                  this['refreshDisplayed'] % 10
+                  !(this[fnNames[203]] % 10) &&
+                  this[fnNames[205]] % 10
                 ) {
-                  setHTMLByID('display_refresh', this['refreshRate'].toString());
-                  this['refreshDisplayed'] = _0x943fx83;
+                  _0x943fx66(fnNames[271], this[fnNames[203]].toString());
+                  this[fnNames[205]] = _0x943fx83;
                   try {
-                    if (parent['onRefreshRateChange']) {
-                      parent['onRefreshRateChange']();
+                    if (parent[fnNames[273]]) {
+                      parent[fnNames[273]]();
                     }
                   } catch (e) {}
                 }
@@ -3114,88 +3118,88 @@ Windows Classic mode makes web browser animations choppy. Also:
             }
           }
         };
-        this['getPreferredLookbehind'] = function () {
+        this[fnNames[274]] = function () {
           var _0x943fx84 = 0;
-          if (_0x943fx63 && this['refreshRate'] === this['refreshDisplayed']) {
+          if (_0x943fx63 && this[fnNames[203]] === this[fnNames[205]]) {
             _0x943fx84 = 2;
           } else {
             if (
-              this['refreshRate'] === 60 ||
-              this['refreshRate'] === 75 ||
-              this['refreshRate'] === 100 ||
-              this['refreshRate'] === 120 ||
-              this['refreshRate'] === 144 ||
-              this['refreshRate'] === 165 ||
-              this['refreshRate'] === 200 ||
-              this['refreshRate'] === 240 ||
-              this['refreshRate'] === 300 ||
-              this['refreshRate'] === 360 ||
-              this['refreshRate'] === 480
+              this[fnNames[203]] === 60 ||
+              this[fnNames[203]] === 75 ||
+              this[fnNames[203]] === 100 ||
+              this[fnNames[203]] === 120 ||
+              this[fnNames[203]] === 144 ||
+              this[fnNames[203]] === 165 ||
+              this[fnNames[203]] === 200 ||
+              this[fnNames[203]] === 240 ||
+              this[fnNames[203]] === 300 ||
+              this[fnNames[203]] === 360 ||
+              this[fnNames[203]] === 480
             ) {
-              _0x943fx84 = this['strictSync'] ? 4 : 2;
+              _0x943fx84 = this[fnNames[211]] ? 4 : 2;
             } else {
-              if (this['refreshRate'] < 58 || this['refreshRate'] > 250) {
-                _0x943fx84 = this['strictSync'] ? 7 : 5;
+              if (this[fnNames[203]] < 58 || this[fnNames[203]] > 250) {
+                _0x943fx84 = this[fnNames[211]] ? 7 : 5;
               } else {
-                _0x943fx84 = this['strictSync'] ? 5 : 3;
+                _0x943fx84 = this[fnNames[211]] ? 5 : 3;
               }
             }
           }
           return _0x943fx84;
         };
-        this['fail'] = function () {
+        this[fnNames[236]] = function () {
           _0x943fx49 = 0;
-          _0x943fx65['ignoreNextCycle']();
+          _0x943fx65[fnNames[275]]();
         };
-        this['accuracyCheck'] = function () {
-          _0x943fx64 = performance['now']();
-          this['frameCounter']++;
+        this[fnNames[276]] = function () {
+          _0x943fx64 = performance[fnNames[217]]();
+          this[fnNames[198]]++;
           _0x943fx5a = status;
           if (_0x943fx59) {
-            _0x943fx60 = browserDetect['vsync'] !== 'yes';
+            _0x943fx60 = browserDetect[fnNames[112]] !== fnNames[121];
             _0x943fx59 = false;
-            _0x943fx58 = this['RESYNC']['NONE'];
-            this['message'] = 'Initializing...';
-            this['updateStatus'](this['STATUS'].SYNCING);
+            _0x943fx58 = this[fnNames[178]][fnNames[213]];
+            this[fnNames[2]] = fnNames[277];
+            this[fnNames[223]](this[fnNames[179]].SYNCING);
           }
-          this['windowCheck']();
-          if (this['fps'] !== 0) {
-            _0x943fx4b = 1000 / this['fps'];
-            this['jitter'] = this['timePeriodFrameStart'] - _0x943fx4b;
-            if (Math['abs'](this['jitter']) >= 1) {
-              if (this['jitter'] < 0) {
+          this[fnNames[225]]();
+          if (this[fnNames[202]] !== 0) {
+            _0x943fx4b = 1000 / this[fnNames[202]];
+            this[fnNames[206]] = this[fnNames[199]] - _0x943fx4b;
+            if (Math[fnNames[241]](this[fnNames[206]]) >= 1) {
+              if (this[fnNames[206]] < 0) {
                 _0x943fx43++;
-                _0x943fx45 += -this['jitter'];
+                _0x943fx45 += -this[fnNames[206]];
               } else {
                 _0x943fx44++;
-                _0x943fx46 += this['jitter'];
+                _0x943fx46 += this[fnNames[206]];
               }
             }
             if (
-              this['fps'] <= 2 ||
-              Math['abs'](this['jitter']) > 200
+              this[fnNames[202]] <= 2 ||
+              Math[fnNames[241]](this[fnNames[206]]) > 200
             ) {
               if (!_0x943fx62 || _0x943fx61) {
                 _0x943fx62 = true;
-                this['fail']();
-                if (this['status'] !== this['STATUS']['SYNCING']) {
-                  this['sync']('Browser pause detected, resynchronizing...', this['RESYNC'].HARD);
+                this[fnNames[236]]();
+                if (this[fnNames[207]] !== this[fnNames[179]][fnNames[191]]) {
+                  this[fnNames[222]](fnNames[278], this[fnNames[178]].HARD);
                 }
               }
             } else {
-              if (this['frameTime'] - _0x943fx4a >= 1500) {
+              if (this[fnNames[196]] - _0x943fx4a >= 1500) {
                 if (!_0x943fx62 || _0x943fx61) {
                   _0x943fx62 = true;
-                  this['fail']();
-                  if (this['status'] !== this['STATUS']['SYNCING']) {
-                    this['sync']('Browser freeze detected, resynchronizing...', this['RESYNC'].HARD);
+                  this[fnNames[236]]();
+                  if (this[fnNames[207]] !== this[fnNames[179]][fnNames[191]]) {
+                    this[fnNames[222]](fnNames[279], this[fnNames[178]].HARD);
                   }
                 }
-                _0x943fx4a = this['frameTime'];
+                _0x943fx4a = this[fnNames[196]];
               } else {
-                if (Math['abs'](this['jitter']) > _0x943fx4b / 2) {
+                if (Math[fnNames[241]](this[fnNames[206]]) > _0x943fx4b / 2) {
                   _0x943fx40 =
-                    Math['abs'](this['jitter']) / _0x943fx4b;
+                    Math[fnNames[241]](this[fnNames[206]]) / _0x943fx4b;
                   _0x943fx41 += _0x943fx40;
                   if (_0x943fx40 > 1.0) {
                     _0x943fx42 += _0x943fx40;
@@ -3203,14 +3207,14 @@ Windows Classic mode makes web browser animations choppy. Also:
                   _0x943fx3e++;
                   _0x943fx3f++;
                   if (
-                    this['status'] !== this['STATUS']['PERFORMANCE'] &&
-                    this['status'] !== this['STATUS']['HIGH_CPU'] &&
-                    this['status'] !== this['STATUS']['STUTTER_BUG'] &&
-                    this['status'] !== this['STATUS']['BROWSERBAD'] &&
-                    this['status'] !== this['STATUS']['BROWSERUNKNOWN'] &&
-                    this['status'] !== this['STATUS']['SYNCING'] &&
-                    this['status'] !== this['STATUS']['SYNCFAIL'] &&
-                    this['status'] !== this['STATUS']['ERROR'] &&
+                    this[fnNames[207]] !== this[fnNames[179]][fnNames[280]] &&
+                    this[fnNames[207]] !== this[fnNames[179]][fnNames[281]] &&
+                    this[fnNames[207]] !== this[fnNames[179]][fnNames[282]] &&
+                    this[fnNames[207]] !== this[fnNames[179]][fnNames[283]] &&
+                    this[fnNames[207]] !== this[fnNames[179]][fnNames[284]] &&
+                    this[fnNames[207]] !== this[fnNames[179]][fnNames[191]] &&
+                    this[fnNames[207]] !== this[fnNames[179]][fnNames[285]] &&
+                    this[fnNames[207]] !== this[fnNames[179]][fnNames[187]] &&
                     !_0x943fx58
                   ) {
                     if (
@@ -3218,42 +3222,42 @@ Windows Classic mode makes web browser animations choppy. Also:
                       _0x943fx3e <= 10 &&
                       _0x943fx40 <= 1.0 &&
                       _0x943fx41 / _0x943fx3e < 1.0 &&
-                      this['status'] !== this['STATUS']['STUTTER_DETECTED'] &&
-                      this['status'] !== this['STATUS']['STUTTER_MAJOR']
+                      this[fnNames[207]] !== this[fnNames[179]][fnNames[286]] &&
+                      this[fnNames[207]] !== this[fnNames[179]][fnNames[287]]
                     ) {
                       if (
                         _0x943fx5f === 0 &&
-                        this['status'] !== this['STATUS']['STUTTER_CAUTION']
+                        this[fnNames[207]] !== this[fnNames[179]][fnNames[288]]
                       ) {
-                        this['message'] =
-                          'Potential browser stutter occured (' + _0x943fx3e.toString() + ')';
-                        this['updateStatus'](this['STATUS'].STUTTER_CAUTION);
+                        this[fnNames[2]] =
+                          fnNames[289] + _0x943fx3e.toString() + fnNames[263];
+                        this[fnNames[223]](this[fnNames[179]].STUTTER_CAUTION);
                       }
                     } else {
                       if (
                         _0x943fx3e <= 10 &&
                         _0x943fx3f <= 10 &&
-                        this['status'] !== this['STATUS']['STUTTER_MAJOR']
+                        this[fnNames[207]] !== this[fnNames[179]][fnNames[287]]
                       ) {
                         if (
                           _0x943fx5f === 0 &&
-                          this['status'] !==
-                            this['STATUS']['STUTTER_DETECTED']
+                          this[fnNames[207]] !==
+                            this[fnNames[179]][fnNames[286]]
                         ) {
-                          this['message'] =
-                            'Browser stutter detected (' + _0x943fx3e.toString() + '+). Close other apps and tabs.';
-                          this['updateStatus'](
-                            this['STATUS'].STUTTER_DETECTED
+                          this[fnNames[2]] =
+                            fnNames[290] + _0x943fx3e.toString() + fnNames[291];
+                          this[fnNames[223]](
+                            this[fnNames[179]].STUTTER_DETECTED
                           );
                         }
                       } else {
                         if (
-                          this['status'] !==
-                          this['STATUS']['STUTTER_MAJOR']
+                          this[fnNames[207]] !==
+                          this[fnNames[179]][fnNames[287]]
                         ) {
-                          this['message'] =
-                            'Browser stuttering is occuring (' + _0x943fx3e.toString() + '+). Close other apps and tabs.';
-                          this['updateStatus'](this['STATUS'].STUTTER_MAJOR);
+                          this[fnNames[2]] =
+                            fnNames[292] + _0x943fx3e.toString() + fnNames[291];
+                          this[fnNames[223]](this[fnNames[179]].STUTTER_MAJOR);
                         }
                       }
                     }
@@ -3270,13 +3274,13 @@ Windows Classic mode makes web browser animations choppy. Also:
             _0x943fx5f--;
           }
           if (_0x943fx58) {
-            this['fail']();
-            this['updateStatus'](this['STATUS'].SYNCING);
+            this[fnNames[236]]();
+            this[fnNames[223]](this[fnNames[179]].SYNCING);
             _0x943fx35 = 0;
-            if (_0x943fx58 == this['RESYNC']['HARD']) {
+            if (_0x943fx58 == this[fnNames[178]][fnNames[293]]) {
               _0x943fx36 = 0;
-              refreshRateValue = 0;
-              _0x943fx4a = this['frameTime'];
+              _0x943fx48 = 0;
+              _0x943fx4a = this[fnNames[196]];
               _0x943fx3e = 0;
               _0x943fx3f = 0;
               _0x943fx43 = 0;
@@ -3285,41 +3289,41 @@ Windows Classic mode makes web browser animations choppy. Also:
               _0x943fx46 = 0;
               _0x943fx47 = 0;
             }
-            _0x943fx58 = this['RESYNC']['NONE'];
+            _0x943fx58 = this[fnNames[178]][fnNames[213]];
           }
           if (_0x943fx4a !== 0) {
-            if (this['frameTime'] - _0x943fx4a >= 1000) {
+            if (this[fnNames[196]] - _0x943fx4a >= 1000) {
               var _0x943fx85 = _0x943fx3e === 0;
               var _0x943fx86 = _0x943fx85;
-              var _0x943fx87 = this['refreshDisplayed'] - this['refreshRate'];
+              var _0x943fx87 = this[fnNames[205]] - this[fnNames[203]];
               var _0x943fx88 = _0x943fx45 / _0x943fx43;
               var _0x943fx89 = _0x943fx46 / _0x943fx44;
               _0x943fx4a += 1000;
               _0x943fx36++;
               _0x943fx35++;
               _0x943fx34++;
-              var _0x943fx8a = refreshRateValue / 2;
+              var _0x943fx8a = _0x943fx48 / 2;
               if (_0x943fx8a > _0x943fx2e) {
                 _0x943fx8a = _0x943fx2e;
               }
               if (_0x943fx8a > _0x943fx3a) {
                 _0x943fx3a = _0x943fx8a;
               }
-              if (refreshRateValue >= _0x943fx3a) {
-                this['addHistoricalFPS'](refreshRateValue, _0x943fx47);
+              if (_0x943fx48 >= _0x943fx3a) {
+                this[fnNames[246]](_0x943fx48, _0x943fx47);
               }
-              this['updateFPS'](refreshRateValue);
+              this[fnNames[240]](_0x943fx48);
               if (_0x943fx60) {
-                this['message'] = browserDetect['vsyncInfo'];
-                this['updateStatus'](
-                  browserDetect['vsync'] === 'no'
-                    ? this['STATUS']['BROWSERBAD']
-                    : this['STATUS']['BROWSERUNKNOWN']
+                this[fnNames[2]] = browserDetect[fnNames[110]];
+                this[fnNames[223]](
+                  browserDetect[fnNames[112]] === fnNames[113]
+                    ? this[fnNames[179]][fnNames[283]]
+                    : this[fnNames[179]][fnNames[284]]
                 );
                 _0x943fx85 = false;
                 _0x943fx86 = false;
               } else {
-                if (refreshRateValue < _0x943fx2d) {
+                if (_0x943fx48 < _0x943fx2d) {
                   _0x943fx36 = 0;
                   _0x943fx35 = 0;
                   _0x943fx85 = false;
@@ -3328,78 +3332,78 @@ Windows Classic mode makes web browser animations choppy. Also:
                   if (_0x943fx89 > 1.5 && _0x943fx89 * 3 < _0x943fx88) {
                     _0x943fx85 = false;
                     _0x943fx86 = false;
-                    this['strictSync'] = true;
+                    this[fnNames[211]] = true;
                     if (
-                      this['status'] !== this['STATUS']['SYNCFAIL']
+                      this[fnNames[207]] !== this[fnNames[179]][fnNames[285]]
                     ) {
-                      this['updateRefresh'](0);
-                      _0x943fx65['beginMeasuring'](_0x943fx64);
+                      this[fnNames[235]](0);
+                      _0x943fx65[fnNames[294]](_0x943fx64);
                       if (!_0x943fx5b) {
-                        this['logFPS']('Framerate Strange');
+                        this[fnNames[250]](fnNames[295]);
                         _0x943fx5b = true;
                       }
                       if (
-                        this['status'] !== this['STATUS']['SYNCING']
+                        this[fnNames[207]] !== this[fnNames[179]][fnNames[191]]
                       ) {
-                        this['sync'](
-                          'Unusual stuttering detected, resynchronizing...',
-                          this['RESYNC'].SOFT
+                        this[fnNames[222]](
+                          fnNames[296],
+                          this[fnNames[178]].SOFT
                         );
                       }
                     }
                   } else {
                     if (
-                      this['status'] === this['STATUS']['SYNCING']
+                      this[fnNames[207]] === this[fnNames[179]][fnNames[191]]
                     ) {
                       if (_0x943fx35 > _0x943fx30) {
-                        if (this['fps'] < 48) {
-                          this['message'] = 'Low Framerate. Try closing all apps and browser tabs.';
+                        if (this[fnNames[202]] < 48) {
+                          this[fnNames[2]] = fnNames[297];
                         } else {
-                          this['message'] = 'Unable to VSYNC. Try closing all apps and browser tabs.';
+                          this[fnNames[2]] = fnNames[298];
                         }
-                        this['updateStatus'](this['STATUS'].SYNCFAIL);
+                        this[fnNames[223]](this[fnNames[179]].SYNCFAIL);
                         if (!_0x943fx5c) {
                           _0x943fx5c = true;
-                          this['logFPS']('Framerate Fail Poor');
+                          this[fnNames[250]](fnNames[299]);
                         }
                         _0x943fx85 = false;
                         _0x943fx86 = false;
                       }
                     } else {
-                      if (this['refreshDisplayed'] > 0) {
+                      if (this[fnNames[205]] > 0) {
                         if (_0x943fx87 < -3) {
-                          _0x943fx65['beginMeasuring'](_0x943fx64);
-                          this['updateRefresh'](0);
-                          this['strictSync'] = true;
+                          _0x943fx65[fnNames[294]](_0x943fx64);
+                          this[fnNames[235]](0);
+                          this[fnNames[211]] = true;
                           _0x943fx86 = false;
-                          this['sync'](
-                            'Large framerate increase, resynchronizing...' +
-                              ' (' +
-                              this['refreshDisplayed'] +
-                              ' to ' +
-                              this['refreshRate'] +
-                              ')',
-                            this['RESYNC'].SOFT
+                          this[fnNames[222]](
+                            fnNames[300] +
+                              fnNames[261] +
+                              this[fnNames[205]] +
+                              fnNames[301] +
+                              this[fnNames[203]] +
+                              fnNames[263],
+                            this[fnNames[178]].SOFT
                           );
                         } else {
                           if (_0x943fx87 > 20) {
-                            _0x943fx65['beginMeasuring'](_0x943fx64);
-                            this['updateRefresh'](0);
-                            this['strictSync'] = true;
+                            _0x943fx65[fnNames[294]](_0x943fx64);
+                            this[fnNames[235]](0);
+                            this[fnNames[211]] = true;
                             _0x943fx86 = false;
-                            this['sync'](
-                              'Large framerate decrease, resynchronizing...',
-                              this['RESYNC'].SOFT
+                            this[fnNames[222]](
+                              fnNames[302],
+                              this[fnNames[178]].SOFT
                             );
                           } else {
-                            if (Math['abs'](_0x943fx87) >= 2) {
-                              _0x943fx65['beginMeasuring'](_0x943fx64);
-                              this['updateRefresh'](0);
-                              this['strictSync'] = true;
+                            if (Math[fnNames[241]](_0x943fx87) >= 2) {
+                              _0x943fx65[fnNames[294]](_0x943fx64);
+                              this[fnNames[235]](0);
+                              this[fnNames[211]] = true;
                               _0x943fx86 = false;
-                              this['sync'](
-                                'Browser framerate varying too much. Close other apps and tabs.',
-                                this['RESYNC'].SOFT
+                              this[fnNames[222]](
+                                fnNames[303],
+                                this[fnNames[178]].SOFT
                               );
                             }
                           }
@@ -3409,66 +3413,66 @@ Windows Classic mode makes web browser animations choppy. Also:
                   }
                 }
               }
-              if (!_0x943fx60 && this['getAveragePerformance'](3) > _0x943fx2f) {
-                if (browserDetect['browser'] === 'Chrome') {
-                  this['message'] = 'Try closing apps/browser tabs. Verify chrome://gpu status.';
+              if (!_0x943fx60 && this[fnNames[255]](3) > _0x943fx2f) {
+                if (browserDetect[fnNames[90]] === fnNames[150]) {
+                  this[fnNames[2]] = fnNames[304];
                 } else {
-                  this['message'] = 'Try closing apps/tabs. Verify GPU acceleration is enabled.';
+                  this[fnNames[2]] = fnNames[305];
                 }
-                this['updateStatus'](this['STATUS'].HIGH_CPU);
+                this[fnNames[223]](this[fnNames[179]].HIGH_CPU);
                 if (!_0x943fx5e) {
                   _0x943fx5e = true;
-                  this['logFPS']('Framerate Performance Low');
+                  this[fnNames[250]](fnNames[306]);
                 }
-                _0x943fx65['beginMeasuring'](_0x943fx64);
-                this['updateRefresh'](0);
-                this['strictSync'] = true;
+                _0x943fx65[fnNames[294]](_0x943fx64);
+                this[fnNames[235]](0);
+                this[fnNames[211]] = true;
                 _0x943fx86 = false;
                 _0x943fx85 = false;
               }
               if (
-                this['refreshDisplayed'] === 62 &&
+                this[fnNames[205]] === 62 &&
                 _0x943fx37 >= 3 &&
-                browserDetect['vsync'] === 'yes' &&
-                browserDetect['OS'] === 'Windows'
+                browserDetect[fnNames[112]] === fnNames[121] &&
+                browserDetect[fnNames[102]] === fnNames[130]
               ) {
                 if (
-                  browserDetect['browser'] === 'Chrome' ||
-                  browserDetect['browser'] === 'Opera'
+                  browserDetect[fnNames[90]] === fnNames[150] ||
+                  browserDetect[fnNames[90]] === fnNames[140]
                 ) {
-                  this['message'] = browserDetect['browser'] + ' VSYNC non-synchronization bug. Restart browser.';
-                  this['updateStatus'](this['STATUS'].STUTTER_BUG);
+                  this[fnNames[2]] = browserDetect[fnNames[90]] + fnNames[307];
+                  this[fnNames[223]](this[fnNames[179]].STUTTER_BUG);
                   _0x943fx85 = false;
                 }
               }
-              if (this['status'] !== this['STATUS']['SYNCING']) {
-                var _0x943fx8b = this['fps'] > _0x943fx31;
-                var _0x943fx8c = this['fps'] < _0x943fx2b;
-                var _0x943fx8d = this['fps'] > _0x943fx2c;
+              if (this[fnNames[207]] !== this[fnNames[179]][fnNames[191]]) {
+                var _0x943fx8b = this[fnNames[202]] > _0x943fx31;
+                var _0x943fx8c = this[fnNames[202]] < _0x943fx2b;
+                var _0x943fx8d = this[fnNames[202]] > _0x943fx2c;
                 var _0x943fx8e =
-                  this['status'] === this['STATUS']['PERFORMANCE'];
+                  this[fnNames[207]] === this[fnNames[179]][fnNames[280]];
                 if (_0x943fx8e && !_0x943fx8d) {
                   _0x943fx8c = true;
                 }
                 if (_0x943fx8b) {
-                  if (browserDetect['browser'] === 'Chrome') {
-                    this['message'] = 'Too fast. Please enable VSYNC in chrome://flags';
+                  if (browserDetect[fnNames[90]] === fnNames[150]) {
+                    this[fnNames[2]] = fnNames[308];
                   } else {
-                    this['message'] = 'Too fast. VSYNC may be disabled in your browser.';
+                    this[fnNames[2]] = fnNames[309];
                   }
-                  this['updateStatus'](this['STATUS'].SYNCFAIL);
-                  this['strictSync'] = true;
+                  this[fnNames[223]](this[fnNames[179]].SYNCFAIL);
+                  this[fnNames[211]] = true;
                   _0x943fx85 = false;
                 } else {
                   if (_0x943fx8c && !_0x943fx62) {
                     if (
-                      this['status'] !== this['STATUS']['SYNCFAIL']
+                      this[fnNames[207]] !== this[fnNames[179]][fnNames[285]]
                     ) {
-                      this['message'] = 'Low frame rate. Try closing all apps and browser tabs.';
-                      this['updateStatus'](this['STATUS'].PERFORMANCE);
-                      if (this['refreshRate'] === 0) {
-                        _0x943fx65['beginMeasuring'](_0x943fx64);
-                        this['updateRefresh'](0);
+                      this[fnNames[2]] = fnNames[310];
+                      this[fnNames[223]](this[fnNames[179]].PERFORMANCE);
+                      if (this[fnNames[203]] === 0) {
+                        _0x943fx65[fnNames[294]](_0x943fx64);
+                        this[fnNames[235]](0);
                       }
                       _0x943fx85 = false;
                       _0x943fx86 = false;
@@ -3477,17 +3481,17 @@ Windows Classic mode makes web browser animations choppy. Also:
                 }
               }
               if (_0x943fx86) {
-                var lookBehindCount = 0;
-                this['refreshRate'] = refreshRateValue;
+                var _0x943fx84 = 0;
+                this[fnNames[203]] = _0x943fx48;
                 _0x943fx49++;
-                if (this['refreshRate'] < _0x943fx2b) {
+                if (this[fnNames[203]] < _0x943fx2b) {
                   _0x943fx86 = false;
                 } else {
                   if (_0x943fx49 > 0) {
-                    lookBehindCount = this['getPreferredLookbehind']();
+                    _0x943fx84 = this[fnNames[274]]();
                     if (
-                      _0x943fx49 < lookBehindCount ||
-                      this['getVarianceOfFPS'](lookBehindCount) > 1
+                      _0x943fx49 < _0x943fx84 ||
+                      this[fnNames[256]](_0x943fx84) > 1
                     ) {
                       _0x943fx86 = false;
                     }
@@ -3497,47 +3501,47 @@ Windows Classic mode makes web browser animations choppy. Also:
                   _0x943fx61 = false;
                   _0x943fx62 = false;
                   if (_0x943fx85) {
-                    this['message'] = '';
-                    if (browserDetect['browser'] === 'Explorer') {
-                      if (browserDetect['version'] <= 11) {
-                        if (this['fps'] < 110) {
-                          this['message'] = "<i><span style='font-size: 20px;'>NOTE: Internet Explorer does not run 120fps on 120Hz monitors.</span></i>";
+                    this[fnNames[2]] = fnNames[3];
+                    if (browserDetect[fnNames[90]] === fnNames[114]) {
+                      if (browserDetect[fnNames[99]] <= 11) {
+                        if (this[fnNames[202]] < 110) {
+                          this[fnNames[2]] = fnNames[311];
                         }
                       }
                     } else {
-                      if (browserDetect['browser'] === 'Edge') {
+                      if (browserDetect[fnNames[90]] === fnNames[142]) {
                         {
-                          if (this['fps'] < 110) {
-                            this['message'] = "<i><span style='font-size: 20px;'>NOTE: Edge does not run 120fps on 120Hz monitors.</span></i>";
+                          if (this[fnNames[202]] < 110) {
+                            this[fnNames[2]] = fnNames[312];
                           }
                         }
                       } else {
-                        if (browserDetect['browser'] === 'Safari') {
+                        if (browserDetect[fnNames[90]] === fnNames[148]) {
                           if (
-                            screen['width'] === 834 ||
-                            screen['height'] === 834
+                            screen[fnNames[12]] === 834 ||
+                            screen[fnNames[14]] === 834
                           ) {
-                            if (this['fps'] <= 62) {
-                              this['message'] = "<i><span style='font-size: 20px;'>NOTE: iPad Safari does not currently support 120Hz yet. See <a href='https://bugs.webkit.org/show_bug.cgi?id=173434'>BugZilla report</a>.</span></i>";
+                            if (this[fnNames[202]] <= 62) {
+                              this[fnNames[2]] = fnNames[313];
                             }
                           }
                         }
                       }
                     }
-                    this['updateStatus'](this['STATUS'].GOOD);
+                    this[fnNames[223]](this[fnNames[179]].GOOD);
                     if (!_0x943fx63) {
-                      this['logFPS'](
-                        _0x943fx5c || _0x943fx5e ? 'Framerate Recovered' : 'Framerate Success'
+                      this[fnNames[250]](
+                        _0x943fx5c || _0x943fx5e ? fnNames[314] : fnNames[315]
                       );
                     }
                     _0x943fx63 = true;
                   }
-                  this['updateRefresh'](this['refreshRate']);
+                  this[fnNames[235]](this[fnNames[203]]);
                 }
               } else {
-                this['fail']();
+                this[fnNames[236]]();
               }
-              refreshRateValue = 0;
+              _0x943fx48 = 0;
               _0x943fx42 = 0;
               _0x943fx3e = 0;
               _0x943fx41 = 0;
@@ -3548,85 +3552,85 @@ Windows Classic mode makes web browser animations choppy. Also:
               _0x943fx47 = 0;
             }
           } else {
-            _0x943fx4a = this['frameTime'];
-            refreshRateValue = 0;
+            _0x943fx4a = this[fnNames[196]];
+            _0x943fx48 = 0;
           }
-          this['updatePixelsPer']();
-          this['timePeriodFrameRender'] = performance['now']() - this['frameTime'];
-          this['timePeriodAccuracyChecker'] = performance['now']() - _0x943fx64;
-          _0x943fx47 += this['timePeriodFrameRender'] + this['timePeriodAccuracyChecker'];
-          refreshRateValue++;
-          _0x943fx65['countCycle'](_0x943fx64);
+          this[fnNames[270]]();
+          this[fnNames[200]] = performance[fnNames[217]]() - this[fnNames[196]];
+          this[fnNames[201]] = performance[fnNames[217]]() - _0x943fx64;
+          _0x943fx47 += this[fnNames[200]] + this[fnNames[201]];
+          _0x943fx48++;
+          _0x943fx65[fnNames[316]](_0x943fx64);
         };
       }
       function Draw() {
-        this['createSurface'] = function (_0x943fx90, _0x943fx91) {
-          canvas = document['createElement']('canvas');
-          ctx = canvas['getContext']('2d');
+        this[fnNames[317]] = function (_0x943fx90, _0x943fx91) {
+          canvas = document[fnNames[318]](fnNames[0]);
+          ctx = canvas[fnNames[10]](fnNames[9]);
           if (_0x943fx90) {
-            this['setDimensions'](ctx, _0x943fx90, _0x943fx91);
+            this[fnNames[319]](ctx, _0x943fx90, _0x943fx91);
           }
           return ctx;
         };
-        this['setDimensions'] = function (_0x943fx92, _0x943fx90, _0x943fx91) {
-          if (!_0x943fx92 || !_0x943fx92['canvas']) {
+        this[fnNames[319]] = function (_0x943fx92, _0x943fx90, _0x943fx91) {
+          if (!_0x943fx92 || !_0x943fx92[fnNames[0]]) {
             return;
           }
           if (
             _0x943fx90 &&
-            _0x943fx92['canvas']['width'] !== _0x943fx90
+            _0x943fx92[fnNames[0]][fnNames[12]] !== _0x943fx90
           ) {
-            _0x943fx92['viewportWidth'] = _0x943fx90;
-            _0x943fx92['canvas']['width'] = _0x943fx90;
+            _0x943fx92[fnNames[11]] = _0x943fx90;
+            _0x943fx92[fnNames[0]][fnNames[12]] = _0x943fx90;
           }
           if (
             _0x943fx91 &&
-            _0x943fx92['canvas']['height'] !== _0x943fx91
+            _0x943fx92[fnNames[0]][fnNames[14]] !== _0x943fx91
           ) {
-            _0x943fx92['viewportHeight'] = _0x943fx91;
-            _0x943fx92['canvas']['height'] = _0x943fx91;
+            _0x943fx92[fnNames[13]] = _0x943fx91;
+            _0x943fx92[fnNames[0]][fnNames[14]] = _0x943fx91;
           }
         };
-        this['bitmapToSurface'] = function (_0x943fx93, _0x943fx94) {
-          this['setDimensions'](
+        this[fnNames[320]] = function (_0x943fx93, _0x943fx94) {
+          this[fnNames[319]](
             _0x943fx94,
-            _0x943fx93['width'],
-            _0x943fx93['height']
+            _0x943fx93[fnNames[12]],
+            _0x943fx93[fnNames[14]]
           );
-          _0x943fx94['drawImage'](_0x943fx93, 0, 0);
+          _0x943fx94[fnNames[321]](_0x943fx93, 0, 0);
         };
-        this['replaceColor'] = function (_0x943fx95, _0x943fx96, _0x943fx97) {
-          var _0x943fx98 = _0x943fx95['getImageData'](
+        this[fnNames[322]] = function (_0x943fx95, _0x943fx96, _0x943fx97) {
+          var _0x943fx98 = _0x943fx95[fnNames[323]](
             0,
             0,
-            _0x943fx95['canvas']['width'],
-            _0x943fx95['canvas']['height']
+            _0x943fx95[fnNames[0]][fnNames[12]],
+            _0x943fx95[fnNames[0]][fnNames[14]]
           );
-          var _0x943fx99 = _0x943fx98['data']['length'];
+          var _0x943fx99 = _0x943fx98[fnNames[324]][fnNames[65]];
           for (var _0x943fx19 = 0; _0x943fx19 < _0x943fx99; _0x943fx19 += 4) {
-            if (_0x943fx98['data'][_0x943fx19] === _0x943fx96) {
-              _0x943fx98['data'][_0x943fx19] = _0x943fx97;
-              _0x943fx98['data'][_0x943fx19 + 1] = _0x943fx97;
-              _0x943fx98['data'][_0x943fx19 + 2] = _0x943fx97;
+            if (_0x943fx98[fnNames[324]][_0x943fx19] === _0x943fx96) {
+              _0x943fx98[fnNames[324]][_0x943fx19] = _0x943fx97;
+              _0x943fx98[fnNames[324]][_0x943fx19 + 1] = _0x943fx97;
+              _0x943fx98[fnNames[324]][_0x943fx19 + 2] = _0x943fx97;
             }
           }
-          _0x943fx95['putImageData'](_0x943fx98, 0, 0);
+          _0x943fx95[fnNames[325]](_0x943fx98, 0, 0);
         };
-        this['PURSUIT_TRACK_COLOR_BACKGROUND'] = '#000000';
-        this['PURSUIT_TRACK_COLOR_TICKS'] = '#FFFFFF';
-        this['PURSUIT_TRACK_COLOR_LINES'] = '#FFFFFF';
-        this['PURSUIT_TRACK_TICK_COUNT'] = 4;
-        this['PURSUIT_TRACK_TICK_HEIGHT'] = 4;
-        this['PURSUIT_TRACK_TICK_WIDTH'] = 2;
-        this['PURSUIT_TRACK_HEIGHT'] = 7 + this['PURSUIT_TRACK_TICK_COUNT'] * this['PURSUIT_TRACK_TICK_HEIGHT'] + 7;
+        this[fnNames[326]] = fnNames[327];
+        this[fnNames[328]] = fnNames[329];
+        this[fnNames[330]] = fnNames[329];
+        this[fnNames[331]] = 4;
+        this[fnNames[332]] = 4;
+        this[fnNames[333]] = 2;
+        this[fnNames[334]] = 7 + this[fnNames[331]] * this[fnNames[332]] + 7;
         var _0x943fx9a = 0;
-        var _0x943fx9b = this['createSurface']();
-        this['pursuitTrack'] = function (_0x943fx94, _0x943fx9c, _0x943fx9d) {
-          var _0x943fx90 = _0x943fx94['canvas']['width'];
-          _0x943fx9a = frameTiming['frameCounter'] % this['PURSUIT_TRACK_TICK_COUNT'];
-          _0x943fx94['fillStyle'] = this['PURSUIT_TRACK_COLOR_BACKGROUND'];
+        var _0x943fx9b = this[fnNames[317]]();
+        this[fnNames[335]] = function (_0x943fx94, _0x943fx9c, _0x943fx9d) {
+          var _0x943fx90 = _0x943fx94[fnNames[0]][fnNames[12]];
+          _0x943fx9a = frameTiming[fnNames[198]] % this[fnNames[331]];
+          _0x943fx94[fnNames[336]] = this[fnNames[326]];
           var _0x943fx9e = _0x943fx9d;
-          _0x943fx94['fillRect'](
+          _0x943fx94[fnNames[337]](
             0,
             _0x943fx9e,
             _0x943fx90,
@@ -3635,85 +3639,85 @@ Windows Classic mode makes web browser animations choppy. Also:
           if (!_0x943fx9c) {
             return;
           }
-          _0x943fx94['fillStyle'] = this['PURSUIT_TRACK_COLOR_LINES'];
+          _0x943fx94[fnNames[336]] = this[fnNames[330]];
           _0x943fx9e += 3;
-          _0x943fx94['fillRect'](0, _0x943fx9e, _0x943fx90, 1);
+          _0x943fx94[fnNames[337]](0, _0x943fx9e, _0x943fx90, 1);
           _0x943fx9e += 2;
-          _0x943fx94['fillRect'](0, _0x943fx9e, _0x943fx90, 1);
+          _0x943fx94[fnNames[337]](0, _0x943fx9e, _0x943fx90, 1);
           _0x943fx9e += 2;
-          var _0x943fx9f = Math['abs'](frameTiming['pixelsPerFrame']);
-          var _0x943fxa0 = this['PURSUIT_TRACK_TICK_COUNT'] * _0x943fx9f;
+          var _0x943fx9f = Math[fnNames[241]](frameTiming[fnNames[209]]);
+          var _0x943fxa0 = this[fnNames[331]] * _0x943fx9f;
           if (_0x943fxa0 > 0) {
-            var _0x943fxa1 = this['PURSUIT_TRACK_TICK_COUNT'] * this['PURSUIT_TRACK_TICK_HEIGHT'];
-            var _0x943fxa2 = this['PURSUIT_TRACK_TICK_HEIGHT'] * _0x943fx9a;
-            var _0x943fxa3 = frameTiming['pixelsPerFrame'] * _0x943fx9a;
-            draw['setDimensions'](_0x943fx9b, _0x943fxa0, _0x943fxa1);
-            _0x943fx9b['fillStyle'] = this['PURSUIT_TRACK_COLOR_BACKGROUND'];
-            _0x943fx9b['fillRect'](0, 0, _0x943fxa0, _0x943fxa1);
-            _0x943fx9b['fillStyle'] = this['PURSUIT_TRACK_COLOR_TICKS'];
-            if (frameTiming['pixelsPerFrame'] > 0) {
-              _0x943fx9b['fillRect'](
+            var _0x943fxa1 = this[fnNames[331]] * this[fnNames[332]];
+            var _0x943fxa2 = this[fnNames[332]] * _0x943fx9a;
+            var _0x943fxa3 = frameTiming[fnNames[209]] * _0x943fx9a;
+            draw[fnNames[319]](_0x943fx9b, _0x943fxa0, _0x943fxa1);
+            _0x943fx9b[fnNames[336]] = this[fnNames[326]];
+            _0x943fx9b[fnNames[337]](0, 0, _0x943fxa0, _0x943fxa1);
+            _0x943fx9b[fnNames[336]] = this[fnNames[328]];
+            if (frameTiming[fnNames[209]] > 0) {
+              _0x943fx9b[fnNames[337]](
                 -_0x943fxa0 + _0x943fxa3,
                 _0x943fxa2,
                 this.PURSUIT_TRACK_TICK_WIDTH,
                 this.PURSUIT_TRACK_TICK_HEIGHT
               );
             }
-            _0x943fx9b['fillRect'](
+            _0x943fx9b[fnNames[337]](
               _0x943fxa3,
               _0x943fxa2,
               this.PURSUIT_TRACK_TICK_WIDTH,
               this.PURSUIT_TRACK_TICK_HEIGHT
             );
-            if (frameTiming['pixelsPerFrame'] < 0) {
-              _0x943fx9b['fillRect'](
+            if (frameTiming[fnNames[209]] < 0) {
+              _0x943fx9b[fnNames[337]](
                 _0x943fxa0 + _0x943fxa3,
                 _0x943fxa2,
                 this.PURSUIT_TRACK_TICK_WIDTH,
                 this.PURSUIT_TRACK_TICK_HEIGHT
               );
             }
-            var _0x943fxa4 = _0x943fx94['createPattern'](
-              _0x943fx9b['canvas'],
-              'repeat'
+            var _0x943fxa4 = _0x943fx94[fnNames[339]](
+              _0x943fx9b[fnNames[0]],
+              fnNames[338]
             );
-            _0x943fx94['save']();
-            _0x943fx94['fillStyle'] = _0x943fxa4;
-            _0x943fx94['translate'](0, _0x943fx9e);
-            _0x943fx94['fillRect'](0, 0, _0x943fx90, _0x943fxa1);
-            _0x943fx94['restore']();
+            _0x943fx94[fnNames[340]]();
+            _0x943fx94[fnNames[336]] = _0x943fxa4;
+            _0x943fx94[fnNames[341]](0, _0x943fx9e);
+            _0x943fx94[fnNames[337]](0, 0, _0x943fx90, _0x943fxa1);
+            _0x943fx94[fnNames[342]]();
           }
-          _0x943fx94['fillStyle'] = this['PURSUIT_TRACK_COLOR_LINES'];
-          _0x943fx9e += this['PURSUIT_TRACK_TICK_HEIGHT'] * this['PURSUIT_TRACK_TICK_COUNT'] + 1;
-          _0x943fx94['fillRect'](0, _0x943fx9e, _0x943fx90, 1);
+          _0x943fx94[fnNames[336]] = this[fnNames[330]];
+          _0x943fx9e += this[fnNames[332]] * this[fnNames[331]] + 1;
+          _0x943fx94[fnNames[337]](0, _0x943fx9e, _0x943fx90, 1);
           _0x943fx9e += 2;
-          _0x943fx94['fillRect'](0, _0x943fx9e, _0x943fx90, 1);
+          _0x943fx94[fnNames[337]](0, _0x943fx9e, _0x943fx90, 1);
         };
-        this['PURSUIT_GRID_TICK_COUNT'] = 4;
-        this['PURSUIT_GRID_TICK_HEIGHT'] = 16;
-        this['PURSUIT_GRID_TICK_WIDTH'] = 3;
+        this[fnNames[343]] = 4;
+        this[fnNames[344]] = 16;
+        this[fnNames[345]] = 3;
         var _0x943fxa5 = 0;
-        this['pursuitGrid'] = function (_0x943fx94, _0x943fxa6) {
-          var _0x943fx90 = _0x943fx94['canvas']['width'];
-          var _0x943fx91 = _0x943fx94['canvas']['height'];
-          _0x943fxa5 = frameTiming['frameCounter'] % this['PURSUIT_GRID_TICK_COUNT'];
-          _0x943fx94['fillStyle'] = _0x943fxa6;
-          var _0x943fxa3 = frameTiming['pixelsPerFrame'] * _0x943fxa5;
-          var _0x943fxa2 = this['PURSUIT_GRID_TICK_HEIGHT'] * _0x943fxa5;
+        this[fnNames[346]] = function (_0x943fx94, _0x943fxa6) {
+          var _0x943fx90 = _0x943fx94[fnNames[0]][fnNames[12]];
+          var _0x943fx91 = _0x943fx94[fnNames[0]][fnNames[14]];
+          _0x943fxa5 = frameTiming[fnNames[198]] % this[fnNames[343]];
+          _0x943fx94[fnNames[336]] = _0x943fxa6;
+          var _0x943fxa3 = frameTiming[fnNames[209]] * _0x943fxa5;
+          var _0x943fxa2 = this[fnNames[344]] * _0x943fxa5;
           var _0x943fxa7 =
-            Math['abs'](frameTiming['pixelsPerFrame']) * this['PURSUIT_GRID_TICK_COUNT'];
-          var _0x943fxa8 = this['PURSUIT_GRID_TICK_HEIGHT'] * this['PURSUIT_GRID_TICK_COUNT'];
-          _0x943fx94['globalAlpha'] = 0.25;
+            Math[fnNames[241]](frameTiming[fnNames[209]]) * this[fnNames[343]];
+          var _0x943fxa8 = this[fnNames[344]] * this[fnNames[343]];
+          _0x943fx94[fnNames[347]] = 0.25;
           var _0x943fxa9;
           for (
-            _0x943fxa9 = this['PURSUIT_GRID_TICK_HEIGHT'] / 2 - 1;
+            _0x943fxa9 = this[fnNames[344]] / 2 - 1;
             _0x943fxa9 < _0x943fx91;
             _0x943fxa9 += _0x943fxa8
           ) {
-            _0x943fx94['fillRect'](0, _0x943fxa9, _0x943fx90, 1);
-            _0x943fx94['fillRect'](0, _0x943fxa9 + 2, _0x943fx90, 1);
+            _0x943fx94[fnNames[337]](0, _0x943fxa9, _0x943fx90, 1);
+            _0x943fx94[fnNames[337]](0, _0x943fxa9 + 2, _0x943fx90, 1);
           }
-          _0x943fx94['globalAlpha'] = 1.0;
+          _0x943fx94[fnNames[347]] = 1.0;
           if (_0x943fxa7 > 0) {
             for (
               _0x943fxa9 = _0x943fxa2;
@@ -3725,7 +3729,7 @@ Windows Classic mode makes web browser animations choppy. Also:
                 _0x943fxaa < _0x943fx90;
                 _0x943fxaa += _0x943fxa7
               ) {
-                _0x943fx94['fillRect'](
+                _0x943fx94[fnNames[337]](
                   _0x943fxaa,
                   _0x943fxa9,
                   this.PURSUIT_GRID_TICK_WIDTH,
@@ -3735,134 +3739,134 @@ Windows Classic mode makes web browser animations choppy. Also:
             }
           }
         };
-        this['message'] = function (_0x943fx94, _0x943fxab, _0x943fxa6) {
-          _0x943fx94['font'] = 'bold 24px Verdana';
-          _0x943fx94['textAlign'] = 'left';
-          var _0x943fxac = _0x943fx94['measureText'](_0x943fxab)['width'];
-          var _0x943fxad = (window['innerWidth'] - _0x943fxac) / 2;
-          var _0x943fxae = _0x943fx94['canvas']['height'] / 2;
-          if (_0x943fx94['canvas']['height'] > window['innerHeight']) {
-            _0x943fxae = window['innerHeight'] / 2;
+        this[fnNames[2]] = function (_0x943fx94, _0x943fxab, _0x943fxa6) {
+          _0x943fx94[fnNames[348]] = fnNames[349];
+          _0x943fx94[fnNames[350]] = fnNames[351];
+          var _0x943fxac = _0x943fx94[fnNames[352]](_0x943fxab)[fnNames[12]];
+          var _0x943fxad = (window[fnNames[226]] - _0x943fxac) / 2;
+          var _0x943fxae = _0x943fx94[fnNames[0]][fnNames[14]] / 2;
+          if (_0x943fx94[fnNames[0]][fnNames[14]] > window[fnNames[227]]) {
+            _0x943fxae = window[fnNames[227]] / 2;
           }
-          _0x943fx94['fillStyle'] = _0x943fxa6;
-          _0x943fx94['fillRect'](
+          _0x943fx94[fnNames[336]] = _0x943fxa6;
+          _0x943fx94[fnNames[337]](
             _0x943fxad - 12,
             _0x943fxae - 30,
             _0x943fxac + 24,
             24 + 24
           );
-          _0x943fx94['fillStyle'] = '#000000';
-          _0x943fx94['fillText'](_0x943fxab, _0x943fxad, _0x943fxae);
-          _0x943fx94['fillStyle'] = '#FFFFFF';
-          _0x943fx94['fillText'](_0x943fxab, _0x943fxad + 2, _0x943fxae + 2);
+          _0x943fx94[fnNames[336]] = fnNames[327];
+          _0x943fx94[fnNames[353]](_0x943fxab, _0x943fxad, _0x943fxae);
+          _0x943fx94[fnNames[336]] = fnNames[329];
+          _0x943fx94[fnNames[353]](_0x943fxab, _0x943fxad + 2, _0x943fxae + 2);
         };
         function _0x943fxaf(_0x943fxb0) {
-          return _0x943fxb0['charAt'](0) === '#'
-            ? _0x943fxb0['substring'](1, 7)
+          return _0x943fxb0[fnNames[73]](0) === fnNames[55]
+            ? _0x943fxb0[fnNames[48]](1, 7)
             : _0x943fxb0;
         }
         function _0x943fxb1(_0x943fxb0) {
-          return parseInt(_0x943fxaf(_0x943fxb0)['substring'](0, 2), 16);
+          return parseInt(_0x943fxaf(_0x943fxb0)[fnNames[48]](0, 2), 16);
         }
         function _0x943fxb2(_0x943fxb0) {
-          return parseInt(_0x943fxaf(_0x943fxb0)['substring'](2, 4), 16);
+          return parseInt(_0x943fxaf(_0x943fxb0)[fnNames[48]](2, 4), 16);
         }
         function _0x943fxb3(_0x943fxb0) {
-          return parseInt(_0x943fxaf(_0x943fxb0)['substring'](4, 6), 16);
+          return parseInt(_0x943fxaf(_0x943fxb0)[fnNames[48]](4, 6), 16);
         }
         function _0x943fxb4(_0x943fxb5, _0x943fxb6) {
           var _0x943fxb7 = _0x943fxb5.toString();
-          while (_0x943fxb7['length'] < _0x943fxb6) {
-            _0x943fxb7 = '0' + _0x943fxb7;
+          while (_0x943fxb7[fnNames[65]] < _0x943fxb6) {
+            _0x943fxb7 = fnNames[354] + _0x943fxb7;
           }
           return _0x943fxb7;
         }
-        this['blendColor'] = function (_0x943fxb8, _0x943fxb9, _0x943fxba) {
-          var _0x943fxbb = Math['round'](
+        this[fnNames[355]] = function (_0x943fxb8, _0x943fxb9, _0x943fxba) {
+          var _0x943fxbb = Math[fnNames[245]](
             _0x943fxb1(_0x943fxb9) * _0x943fxba +
               _0x943fxb1(_0x943fxb8) * (1 - _0x943fxba)
           );
-          var _0x943fxbc = Math['round'](
+          var _0x943fxbc = Math[fnNames[245]](
             _0x943fxb2(_0x943fxb9) * _0x943fxba +
               _0x943fxb2(_0x943fxb8) * (1 - _0x943fxba)
           );
-          var _0x943fxbd = Math['round'](
+          var _0x943fxbd = Math[fnNames[245]](
             _0x943fxb3(_0x943fxb9) * _0x943fxba +
               _0x943fxb3(_0x943fxb8) * (1 - _0x943fxba)
           );
           return (
-            '#' +
+            fnNames[55] +
             _0x943fxb4(_0x943fxbb.toString(16), 2) +
             _0x943fxb4(_0x943fxbc.toString(16), 2) +
             _0x943fxb4(_0x943fxbd.toString(16), 2)
           );
         };
-        this['addColor'] = function (_0x943fxb8, _0x943fxb9) {
-          var _0x943fxbb = Math['min'](
+        this[fnNames[356]] = function (_0x943fxb8, _0x943fxb9) {
+          var _0x943fxbb = Math[fnNames[357]](
             _0x943fxb1(_0x943fxb8) + _0x943fxb1(_0x943fxb9),
             255
           );
-          var _0x943fxbc = Math['min'](
+          var _0x943fxbc = Math[fnNames[357]](
             _0x943fxb2(_0x943fxb8) + _0x943fxb2(_0x943fxb9),
             255
           );
-          var _0x943fxbd = Math['min'](
+          var _0x943fxbd = Math[fnNames[357]](
             _0x943fxb3(_0x943fxb8) + _0x943fxb3(_0x943fxb9),
             255
           );
           return (
-            '#' +
+            fnNames[55] +
             _0x943fxb4(_0x943fxbb.toString(16), 2) +
             _0x943fxb4(_0x943fxbc.toString(16), 2) +
             _0x943fxb4(_0x943fxbd.toString(16), 2)
           );
         };
-        this['invertColor'] = function (_0x943fxa6) {
+        this[fnNames[358]] = function (_0x943fxa6) {
           var _0x943fxbb = 255 - _0x943fxb1(_0x943fxa6);
           var _0x943fxbc = 255 - _0x943fxb2(_0x943fxa6);
           var _0x943fxbd = 255 - _0x943fxb3(_0x943fxa6);
           return (
-            '#' +
+            fnNames[55] +
             _0x943fxb4(_0x943fxbb.toString(16), 2) +
             _0x943fxb4(_0x943fxbc.toString(16), 2) +
             _0x943fxb4(_0x943fxbd.toString(16), 2)
           );
         };
-        this['gammaColor'] = function (_0x943fxa6, _0x943fxba) {
-          var _0x943fxbb = Math['round'](
+        this[fnNames[359]] = function (_0x943fxa6, _0x943fxba) {
+          var _0x943fxbb = Math[fnNames[245]](
             255.0 *
-              Math['pow'](
+              Math[fnNames[360]](
                 _0x943fxb1(_0x943fxa6) / 255.0,
                 1.0 / _0x943fxba
               )
           );
-          var _0x943fxbc = Math['round'](
+          var _0x943fxbc = Math[fnNames[245]](
             255.0 *
-              Math['pow'](
+              Math[fnNames[360]](
                 _0x943fxb2(_0x943fxa6) / 255.0,
                 1.0 / _0x943fxba
               )
           );
-          var _0x943fxbd = Math['round'](
+          var _0x943fxbd = Math[fnNames[245]](
             255.0 *
-              Math['pow'](
+              Math[fnNames[360]](
                 _0x943fxb3(_0x943fxa6) / 255.0,
                 1.0 / _0x943fxba
               )
           );
           return (
-            '#' +
+            fnNames[55] +
             _0x943fxb4(_0x943fxbb.toString(16), 2) +
             _0x943fxb4(_0x943fxbc.toString(16), 2) +
             _0x943fxb4(_0x943fxbd.toString(16), 2)
           );
         };
-        this['setColorLuminance'] = function (_0x943fxbe, _0x943fxbf) {
-          _0x943fxbe = String(_0x943fxbe)['replace'](
+        this[fnNames[361]] = function (_0x943fxbe, _0x943fxbf) {
+          _0x943fxbe = String(_0x943fxbe)[fnNames[47]](
             /[^0-9a-f]/gi,
-            ''
+            fnNames[3]
           );
-          if (_0x943fxbe['length'] < 6) {
+          if (_0x943fxbe[fnNames[65]] < 6) {
             _0x943fxbe =
               _0x943fxbe[0] +
               _0x943fxbe[0] +
@@ -3872,21 +3876,21 @@ Windows Classic mode makes web browser animations choppy. Also:
               _0x943fxbe[2];
           }
           _0x943fxbf = _0x943fxbf || 0;
-          var _0x943fxc0 = '#';
+          var _0x943fxc0 = fnNames[55];
           var _0x943fxc1 = 0;
           for (var _0x943fx19 = 0; _0x943fx19 < 3; _0x943fx19++) {
             _0x943fxc1 = parseInt(
-              _0x943fxbe['substr'](_0x943fx19 * 2, 2),
+              _0x943fxbe[fnNames[362]](_0x943fx19 * 2, 2),
               16
             );
-            _0x943fxc1 = Math['round'](
-              Math['min'](
-                Math['max'](0, _0x943fxc1 + _0x943fxc1 * _0x943fxbf),
+            _0x943fxc1 = Math[fnNames[245]](
+              Math[fnNames[357]](
+                Math[fnNames[363]](0, _0x943fxc1 + _0x943fxc1 * _0x943fxbf),
                 255
               )
             ).toString(16);
-            _0x943fxc0 += ('00' + _0x943fxc1)['substr'](
-              _0x943fxc1['length']
+            _0x943fxc0 += (fnNames[364] + _0x943fxc1)[fnNames[362]](
+              _0x943fxc1[fnNames[65]]
             );
           }
           return _0x943fxc0;
@@ -3898,21 +3902,21 @@ Windows Classic mode makes web browser animations choppy. Also:
         var _0x943fxc4 = false;
         var _0x943fxc5 = false;
         var _0x943fxc6 = false;
-        var _0x943fxc7 = '';
-        var _0x943fxc8 = '';
-        var _0x943fxc9 = '';
+        var _0x943fxc7 = fnNames[3];
+        var _0x943fxc8 = fnNames[3];
+        var _0x943fxc9 = fnNames[3];
         var _0x943fxca = undefined;
         var _0x943fx95 = undefined;
         var _0x943fxcb = -1;
-        this['init'] = function (_0x943fxcc, _0x943fxcd, _0x943fxce) {
+        this[fnNames[7]] = function (_0x943fxcc, _0x943fxcd, _0x943fxce) {
           _0x943fx33 = false;
           _0x943fxc9 = _0x943fxcc;
           _0x943fxc7 = _0x943fxcd;
           _0x943fxc8 = _0x943fxce;
           try {
-            _0x943fxca = document['getElementById'](_0x943fxcc);
+            _0x943fxca = document[fnNames[8]](_0x943fxcc);
             if (_0x943fxca) {
-              _0x943fx95 = _0x943fxca['getContext']('2d');
+              _0x943fx95 = _0x943fxca[fnNames[10]](fnNames[9]);
               if (_0x943fx95) {
                 _0x943fx33 = true;
               }
@@ -3920,65 +3924,65 @@ Windows Classic mode makes web browser animations choppy. Also:
           } catch (e) {}
           return _0x943fx33;
         };
-        this['setPreferredHeight'] = function (_0x943fxcf) {
+        this[fnNames[365]] = function (_0x943fxcf) {
           _0x943fxcb = _0x943fxcf;
-          this['sync']();
+          this[fnNames[222]]();
         };
-        this['getPreferredHeight'] = function () {
+        this[fnNames[366]] = function () {
           return _0x943fxcb;
         };
-        this['getWidth'] = function () {
-          return _0x943fxca['width'];
+        this[fnNames[367]] = function () {
+          return _0x943fxca[fnNames[12]];
         };
-        this['getHeight'] = function () {
-          return _0x943fxca['height'];
+        this[fnNames[368]] = function () {
+          return _0x943fxca[fnNames[14]];
         };
         function _0x943fxd0(_0x943fx90) {
-          if (_0x943fx33 && _0x943fxca['width'] !== _0x943fx90) {
-            _0x943fxca['width'] = _0x943fx90;
-            _0x943fx95['viewportWidth'] = _0x943fx90;
+          if (_0x943fx33 && _0x943fxca[fnNames[12]] !== _0x943fx90) {
+            _0x943fxca[fnNames[12]] = _0x943fx90;
+            _0x943fx95[fnNames[11]] = _0x943fx90;
           }
         }
         function _0x943fxd1(_0x943fx91) {
-          if (_0x943fx33 && _0x943fxca['height'] !== _0x943fx91) {
-            _0x943fxca['height'] = _0x943fx91;
-            _0x943fx95['viewportHeight'] = _0x943fx91;
+          if (_0x943fx33 && _0x943fxca[fnNames[14]] !== _0x943fx91) {
+            _0x943fxca[fnNames[14]] = _0x943fx91;
+            _0x943fx95[fnNames[13]] = _0x943fx91;
           }
         }
-        this['isMaximized'] = function () {
+        this[fnNames[369]] = function () {
           if (
-            window['innerWidth'] !== screen['width'] ||
-            window['innerHeight'] !== screen['height']
+            window[fnNames[226]] !== screen[fnNames[12]] ||
+            window[fnNames[227]] !== screen[fnNames[14]]
           ) {
             if (
-              window['outerWidth'] === screen['width'] &&
-              window['outerHeight'] === screen['height']
+              window[fnNames[370]] === screen[fnNames[12]] &&
+              window[fnNames[371]] === screen[fnNames[14]]
             ) {
               return true;
             }
           }
           return false;
         };
-        this['isFullScreen'] = function () {
+        this[fnNames[372]] = function () {
           return (
-            window['innerWidth'] === screen['width'] &&
-            window['innerHeight'] === screen['height']
+            window[fnNames[226]] === screen[fnNames[12]] &&
+            window[fnNames[227]] === screen[fnNames[14]]
           );
         };
-        this['goFullScreen'] = function () {
-          if (document['documentElement']['requestFullscreen']) {
-            document['documentElement']['requestFullscreen']();
+        this[fnNames[373]] = function () {
+          if (document[fnNames[375]][fnNames[374]]) {
+            document[fnNames[375]][fnNames[374]]();
           } else {
-            if (document['documentElement']['mozRequestFullScreen']) {
-              document['documentElement']['mozRequestFullScreen']();
+            if (document[fnNames[375]][fnNames[376]]) {
+              document[fnNames[375]][fnNames[376]]();
             } else {
-              if (document['documentElement']['webkitRequestFullScreen']) {
-                document['documentElement']['webkitRequestFullScreen'](
+              if (document[fnNames[375]][fnNames[377]]) {
+                document[fnNames[375]][fnNames[377]](
                   Element.ALLOW_KEYBOARD_INPUT
                 );
               } else {
-                if (document['documentElement']['msRequestFullscreen']) {
-                  document['documentElement']['msRequestFullscreen']();
+                if (document[fnNames[375]][fnNames[378]]) {
+                  document[fnNames[375]][fnNames[378]]();
                 }
               }
             }
@@ -3986,18 +3990,18 @@ Windows Classic mode makes web browser animations choppy. Also:
           _0x943fxc3 = true;
           _0x943fxc4 = false;
         };
-        this['exitFullScreen'] = function () {
-          if (document['cancelFullscreen']) {
-            document['cancelFullscreen']();
+        this[fnNames[379]] = function () {
+          if (document[fnNames[380]]) {
+            document[fnNames[380]]();
           } else {
-            if (document['mozCancelFullScreen']) {
-              document['mozCancelFullScreen']();
+            if (document[fnNames[381]]) {
+              document[fnNames[381]]();
             } else {
-              if (document['webkitCancelFullScreen']) {
-                document['webkitCancelFullScreen']();
+              if (document[fnNames[382]]) {
+                document[fnNames[382]]();
               } else {
-                if (document['msExitFullscreen']) {
-                  document['msExitFullscreen']();
+                if (document[fnNames[383]]) {
+                  document[fnNames[383]]();
                 }
               }
             }
@@ -4005,104 +4009,104 @@ Windows Classic mode makes web browser animations choppy. Also:
           _0x943fxc3 = false;
           _0x943fxc4 = false;
         };
-        this['toggleFullScreen'] = function () {
-          !this['isFullScreen']() ? this['goFullScreen']() : this['exitFullScreen']();
+        this[fnNames[384]] = function () {
+          !this[fnNames[372]]() ? this[fnNames[373]]() : this[fnNames[379]]();
         };
-        this['isZoomed'] = function () {
+        this[fnNames[385]] = function () {
           return _0x943fxc5;
         };
-        this['goZoom'] = function () {
+        this[fnNames[386]] = function () {
           if (!_0x943fx33) {
             return false;
           }
-          window['scrollTo'](0, 0);
+          window[fnNames[387]](0, 0);
           if (!_0x943fxc5) {
             _0x943fxc5 = true;
-            document['body']['style']['overflow'] = 'hidden';
-            document['body']['scroll'] = 'no';
-            var _0x943fxd2 = document['getElementById'](_0x943fxc7);
+            document[fnNames[109]][fnNames[108]][fnNames[388]] = fnNames[389];
+            document[fnNames[109]][fnNames[390]] = fnNames[113];
+            var _0x943fxd2 = document[fnNames[8]](_0x943fxc7);
             if (_0x943fxd2) {
-              _0x943fxd2['style']['visibility'] = 'hidden';
-              _0x943fxd2['style']['position'] = 'fixed';
+              _0x943fxd2[fnNames[108]][fnNames[391]] = fnNames[389];
+              _0x943fxd2[fnNames[108]][fnNames[392]] = fnNames[393];
             }
-            var _0x943fxd3 = document['getElementById'](_0x943fxc8);
+            var _0x943fxd3 = document[fnNames[8]](_0x943fxc8);
             if (_0x943fxd3) {
-              _0x943fxd3['style']['visibility'] = 'hidden';
-              _0x943fxd3['style']['position'] = 'fixed';
+              _0x943fxd3[fnNames[108]][fnNames[391]] = fnNames[389];
+              _0x943fxd3[fnNames[108]][fnNames[392]] = fnNames[393];
             }
-            this['goFullScreen']();
-            this['sync']();
+            this[fnNames[373]]();
+            this[fnNames[222]]();
           }
           return true;
         };
-        this['exitZoom'] = function () {
+        this[fnNames[394]] = function () {
           if (!_0x943fx33) {
             return false;
           }
           if (_0x943fxc6) {
             return false;
           }
-          window['scrollTo'](0, 0);
+          window[fnNames[387]](0, 0);
           if (_0x943fxc5) {
             _0x943fxc5 = false;
-            document['body']['style']['overflow'] = 'visible';
-            document['body']['scroll'] = 'yes';
-            var _0x943fxd2 = document['getElementById'](_0x943fxc7);
+            document[fnNames[109]][fnNames[108]][fnNames[388]] = fnNames[395];
+            document[fnNames[109]][fnNames[390]] = fnNames[121];
+            var _0x943fxd2 = document[fnNames[8]](_0x943fxc7);
             if (_0x943fxd2) {
-              _0x943fxd2['style']['visibility'] = 'visible';
-              _0x943fxd2['style']['position'] = 'static';
+              _0x943fxd2[fnNames[108]][fnNames[391]] = fnNames[395];
+              _0x943fxd2[fnNames[108]][fnNames[392]] = fnNames[396];
             }
-            var _0x943fxd3 = document['getElementById'](_0x943fxc8);
+            var _0x943fxd3 = document[fnNames[8]](_0x943fxc8);
             if (_0x943fxd3) {
-              _0x943fxd3['style']['visibility'] = 'visible';
-              _0x943fxd3['style']['position'] = 'static';
+              _0x943fxd3[fnNames[108]][fnNames[391]] = fnNames[395];
+              _0x943fxd3[fnNames[108]][fnNames[392]] = fnNames[396];
             }
-            this['exitFullScreen']();
-            this['sync']();
+            this[fnNames[379]]();
+            this[fnNames[222]]();
           }
           return true;
         };
-        this['toggleZoom'] = function () {
-          !_0x943fxc5 ? this['goZoom']() : this['exitZoom']();
+        this[fnNames[397]] = function () {
+          !_0x943fxc5 ? this[fnNames[386]]() : this[fnNames[394]]();
         };
-        this['sync'] = function () {
+        this[fnNames[222]] = function () {
           if (!_0x943fx33) {
             return;
           }
-          _0x943fxd0(window['innerWidth']);
-          if (this['isZoomed']() || this['isEmbedded']()) {
-            _0x943fxd1(window['innerHeight']);
+          _0x943fxd0(window[fnNames[226]]);
+          if (this[fnNames[385]]() || this[fnNames[398]]()) {
+            _0x943fxd1(window[fnNames[227]]);
           } else {
             if (!_0x943fxcb || _0x943fxcb < 0) {
-              _0x943fxd1(window['innerHeight']);
+              _0x943fxd1(window[fnNames[227]]);
             } else {
               _0x943fxd1(_0x943fxcb);
             }
           }
         };
-        this['goEmbed'] = function () {
+        this[fnNames[399]] = function () {
           _0x943fxc6 = true;
-          this['goZoom']();
+          this[fnNames[386]]();
         };
-        this['exitEmbed'] = function () {
+        this[fnNames[400]] = function () {
           _0x943fxc6 = false;
         };
-        this['isEmbedded'] = function () {
+        this[fnNames[398]] = function () {
           return _0x943fxc6;
         };
       }
       function Hertz() {
         var _0x943fxd5 = 0;
         var _0x943fxd6 = new _0x943fxd9();
-        this['beginMeasuring'] = function (_0x943fxd7) {
-          _0x943fxd6['reset']();
+        this[fnNames[294]] = function (_0x943fxd7) {
+          _0x943fxd6[fnNames[401]]();
         };
-        this['ignoreNextCycle'] = function (_0x943fxd8) {};
-        this['countCycle'] = function (_0x943fxd7) {
-          _0x943fxd6['add'](_0x943fxd7);
+        this[fnNames[275]] = function (_0x943fxd8) {};
+        this[fnNames[316]] = function (_0x943fxd7) {
+          _0x943fxd6[fnNames[402]](_0x943fxd7);
         };
-        this['getCurrentFrequency'] = function () {
-          return _0x943fxd6['calc']();
+        this[fnNames[254]] = function () {
+          return _0x943fxd6[fnNames[403]]();
         };
         function _0x943fxd9() {
           var _0x943fxda = 100.0;
@@ -4123,18 +4127,18 @@ Windows Classic mode makes web browser animations choppy. Also:
           var _0x943fxed;
           var _0x943fxee;
           var _0x943fxef;
-          this['cut'] = function (_0x943fxf0) {
+          this[fnNames[404]] = function (_0x943fxf0) {
             var _0x943fxf1 = [];
             for (
               var _0x943fxf2 = 0;
-              _0x943fxf2 < _0x943fxf0['length'];
+              _0x943fxf2 < _0x943fxf0[fnNames[65]];
               _0x943fxf2 += 2
             ) {
-              _0x943fxf1[_0x943fxf1['length']] = _0x943fxf0[_0x943fxf2];
+              _0x943fxf1[_0x943fxf1[fnNames[65]]] = _0x943fxf0[_0x943fxf2];
             }
             return _0x943fxf1;
           };
-          this['add'] = function (_0x943fxf3) {
+          this[fnNames[402]] = function (_0x943fxf3) {
             _0x943fxd5++;
             _0x943fxe3 = _0x943fxe4;
             _0x943fxe4 = _0x943fxe5;
@@ -4142,13 +4146,13 @@ Windows Classic mode makes web browser animations choppy. Also:
             _0x943fxe6 = _0x943fxe7;
             _0x943fxe7 = _0x943fxf3;
             var _0x943fxf4 =
-              Math['max'](
+              Math[fnNames[363]](
                 _0x943fxe7 - _0x943fxe6,
                 _0x943fxe6 - _0x943fxe5,
                 _0x943fxe5 - _0x943fxe4,
                 _0x943fxe4 - _0x943fxe3
               ) -
-              Math['min'](
+              Math[fnNames[357]](
                 _0x943fxe7 - _0x943fxe6,
                 _0x943fxe6 - _0x943fxe5,
                 _0x943fxe5 - _0x943fxe4,
@@ -4160,7 +4164,7 @@ Windows Classic mode makes web browser animations choppy. Also:
                 if (_0x943fxf5 < 1000 / _0x943fxde) {
                   var _0x943fxf6 =
                     _0x943fxee > 10 &&
-                    Math['abs'](_0x943fxf5 - _0x943fxed / _0x943fxee) >
+                    Math[fnNames[241]](_0x943fxf5 - _0x943fxed / _0x943fxee) >
                       _0x943fxdc;
                   _0x943fxef = _0x943fxf6 ? _0x943fxef + 1 : 0;
                   if (!_0x943fxf6) {
@@ -4168,25 +4172,25 @@ Windows Classic mode makes web browser animations choppy. Also:
                     ++_0x943fxee;
                     if (
                       !_0x943fxea &&
-                      _0x943fxee > Math['max'](30, _0x943fxf4 * 60)
+                      _0x943fxee > Math[fnNames[363]](30, _0x943fxf4 * 60)
                     ) {
                       _0x943fxea = _0x943fxed / _0x943fxee;
                     }
                   }
                   if (_0x943fxef > 20) {
-                    this['reset'](
-                      'Change in Hz detected ' +
-                        (_0x943fxed / _0x943fxee)['toFixed'](3) +
-                        '->' +
-                        _0x943fxf5['toFixed'](3)
+                    this[fnNames[401]](
+                      fnNames[405] +
+                        (_0x943fxed / _0x943fxee)[fnNames[406]](3) +
+                        fnNames[407] +
+                        _0x943fxf5[fnNames[406]](3)
                     );
                   } else {
-                    if (_0x943fxe8['length'] >= _0x943fxdd) {
-                      _0x943fxe8 = this['cut'](_0x943fxe8);
-                      _0x943fxe9 = this['cut'](_0x943fxe9);
+                    if (_0x943fxe8[fnNames[65]] >= _0x943fxdd) {
+                      _0x943fxe8 = this[fnNames[404]](_0x943fxe8);
+                      _0x943fxe9 = this[fnNames[404]](_0x943fxe9);
                       _0x943fxe0 = _0x943fxe0 * 2 + 1;
                     }
-                    var _0x943fxf7 = _0x943fxe8['length'];
+                    var _0x943fxf7 = _0x943fxe8[fnNames[65]];
                     _0x943fxe8[_0x943fxf7] = _0x943fxe5;
                     _0x943fxe9[_0x943fxf7] =
                       (_0x943fxe3 +
@@ -4198,41 +4202,41 @@ Windows Classic mode makes web browser animations choppy. Also:
                     _0x943fxe1 = _0x943fxe0;
                     if (_0x943fxea && _0x943fxf3 - _0x943fxe2 > _0x943fxda) {
                       _0x943fxe2 = _0x943fxf3;
-                      _0x943fxeb = this['validate']();
+                      _0x943fxeb = this[fnNames[408]]();
                     }
                   }
                 }
               }
             }
             return (
-              'Hz=' +
-              _0x943fxe8['length'] +
-              '&times;' +
+              fnNames[409] +
+              _0x943fxe8[fnNames[65]] +
+              fnNames[410] +
               (_0x943fxe0 + 1) +
-              ' samples  ' +
+              fnNames[411] +
               _0x943fxeb +
-              '  dpr=' +
-              window['devicePixelRatio'] +
-              '  cores=' +
-              navigator['hardwareConcurrency']
+              fnNames[412] +
+              window[fnNames[5]] +
+              fnNames[413] +
+              navigator[fnNames[414]]
             );
           };
-          this['calc'] = function () {
+          this[fnNames[403]] = function () {
             return _0x943fxea ? 1000 / _0x943fxea : 0;
           };
-          this['validate'] = function () {
-            var _0x943fxf1 = '';
+          this[fnNames[408]] = function () {
+            var _0x943fxf1 = fnNames[3];
             var _0x943fxf8 = 0.0;
             var _0x943fxf9 = 0.0;
             var _0x943fxfa = 0.0;
             var _0x943fxfb = 0.0;
             var _0x943fxfc = 0;
-            var _0x943fxfd = _0x943fxe8['length'];
+            var _0x943fxfd = _0x943fxe8[fnNames[65]];
             var _0x943fxf2;
             for (_0x943fxf2 = 0; _0x943fxf2 < _0x943fxfd; ++_0x943fxf2) {
               _0x943fxfc +=
                 _0x943fxf2 > 0
-                  ? Math['round'](
+                  ? Math[fnNames[245]](
                       (_0x943fxe9[_0x943fxf2] - _0x943fxe9[_0x943fxf2 - 1]) /
                         _0x943fxea
                     )
@@ -4256,42 +4260,42 @@ Windows Classic mode makes web browser animations choppy. Also:
             var _0x943fx7b = 0;
             for (
               _0x943fxf2 = 1;
-              _0x943fxf2 < _0x943fxe8['length'];
+              _0x943fxf2 < _0x943fxe8[fnNames[65]];
               ++_0x943fxf2
             ) {
               var _0x943fx103 =
                 ((_0x943fxe8[_0x943fxf2] - _0x943fx101 + _0x943fx102) %
                   _0x943fxea) -
                 _0x943fx102;
-              _0x943fx7b = Math['min'](_0x943fx7b, _0x943fx103);
-              _0x943fx7c = Math['max'](_0x943fx7c, _0x943fx103);
+              _0x943fx7b = Math[fnNames[357]](_0x943fx7b, _0x943fx103);
+              _0x943fx7c = Math[fnNames[363]](_0x943fx7c, _0x943fx103);
             }
             if (_0x943fx7c - _0x943fx7b < _0x943fx102) {
               _0x943fxec = _0x943fx101 + _0x943fx7b;
               _0x943fxf1 =
-                'drift=[' +
-                _0x943fx7b['toFixed'](2) +
-                '..' +
-                _0x943fx7c['toFixed'](2) +
-                ']';
+                fnNames[415] +
+                _0x943fx7b[fnNames[406]](2) +
+                fnNames[416] +
+                _0x943fx7c[fnNames[406]](2) +
+                fnNames[417];
             } else {
-              this['reset']('excessive drift');
+              this[fnNames[401]](fnNames[418]);
             }
             return _0x943fxf1;
           };
-          this['snap'] = function () {
+          this[fnNames[419]] = function () {
             return _0x943fxeb ? { tvsync: _0x943fxec, ms: _0x943fxea } : null;
           };
-          this['vso'] = function (_0x943fx104, _0x943fx105) {
-            return _0x943fx105 && _0x943fx105['ms']
-              ? ((((_0x943fx104 - _0x943fx105['tvsync'] + 2) %
-                  _0x943fx105['ms']) +
-                  _0x943fx105['ms']) %
-                  _0x943fx105['ms']) -
+          this[fnNames[420]] = function (_0x943fx104, _0x943fx105) {
+            return _0x943fx105 && _0x943fx105[fnNames[421]]
+              ? ((((_0x943fx104 - _0x943fx105[fnNames[422]] + 2) %
+                  _0x943fx105[fnNames[421]]) +
+                  _0x943fx105[fnNames[421]]) %
+                  _0x943fx105[fnNames[421]]) -
                   2
               : 0;
           };
-          this['reset'] = function (_0x943fx106) {
+          this[fnNames[401]] = function (_0x943fx106) {
             _0x943fxe0 = 0;
             _0x943fxe1 = 0;
             _0x943fxe2 = 0.0;
@@ -4304,13 +4308,13 @@ Windows Classic mode makes web browser animations choppy. Also:
             _0x943fxe8 = [];
             _0x943fxe9 = [];
             _0x943fxea = 0.0;
-            _0x943fxeb = '';
+            _0x943fxeb = fnNames[3];
             _0x943fxec = 0.0;
             _0x943fxed = 0.0;
             _0x943fxee = 0;
             _0x943fxef = 0;
           };
-          this['reset']();
+          this[fnNames[401]]();
         }
       }
     </script>
@@ -4324,30 +4328,5 @@ Windows Classic mode makes web browser animations choppy. Also:
     >
       <canvas width="190" height="70"></canvas>
     </div>
-    <div id="lotsOfChildren"></div>
-    <script>
-      const highEnergy = () => {
-        const ran = Math.random() * 100;
-        let i = 0;
-        while (i++ < 1000) {
-          const t = document.createElement('div');
-          const container = document.createElement('div');
-          container.appendChild(t);
-          // console.log("ran", i);
-        }
-        requestAnimationFrame(highEnergy);
-      };
-      requestAnimationFrame(highEnergy);
-    </script>
-    <script>
-
-      let t = performance.now();
-      const lowEnergy = (n) => {
-        console.log('time span', n - t);
-        t = n;
-        requestAnimationFrame(lowEnergy);
-      }
-      requestAnimationFrame(lowEnergy);
-    </script>
   </body>
 </html>

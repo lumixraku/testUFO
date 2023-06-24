@@ -1,5 +1,5 @@
-const fs = require('fs');
-const { readFile } = require('fs/promises')
+const fs = require("fs");
+const { readFile } = require("fs/promises");
 
 const fnNames = [
   "canvas",
@@ -424,28 +424,27 @@ const fnNames = [
   "snap",
   "vso",
   "ms",
-  "tvsync"
+  "tvsync",
 ];
 
 async function content(path) {
-  return await readFile(path, 'utf8')
+  return await readFile(path, "utf8");
 }
 
 async function main() {
-  const text = await content('./frameratescopy.html');
+  const text = await content("./refreshrateOrigin.html");
   let rs = text;
   for (let index = 0; index < fnNames.length; index++) {
     const fnName = fnNames[index];
-    if(fnName.indexOf('\'') > -1) {
-      rs = rs.replaceAll(`fnNames[${index}]`, `"${fnName}"`)
-
+    if (fnName.indexOf("'") > -1) {
+      rs = rs.replaceAll(`fnNames[${index}]`, `"${fnName}"`);
     } else {
-      rs = rs.replaceAll(`fnNames[${index}]`, `'${fnName}'`)
+      rs = rs.replaceAll(`fnNames[${index}]`, `'${fnName}'`);
     }
   }
 
   try {
-    fs.writeFileSync('./framerates.html', rs);
+    fs.writeFileSync("./refreshrate.html", rs);
     // file written successfully
   } catch (err) {
     console.error(err);
