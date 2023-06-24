@@ -1269,6 +1269,7 @@
               if (displayedHZ === 0) fontSize = fontSize / 2;
               var displayMessage = "";
               if (displayedHZ > 0) {
+                // console.log('!!! display', displayedHZ);
                 displayMessage = displayedHZ + " Hz";
               } else if (runCount < 2) {
                 displayMessage = "Calculate Your Refresh Rate";
@@ -2616,39 +2617,39 @@ Windows Classic mode makes web browser animations choppy. Also:
         this['pixelsPerFrame'] = -1;
         this['autoPPS'] = true;
         this['strictSync'] = false;
-        var _0x943fx2b = 15;
-        var _0x943fx2c = 20;
-        var _0x943fx2d = 10;
-        var _0x943fx2e = 30;
-        var _0x943fx2f = 500;
-        var _0x943fx30 = 12;
-        var _0x943fx31 = 500;
+        var constVal_15 = 15;
+        var constVal_20 = 20;
+        var constVal_10 = 10;
+        var constVal_30 = 30;
+        var constVal_500 = 500;
+        var constVal_12 = 12;
+        var constVal_500Again = 500;
         var _0x943fx32 = ':<br>';
         var _0x943fx33 = false;
         var _0x943fx34 = 0;
         var _0x943fx35 = 0;
         var _0x943fx36 = 0;
         var _0x943fx37 = 0;
-        var _0x943fx38 = 0;
+        var refreshRate = 0;
         var _0x943fx39 = [];
-        var _0x943fx3a = _0x943fx2d;
+        var _0x943fx3a = constVal_10;
         var _0x943fx3b = 0;
-        var _0x943fx3c = [];
+        var last30FramesPeriodArr = [];
         var _0x943fx3d = 0;
-        var _0x943fx3e = 0;
+        var stutteringTimes = 0;
         var _0x943fx3f = 0;
         var _0x943fx40 = 0;
         var _0x943fx41 = 0;
         var _0x943fx42 = 0;
-        var _0x943fx43 = 0;
-        var _0x943fx44 = 0;
-        var _0x943fx45 = 0;
-        var _0x943fx46 = 0;
+        var jitterFasterFrameCount = 0;
+        var jitterSlowerFrameCount = 0;
+        var jitterFasterPeriodSum = 0;
+        var jitterSlowerPeriodSum = 0;
         var _0x943fx47 = 0;
         var refreshRateValue = 0;
         var _0x943fx49 = 0;
-        var _0x943fx4a = 0;
-        var _0x943fx4b = 0;
+        var frameEndTime = 0;
+        var prevAvgFrameTime = 0;
         var innerWidth = 0;
         var innerHeight = 0;
         var screenLeft = 0;
@@ -2661,7 +2662,7 @@ Windows Classic mode makes web browser animations choppy. Also:
         var _0x943fx55 = 0;
         var _0x943fx56 = 0;
         var _0x943fx57 = 0;
-        var _0x943fx58 = this['RESYNC']['NONE'];
+        var RESYNC_STATUS = this['RESYNC']['NONE'];
         var _0x943fx59 = true;
         var _0x943fx5a = 0;
         var _0x943fx5b = false;
@@ -2669,24 +2670,24 @@ Windows Classic mode makes web browser animations choppy. Also:
         var _0x943fx5d = false;
         var _0x943fx5e = false;
         var _0x943fx5f = 0;
-        var _0x943fx60 = false;
+        var NOT_VSYNC_SUPPORT = false;
         var _0x943fx61 = false;
         var _0x943fx62 = false;
         var _0x943fx63 = false;
-        var _0x943fx64 = 0;
-        var _0x943fx65 = new Hertz();
+        var frameStartTimeForMeasuring = 0;
+        var hertz = new Hertz();
         function setHTMLByID(id, value) {
           var _0x943fx68 = document['getElementById'](id);
           if (_0x943fx68) {
             _0x943fx68['innerHTML'] = value;
           }
-          if (_0x943fx38 > 200) {
+          if (refreshRate > 200) {
             _0x943fx5f = 4;
           } else {
-            if (_0x943fx38 > 100) {
+            if (refreshRate > 100) {
               textWasRefreshsed = 3;
             } else {
-              if (_0x943fx38 > 50) {
+              if (refreshRate > 50) {
                 _0x943fx5f = 1;
               } else {
                 _0x943fx5f = 1;
@@ -2699,13 +2700,13 @@ Windows Classic mode makes web browser animations choppy. Also:
           if (_0x943fx68) {
             _0x943fx68['style']['backgroundColor'] = _0x943fx6a;
           }
-          if (_0x943fx38 > 200) {
+          if (refreshRate > 200) {
             _0x943fx5f = 4;
           } else {
-            if (_0x943fx38 > 100) {
+            if (refreshRate > 100) {
               textWasRefreshsed = 3;
             } else {
-              if (_0x943fx38 > 50) {
+              if (refreshRate > 50) {
                 _0x943fx5f = 1;
               } else {
                 _0x943fx5f = 1;
@@ -2739,7 +2740,7 @@ Windows Classic mode makes web browser animations choppy. Also:
           _0x943fx33 = true;
         };
         this['sync'] = function (_0x943fx6b, _0x943fx6c) {
-          _0x943fx58 = _0x943fx6c;
+          RESYNC_STATUS = _0x943fx6c;
           this['message'] = _0x943fx6b;
           this['updateStatus'](this['STATUS'].SYNCING);
         };
@@ -2754,7 +2755,7 @@ Windows Classic mode makes web browser animations choppy. Also:
           pageYOffset = window['pageYOffset'];
           screenLeft = window['screenLeft'];
           screenTop = window['screenTop'];
-          if (!_0x943fx58) {
+          if (!RESYNC_STATUS) {
             if (innerWidth !== _0x943fx52 || innerHeight !== _0x943fx53) {
               _0x943fx61 = true;
               this['sync']('Waiting for browser resize to finish...', this['RESYNC'].HARD);
@@ -2813,14 +2814,14 @@ Windows Classic mode makes web browser animations choppy. Also:
         };
         this['updateFPS'] = function (_0x943fx6e) {
           this['fps'] = _0x943fx6e;
-          var _0x943fx6f = _0x943fx38;
+          var _0x943fx6f = refreshRate;
           if (isNaN(this['fps']) || this['fps'] <= 1) {
             _0x943fx6f = 0;
           } else {
             if (_0x943fx36 >= 2) {
               _0x943fx37++;
               var _0x943fx70 = Math['abs'](
-                this['fps'] - _0x943fx38
+                this['fps'] - refreshRate
               );
               if (_0x943fx70 >= 2 || (_0x943fx70 === 1 && _0x943fx5f)) {
                 _0x943fx6f = this['fps'];
@@ -2828,19 +2829,19 @@ Windows Classic mode makes web browser animations choppy. Also:
                 if (
                   _0x943fx70 >= 1 &&
                   !(this['fps'] % 10) &&
-                  _0x943fx38 % 10
+                  refreshRate % 10
                 ) {
                   _0x943fx6f = this['fps'];
                 }
               }
             }
           }
-          if (_0x943fx6f !== _0x943fx38) {
+          if (_0x943fx6f !== refreshRate) {
             _0x943fx37 = 0;
-            _0x943fx38 = _0x943fx6f;
+            refreshRate = _0x943fx6f;
             setHTMLByID(
               'display_fps',
-              _0x943fx38 === 0 ? '-' : this['fps'].toString()
+              refreshRate === 0 ? '-' : this['fps'].toString()
             );
           }
         };
@@ -2866,12 +2867,12 @@ Windows Classic mode makes web browser animations choppy. Also:
         };
         this['addHistoricalFPS'] = function (_0x943fx73, _0x943fx74) {
           _0x943fx39['push'](_0x943fx73 << 0);
-          _0x943fx3c['push'](_0x943fx74 << 0);
+          last30FramesPeriodArr['push'](_0x943fx74 << 0);
           while (_0x943fx39['length'] >= 30) {
             _0x943fx39['shift']();
           }
-          while (_0x943fx3c['length'] >= 30) {
-            _0x943fx3c['shift']();
+          while (last30FramesPeriodArr['length'] >= 30) {
+            last30FramesPeriodArr['shift']();
           }
           if (!_0x943fx63 && !_0x943fx5d && _0x943fx39['length'] >= 15) {
             this['logFPS']('Framerate Still Syncing');
@@ -2917,7 +2918,7 @@ Windows Classic mode makes web browser animations choppy. Also:
           var _0x943fx7a =
             this['refreshDisplayed'] > 0
               ? this['refreshDisplayed']
-              : _0x943fx65['getCurrentFrequency']();
+              : hertz['getCurrentFrequency']();
           for (
             var _0x943fx19 = _0x943fx39['length'] - 1;
             _0x943fx19 >= 0;
@@ -2939,21 +2940,21 @@ Windows Classic mode makes web browser animations choppy. Also:
           }
           return _0x943fx79;
         };
-        this['getAveragePerformance'] = function (_0x943fx75) {
-          var _0x943fx77 = 0;
-          var _0x943fx48 = 0;
+        this['getAveragePerformance'] = function (leastCount) {
+          var sum = 0;
+          var count = 0;
           for (
-            var _0x943fx19 = _0x943fx3c['length'] - 1;
-            _0x943fx19 >= 0;
-            _0x943fx19--
+            var i = last30FramesPeriodArr['length'] - 1;
+            i >= 0;
+            i--
           ) {
-            _0x943fx77 += _0x943fx3c[_0x943fx19];
-            _0x943fx48++;
-            if (_0x943fx48 >= _0x943fx75) {
+            sum += last30FramesPeriodArr[i];
+            count++;
+            if (count >= leastCount) {
               break;
             }
           }
-          return Math['round'](_0x943fx77 / _0x943fx48);
+          return Math['round'](sum / count);
         };
         this['getVarianceOfFPS'] = function (count) {
           var min = 0;
@@ -2980,14 +2981,14 @@ Windows Classic mode makes web browser animations choppy. Also:
           return _0x943fx49;
         };
         this['getCurrentFloatRefreshRate'] = function () {
-          return _0x943fx65['getCurrentFrequency']();
+          return hertz['getCurrentFrequency']();
         };
         this['logFPS'] = function (_0x943fx7d) {
           var _0x943fx7e =
             'FPS:' +
             _0x943fx39.toString() +
             ' / CPU:' +
-            _0x943fx3c.toString() +
+            last30FramesPeriodArr.toString() +
             ' (' +
             browserDetect['browser'] +
             ' ' +
@@ -3021,7 +3022,7 @@ Windows Classic mode makes web browser animations choppy. Also:
                   _0x943fx7f / this['getAverageFPS'](5, true)
                 );
               } else {
-                var _0x943fx82 = _0x943fx65['getCurrentFrequency']();
+                var _0x943fx82 = hertz['getCurrentFrequency']();
                 if (_0x943fx82 > 0) {
                   _0x943fx80 = Math['round'](_0x943fx7f / _0x943fx82);
                 }
@@ -3054,7 +3055,7 @@ Windows Classic mode makes web browser animations choppy. Also:
                 _0x943fx80 * this['getAverageFPS'](5, true)
               );
             } else {
-              var _0x943fx82 = _0x943fx65['getCurrentFrequency']();
+              var _0x943fx82 = hertz['getCurrentFrequency']();
               if (_0x943fx82 > 0) {
                 _0x943fx7f = Math['round'](_0x943fx80 * _0x943fx82);
               }
@@ -3145,30 +3146,30 @@ Windows Classic mode makes web browser animations choppy. Also:
         };
         this['fail'] = function () {
           _0x943fx49 = 0;
-          _0x943fx65['ignoreNextCycle']();
+          hertz['ignoreNextCycle']();
         };
         this['accuracyCheck'] = function () {
-          _0x943fx64 = performance['now']();
+          frameStartTimeForMeasuring = performance['now']();
           this['frameCounter']++;
           _0x943fx5a = status;
           if (_0x943fx59) {
-            _0x943fx60 = browserDetect['vsync'] !== 'yes';
+            NOT_VSYNC_SUPPORT = browserDetect['vsync'] !== 'yes';
             _0x943fx59 = false;
-            _0x943fx58 = this['RESYNC']['NONE'];
+            RESYNC_STATUS = this['RESYNC']['NONE'];
             this['message'] = 'Initializing...';
             this['updateStatus'](this['STATUS'].SYNCING);
           }
           this['windowCheck']();
           if (this['fps'] !== 0) {
-            _0x943fx4b = 1000 / this['fps'];
-            this['jitter'] = this['timePeriodFrameStart'] - _0x943fx4b;
+            prevAvgFrameTime = 1000 / this['fps'];
+            this['jitter'] = this['timePeriodFrameStart'] - prevAvgFrameTime;
             if (Math['abs'](this['jitter']) >= 1) {
               if (this['jitter'] < 0) {
-                _0x943fx43++;
-                _0x943fx45 += -this['jitter'];
+                jitterFasterFrameCount++;
+                jitterFasterPeriodSum += -this['jitter'];
               } else {
-                _0x943fx44++;
-                _0x943fx46 += this['jitter'];
+                jitterSlowerFrameCount++;
+                jitterSlowerPeriodSum += this['jitter'];
               }
             }
             if (
@@ -3183,7 +3184,7 @@ Windows Classic mode makes web browser animations choppy. Also:
                 }
               }
             } else {
-              if (this['frameTime'] - _0x943fx4a >= 1500) {
+              if (this['frameTime'] - frameEndTime >= 1500) {
                 if (!_0x943fx62 || _0x943fx61) {
                   _0x943fx62 = true;
                   this['fail']();
@@ -3191,16 +3192,16 @@ Windows Classic mode makes web browser animations choppy. Also:
                     this['sync']('Browser freeze detected, resynchronizing...', this['RESYNC'].HARD);
                   }
                 }
-                _0x943fx4a = this['frameTime'];
+                frameEndTime = this['frameTime'];
               } else {
-                if (Math['abs'](this['jitter']) > _0x943fx4b / 2) {
+                if (Math['abs'](this['jitter']) > prevAvgFrameTime / 2) {
                   _0x943fx40 =
-                    Math['abs'](this['jitter']) / _0x943fx4b;
+                    Math['abs'](this['jitter']) / prevAvgFrameTime;
                   _0x943fx41 += _0x943fx40;
                   if (_0x943fx40 > 1.0) {
                     _0x943fx42 += _0x943fx40;
                   }
-                  _0x943fx3e++;
+                  stutteringTimes++;
                   _0x943fx3f++;
                   if (
                     this['status'] !== this['STATUS']['PERFORMANCE'] &&
@@ -3211,13 +3212,13 @@ Windows Classic mode makes web browser animations choppy. Also:
                     this['status'] !== this['STATUS']['SYNCING'] &&
                     this['status'] !== this['STATUS']['SYNCFAIL'] &&
                     this['status'] !== this['STATUS']['ERROR'] &&
-                    !_0x943fx58
+                    !RESYNC_STATUS
                   ) {
                     if (
                       _0x943fx3f <= 10 &&
-                      _0x943fx3e <= 10 &&
+                      stutteringTimes <= 10 &&
                       _0x943fx40 <= 1.0 &&
-                      _0x943fx41 / _0x943fx3e < 1.0 &&
+                      _0x943fx41 / stutteringTimes < 1.0 &&
                       this['status'] !== this['STATUS']['STUTTER_DETECTED'] &&
                       this['status'] !== this['STATUS']['STUTTER_MAJOR']
                     ) {
@@ -3226,12 +3227,12 @@ Windows Classic mode makes web browser animations choppy. Also:
                         this['status'] !== this['STATUS']['STUTTER_CAUTION']
                       ) {
                         this['message'] =
-                          'Potential browser stutter occured (' + _0x943fx3e.toString() + ')';
+                          'Potential browser stutter occured (' + stutteringTimes.toString() + ')';
                         this['updateStatus'](this['STATUS'].STUTTER_CAUTION);
                       }
                     } else {
                       if (
-                        _0x943fx3e <= 10 &&
+                        stutteringTimes <= 10 &&
                         _0x943fx3f <= 10 &&
                         this['status'] !== this['STATUS']['STUTTER_MAJOR']
                       ) {
@@ -3241,7 +3242,7 @@ Windows Classic mode makes web browser animations choppy. Also:
                             this['STATUS']['STUTTER_DETECTED']
                         ) {
                           this['message'] =
-                            'Browser stutter detected (' + _0x943fx3e.toString() + '+). Close other apps and tabs.';
+                            'Browser stutter detected (' + stutteringTimes.toString() + '+). Close other apps and tabs.';
                           this['updateStatus'](
                             this['STATUS'].STUTTER_DETECTED
                           );
@@ -3252,7 +3253,7 @@ Windows Classic mode makes web browser animations choppy. Also:
                           this['STATUS']['STUTTER_MAJOR']
                         ) {
                           this['message'] =
-                            'Browser stuttering is occuring (' + _0x943fx3e.toString() + '+). Close other apps and tabs.';
+                            'Browser stuttering is occuring (' + stutteringTimes.toString() + '+). Close other apps and tabs.';
                           this['updateStatus'](this['STATUS'].STUTTER_MAJOR);
                         }
                       }
@@ -3269,38 +3270,38 @@ Windows Classic mode makes web browser animations choppy. Also:
           if (_0x943fx5f > 0) {
             _0x943fx5f--;
           }
-          if (_0x943fx58) {
+          if (RESYNC_STATUS) {
             this['fail']();
             this['updateStatus'](this['STATUS'].SYNCING);
             _0x943fx35 = 0;
-            if (_0x943fx58 == this['RESYNC']['HARD']) {
+            if (RESYNC_STATUS == this['RESYNC']['HARD']) {
               _0x943fx36 = 0;
               refreshRateValue = 0;
-              _0x943fx4a = this['frameTime'];
-              _0x943fx3e = 0;
+              frameEndTime = this['frameTime'];
+              stutteringTimes = 0;
               _0x943fx3f = 0;
-              _0x943fx43 = 0;
-              _0x943fx44 = 0;
-              _0x943fx45 = 0;
-              _0x943fx46 = 0;
+              jitterFasterFrameCount = 0;
+              jitterSlowerFrameCount = 0;
+              jitterFasterPeriodSum = 0;
+              jitterSlowerPeriodSum = 0;
               _0x943fx47 = 0;
             }
-            _0x943fx58 = this['RESYNC']['NONE'];
+            RESYNC_STATUS = this['RESYNC']['NONE'];
           }
-          if (_0x943fx4a !== 0) {
-            if (this['frameTime'] - _0x943fx4a >= 1000) {
-              var _0x943fx85 = _0x943fx3e === 0;
-              var _0x943fx86 = _0x943fx85;
+          if (frameEndTime !== 0) {
+            if (this['frameTime'] - frameEndTime >= 1000) {
+              var noStuttering = stutteringTimes === 0;
+              var isRefreshRateStatble = noStuttering;
               var _0x943fx87 = this['refreshDisplayed'] - this['refreshRate'];
-              var _0x943fx88 = _0x943fx45 / _0x943fx43;
-              var _0x943fx89 = _0x943fx46 / _0x943fx44;
-              _0x943fx4a += 1000;
+              var avgJitterFasterLatencyPerFrame = jitterFasterPeriodSum / jitterFasterFrameCount;
+              var avgJitterSlowerLatencyPerFrame = jitterSlowerPeriodSum / jitterSlowerFrameCount;
+              frameEndTime += 1000;
               _0x943fx36++;
               _0x943fx35++;
               _0x943fx34++;
               var _0x943fx8a = refreshRateValue / 2;
-              if (_0x943fx8a > _0x943fx2e) {
-                _0x943fx8a = _0x943fx2e;
+              if (_0x943fx8a > constVal_30) {
+                _0x943fx8a = constVal_30;
               }
               if (_0x943fx8a > _0x943fx3a) {
                 _0x943fx3a = _0x943fx8a;
@@ -3309,31 +3310,31 @@ Windows Classic mode makes web browser animations choppy. Also:
                 this['addHistoricalFPS'](refreshRateValue, _0x943fx47);
               }
               this['updateFPS'](refreshRateValue);
-              if (_0x943fx60) {
+              if (NOT_VSYNC_SUPPORT) {
                 this['message'] = browserDetect['vsyncInfo'];
                 this['updateStatus'](
                   browserDetect['vsync'] === 'no'
                     ? this['STATUS']['BROWSERBAD']
                     : this['STATUS']['BROWSERUNKNOWN']
                 );
-                _0x943fx85 = false;
-                _0x943fx86 = false;
+                noStuttering = false;
+                isRefreshRateStatble = false;
               } else {
-                if (refreshRateValue < _0x943fx2d) {
+                if (refreshRateValue < constVal_10) {
                   _0x943fx36 = 0;
                   _0x943fx35 = 0;
-                  _0x943fx85 = false;
-                  _0x943fx86 = false;
+                  noStuttering = false;
+                  isRefreshRateStatble = false;
                 } else {
-                  if (_0x943fx89 > 1.5 && _0x943fx89 * 3 < _0x943fx88) {
-                    _0x943fx85 = false;
-                    _0x943fx86 = false;
+                  if (avgJitterSlowerLatencyPerFrame > 1.5 && avgJitterSlowerLatencyPerFrame * 3 < avgJitterFasterLatencyPerFrame) {
+                    noStuttering = false;
+                    isRefreshRateStatble = false;
                     this['strictSync'] = true;
                     if (
                       this['status'] !== this['STATUS']['SYNCFAIL']
                     ) {
                       this['updateRefresh'](0);
-                      _0x943fx65['beginMeasuring'](_0x943fx64);
+                      hertz['beginMeasuring'](frameStartTimeForMeasuring);
                       if (!_0x943fx5b) {
                         this['logFPS']('Framerate Strange');
                         _0x943fx5b = true;
@@ -3351,7 +3352,7 @@ Windows Classic mode makes web browser animations choppy. Also:
                     if (
                       this['status'] === this['STATUS']['SYNCING']
                     ) {
-                      if (_0x943fx35 > _0x943fx30) {
+                      if (_0x943fx35 > constVal_12) {
                         if (this['fps'] < 48) {
                           this['message'] = 'Low Framerate. Try closing all apps and browser tabs.';
                         } else {
@@ -3362,16 +3363,16 @@ Windows Classic mode makes web browser animations choppy. Also:
                           _0x943fx5c = true;
                           this['logFPS']('Framerate Fail Poor');
                         }
-                        _0x943fx85 = false;
-                        _0x943fx86 = false;
+                        noStuttering = false;
+                        isRefreshRateStatble = false;
                       }
                     } else {
                       if (this['refreshDisplayed'] > 0) {
                         if (_0x943fx87 < -3) {
-                          _0x943fx65['beginMeasuring'](_0x943fx64);
+                          hertz['beginMeasuring'](frameStartTimeForMeasuring);
                           this['updateRefresh'](0);
                           this['strictSync'] = true;
-                          _0x943fx86 = false;
+                          isRefreshRateStatble = false;
                           this['sync'](
                             'Large framerate increase, resynchronizing...' +
                               ' (' +
@@ -3383,20 +3384,20 @@ Windows Classic mode makes web browser animations choppy. Also:
                           );
                         } else {
                           if (_0x943fx87 > 20) {
-                            _0x943fx65['beginMeasuring'](_0x943fx64);
+                            hertz['beginMeasuring'](frameStartTimeForMeasuring);
                             this['updateRefresh'](0);
                             this['strictSync'] = true;
-                            _0x943fx86 = false;
+                            isRefreshRateStatble = false;
                             this['sync'](
                               'Large framerate decrease, resynchronizing...',
                               this['RESYNC'].SOFT
                             );
                           } else {
                             if (Math['abs'](_0x943fx87) >= 2) {
-                              _0x943fx65['beginMeasuring'](_0x943fx64);
+                              hertz['beginMeasuring'](frameStartTimeForMeasuring);
                               this['updateRefresh'](0);
                               this['strictSync'] = true;
-                              _0x943fx86 = false;
+                              isRefreshRateStatble = false;
                               this['sync'](
                                 'Browser framerate varying too much. Close other apps and tabs.',
                                 this['RESYNC'].SOFT
@@ -3409,7 +3410,9 @@ Windows Classic mode makes web browser animations choppy. Also:
                   }
                 }
               }
-              if (!_0x943fx60 && this['getAveragePerformance'](3) > _0x943fx2f) {
+
+              // 对于快速刷新率检测, 过去 3 帧均值 500 以上不认为有效 refreshRate
+              if (!NOT_VSYNC_SUPPORT && this['getAveragePerformance'](3) > constVal_500) {
                 if (browserDetect['browser'] === 'Chrome') {
                   this['message'] = 'Try closing apps/browser tabs. Verify chrome://gpu status.';
                 } else {
@@ -3420,11 +3423,11 @@ Windows Classic mode makes web browser animations choppy. Also:
                   _0x943fx5e = true;
                   this['logFPS']('Framerate Performance Low');
                 }
-                _0x943fx65['beginMeasuring'](_0x943fx64);
+                hertz['beginMeasuring'](frameStartTimeForMeasuring);
                 this['updateRefresh'](0);
                 this['strictSync'] = true;
-                _0x943fx86 = false;
-                _0x943fx85 = false;
+                isRefreshRateStatble = false;
+                noStuttering = false;
               }
               if (
                 this['refreshDisplayed'] === 62 &&
@@ -3438,13 +3441,13 @@ Windows Classic mode makes web browser animations choppy. Also:
                 ) {
                   this['message'] = browserDetect['browser'] + ' VSYNC non-synchronization bug. Restart browser.';
                   this['updateStatus'](this['STATUS'].STUTTER_BUG);
-                  _0x943fx85 = false;
+                  noStuttering = false;
                 }
               }
               if (this['status'] !== this['STATUS']['SYNCING']) {
-                var _0x943fx8b = this['fps'] > _0x943fx31;
-                var _0x943fx8c = this['fps'] < _0x943fx2b;
-                var _0x943fx8d = this['fps'] > _0x943fx2c;
+                var _0x943fx8b = this['fps'] > constVal_500Again;
+                var _0x943fx8c = this['fps'] < constVal_15;
+                var _0x943fx8d = this['fps'] > constVal_20;
                 var _0x943fx8e =
                   this['status'] === this['STATUS']['PERFORMANCE'];
                 if (_0x943fx8e && !_0x943fx8d) {
@@ -3458,7 +3461,7 @@ Windows Classic mode makes web browser animations choppy. Also:
                   }
                   this['updateStatus'](this['STATUS'].SYNCFAIL);
                   this['strictSync'] = true;
-                  _0x943fx85 = false;
+                  noStuttering = false;
                 } else {
                   if (_0x943fx8c && !_0x943fx62) {
                     if (
@@ -3467,21 +3470,21 @@ Windows Classic mode makes web browser animations choppy. Also:
                       this['message'] = 'Low frame rate. Try closing all apps and browser tabs.';
                       this['updateStatus'](this['STATUS'].PERFORMANCE);
                       if (this['refreshRate'] === 0) {
-                        _0x943fx65['beginMeasuring'](_0x943fx64);
+                        hertz['beginMeasuring'](frameStartTimeForMeasuring);
                         this['updateRefresh'](0);
                       }
-                      _0x943fx85 = false;
-                      _0x943fx86 = false;
+                      noStuttering = false;
+                      isRefreshRateStatble = false;
                     }
                   }
                 }
               }
-              if (_0x943fx86) {
+              if (isRefreshRateStatble) {
                 var lookBehindCount = 0;
                 this['refreshRate'] = refreshRateValue;
                 _0x943fx49++;
-                if (this['refreshRate'] < _0x943fx2b) {
-                  _0x943fx86 = false;
+                if (this['refreshRate'] < constVal_15) {
+                  isRefreshRateStatble = false;
                 } else {
                   if (_0x943fx49 > 0) {
                     lookBehindCount = this['getPreferredLookbehind']();
@@ -3489,14 +3492,14 @@ Windows Classic mode makes web browser animations choppy. Also:
                       _0x943fx49 < lookBehindCount ||
                       this['getVarianceOfFPS'](lookBehindCount) > 1
                     ) {
-                      _0x943fx86 = false;
+                      isRefreshRateStatble = false;
                     }
                   }
                 }
-                if (_0x943fx86) {
+                if (isRefreshRateStatble) {
                   _0x943fx61 = false;
                   _0x943fx62 = false;
-                  if (_0x943fx85) {
+                  if (noStuttering) {
                     this['message'] = '';
                     if (browserDetect['browser'] === 'Explorer') {
                       if (browserDetect['version'] <= 11) {
@@ -3532,6 +3535,8 @@ Windows Classic mode makes web browser animations choppy. Also:
                     }
                     _0x943fx63 = true;
                   }
+                  // DOM 区域显示的刷新率
+                  // 其值就是 refreshRateValue 通过每一帧 ++ 得到
                   this['updateRefresh'](this['refreshRate']);
                 }
               } else {
@@ -3539,24 +3544,25 @@ Windows Classic mode makes web browser animations choppy. Also:
               }
               refreshRateValue = 0;
               _0x943fx42 = 0;
-              _0x943fx3e = 0;
+              stutteringTimes = 0;
               _0x943fx41 = 0;
-              _0x943fx43 = 0;
-              _0x943fx44 = 0;
-              _0x943fx45 = 0;
-              _0x943fx46 = 0;
+              jitterFasterFrameCount = 0;
+              jitterSlowerFrameCount = 0;
+              jitterFasterPeriodSum = 0;
+              jitterSlowerPeriodSum = 0;
               _0x943fx47 = 0;
             }
           } else {
-            _0x943fx4a = this['frameTime'];
+            frameEndTime = this['frameTime'];
             refreshRateValue = 0;
           }
           this['updatePixelsPer']();
           this['timePeriodFrameRender'] = performance['now']() - this['frameTime'];
-          this['timePeriodAccuracyChecker'] = performance['now']() - _0x943fx64;
+          this['timePeriodAccuracyChecker'] = performance['now']() - frameStartTimeForMeasuring;
           _0x943fx47 += this['timePeriodFrameRender'] + this['timePeriodAccuracyChecker'];
           refreshRateValue++;
-          _0x943fx65['countCycle'](_0x943fx64);
+          console.log('!!!refreshRateValue++', refreshRateValue);
+          hertz['countCycle'](frameStartTimeForMeasuring);
         };
       }
       function Draw() {
@@ -4092,37 +4098,37 @@ Windows Classic mode makes web browser animations choppy. Also:
         };
       }
       function Hertz() {
-        var _0x943fxd5 = 0;
-        var _0x943fxd6 = new _0x943fxd9();
+        var addCount = 0;
+        var calculator = new Calculator();
         this['beginMeasuring'] = function (_0x943fxd7) {
-          _0x943fxd6['reset']();
+          calculator['reset']();
         };
         this['ignoreNextCycle'] = function (_0x943fxd8) {};
         this['countCycle'] = function (_0x943fxd7) {
-          _0x943fxd6['add'](_0x943fxd7);
+          calculator['add'](_0x943fxd7);
         };
         this['getCurrentFrequency'] = function () {
-          return _0x943fxd6['calc']();
+          return calculator['calc']();
         };
-        function _0x943fxd9() {
+        function Calculator() {
           var _0x943fxda = 100.0;
-          var _0x943fxdb = 1.0;
-          var _0x943fxdc = 1.0;
-          var _0x943fxdd = 5000000;
-          var _0x943fxde = 35;
+          var always1 = 1.0;
+          var const1 = 1.0;
+          var veryLargeValue = 5000000;
+          var minDetectFPS = 35; // 35 帧以上才进入 刷新率统计逻辑
           var _0x943fxdf = 60;
           var _0x943fxe0;
           var _0x943fxe1;
           var _0x943fxe2;
-          var _0x943fxe3, _0x943fxe4, _0x943fxe5, _0x943fxe6, _0x943fxe7;
-          var _0x943fxe8;
-          var _0x943fxe9;
-          var _0x943fxea;
-          var _0x943fxeb;
+          var prev5FrameTime, prev4FrameTime, prev3FrameTime, prev2FrameTime, prev1FrameTime;
+          var frameTimeArray = [];
+          var cutArray = [];
+          var stablePeriodInAFrame;
+          var drift;
           var _0x943fxec;
-          var _0x943fxed;
-          var _0x943fxee;
-          var _0x943fxef;
+          var sumFramePeriod;
+          var frameCounts;
+          var notStableCounts;
           this['cut'] = function (_0x943fxf0) {
             var _0x943fxf1 = [];
             for (
@@ -4134,71 +4140,74 @@ Windows Classic mode makes web browser animations choppy. Also:
             }
             return _0x943fxf1;
           };
-          this['add'] = function (_0x943fxf3) {
-            _0x943fxd5++;
-            _0x943fxe3 = _0x943fxe4;
-            _0x943fxe4 = _0x943fxe5;
-            _0x943fxe5 = _0x943fxe6;
-            _0x943fxe6 = _0x943fxe7;
-            _0x943fxe7 = _0x943fxf3;
-            var _0x943fxf4 =
+          this['add'] = function (curTime) {
+            addCount++;
+            prev5FrameTime = prev4FrameTime;
+            prev4FrameTime = prev3FrameTime;
+            prev3FrameTime = prev2FrameTime;
+            prev2FrameTime = prev1FrameTime;
+            prev1FrameTime = curTime;
+            var maxVariantInLast5Frame =
               Math['max'](
-                _0x943fxe7 - _0x943fxe6,
-                _0x943fxe6 - _0x943fxe5,
-                _0x943fxe5 - _0x943fxe4,
-                _0x943fxe4 - _0x943fxe3
+                prev1FrameTime - prev2FrameTime,
+                prev2FrameTime - prev3FrameTime,
+                prev3FrameTime - prev4FrameTime,
+                prev4FrameTime - prev5FrameTime
               ) -
               Math['min'](
-                _0x943fxe7 - _0x943fxe6,
-                _0x943fxe6 - _0x943fxe5,
-                _0x943fxe5 - _0x943fxe4,
-                _0x943fxe4 - _0x943fxe3
+                prev1FrameTime - prev2FrameTime,
+                prev2FrameTime - prev3FrameTime,
+                prev3FrameTime - prev4FrameTime,
+                prev4FrameTime - prev5FrameTime
               );
-            if (_0x943fxf4 < _0x943fxdb) {
+            console.log('!!!maxVariantInLast5Frame', maxVariantInLast5Frame);
+            if (maxVariantInLast5Frame < always1) {
               if (--_0x943fxdf < 0 && --_0x943fxe1 < 0) {
-                var _0x943fxf5 = (_0x943fxe7 - _0x943fxe3) / 4;
-                if (_0x943fxf5 < 1000 / _0x943fxde) {
-                  var _0x943fxf6 =
-                    _0x943fxee > 10 &&
-                    Math['abs'](_0x943fxf5 - _0x943fxed / _0x943fxee) >
-                      _0x943fxdc;
-                  _0x943fxef = _0x943fxf6 ? _0x943fxef + 1 : 0;
-                  if (!_0x943fxf6) {
-                    _0x943fxed += _0x943fxf5;
-                    ++_0x943fxee;
+                var avg5FrameTime = (prev1FrameTime - prev5FrameTime) / 4;
+
+                // FPS 表现高于最低值
+                if (avg5FrameTime < 1000 / minDetectFPS) {
+                  var notStableInLast5Frame =
+                    frameCounts > 10 &&
+                    Math['abs'](avg5FrameTime - sumFramePeriod / frameCounts) >
+                      const1;
+                  notStableCounts = notStableInLast5Frame ? notStableCounts + 1 : 0;
+                  if (!notStableInLast5Frame) {
+                    sumFramePeriod += avg5FrameTime;
+                    ++frameCounts;
                     if (
-                      !_0x943fxea &&
-                      _0x943fxee > Math['max'](30, _0x943fxf4 * 60)
+                      !stablePeriodInAFrame &&
+                      frameCounts > Math['max'](30, maxVariantInLast5Frame * 60)
                     ) {
-                      _0x943fxea = _0x943fxed / _0x943fxee;
+                      stablePeriodInAFrame = sumFramePeriod / frameCounts;
                     }
                   }
-                  if (_0x943fxef > 20) {
+                  if (notStableCounts > 20) {
                     this['reset'](
                       'Change in Hz detected ' +
-                        (_0x943fxed / _0x943fxee)['toFixed'](3) +
+                        (sumFramePeriod / frameCounts)['toFixed'](3) +
                         '->' +
-                        _0x943fxf5['toFixed'](3)
+                        avg5FrameTime['toFixed'](3)
                     );
                   } else {
-                    if (_0x943fxe8['length'] >= _0x943fxdd) {
-                      _0x943fxe8 = this['cut'](_0x943fxe8);
-                      _0x943fxe9 = this['cut'](_0x943fxe9);
+                    if (frameTimeArray['length'] >= veryLargeValue) {
+                      frameTimeArray = this['cut'](frameTimeArray);
+                      cutArray = this['cut'](cutArray);
                       _0x943fxe0 = _0x943fxe0 * 2 + 1;
                     }
-                    var _0x943fxf7 = _0x943fxe8['length'];
-                    _0x943fxe8[_0x943fxf7] = _0x943fxe5;
-                    _0x943fxe9[_0x943fxf7] =
-                      (_0x943fxe3 +
-                        _0x943fxe4 +
-                        _0x943fxe5 +
-                        _0x943fxe6 +
-                        _0x943fxe7) /
+                    var lastIndex = frameTimeArray['length'];
+                    frameTimeArray[lastIndex] = prev3FrameTime;
+                    cutArray[lastIndex] =
+                      (prev5FrameTime +
+                        prev4FrameTime +
+                        prev3FrameTime +
+                        prev2FrameTime +
+                        prev1FrameTime) /
                       5;
                     _0x943fxe1 = _0x943fxe0;
-                    if (_0x943fxea && _0x943fxf3 - _0x943fxe2 > _0x943fxda) {
-                      _0x943fxe2 = _0x943fxf3;
-                      _0x943fxeb = this['validate']();
+                    if (stablePeriodInAFrame && curTime - _0x943fxe2 > _0x943fxda) {
+                      _0x943fxe2 = curTime;
+                      // drift = this['validate']();
                     }
                   }
                 }
@@ -4206,11 +4215,11 @@ Windows Classic mode makes web browser animations choppy. Also:
             }
             return (
               'Hz=' +
-              _0x943fxe8['length'] +
+              frameTimeArray['length'] +
               '&times;' +
               (_0x943fxe0 + 1) +
               ' samples  ' +
-              _0x943fxeb +
+              drift +
               '  dpr=' +
               window['devicePixelRatio'] +
               '  cores=' +
@@ -4218,7 +4227,8 @@ Windows Classic mode makes web browser animations choppy. Also:
             );
           };
           this['calc'] = function () {
-            return _0x943fxea ? 1000 / _0x943fxea : 0;
+            console.log('!!!time In A Frame', stablePeriodInAFrame);
+            return stablePeriodInAFrame ? 1000 / stablePeriodInAFrame : 0;
           };
           this['validate'] = function () {
             var _0x943fxf1 = '';
@@ -4227,41 +4237,41 @@ Windows Classic mode makes web browser animations choppy. Also:
             var _0x943fxfa = 0.0;
             var _0x943fxfb = 0.0;
             var _0x943fxfc = 0;
-            var _0x943fxfd = _0x943fxe8['length'];
-            var _0x943fxf2;
-            for (_0x943fxf2 = 0; _0x943fxf2 < _0x943fxfd; ++_0x943fxf2) {
+            var frames = frameTimeArray['length'];
+            var i;
+            for (i = 0; i < frames; ++i) {
               _0x943fxfc +=
-                _0x943fxf2 > 0
+                i > 0
                   ? Math['round'](
-                      (_0x943fxe9[_0x943fxf2] - _0x943fxe9[_0x943fxf2 - 1]) /
-                        _0x943fxea
+                      (cutArray[i] - cutArray[i - 1]) /
+                        stablePeriodInAFrame
                     )
                   : 0;
-              var _0x943fxfe = _0x943fxe8[_0x943fxf2] - _0x943fxe8[0];
+              var _0x943fxfe = frameTimeArray[i] - frameTimeArray[0];
               _0x943fxf8 += _0x943fxfc;
               _0x943fxf9 += _0x943fxfe;
               _0x943fxfa += _0x943fxfc * _0x943fxfc;
               _0x943fxfb += _0x943fxfc * _0x943fxfe;
             }
             var _0x943fxff =
-              (_0x943fxfd * _0x943fxfb - _0x943fxf8 * _0x943fxf9) /
-              (_0x943fxfd * _0x943fxfa - _0x943fxf8 * _0x943fxf8);
+              (frames * _0x943fxfb - _0x943fxf8 * _0x943fxf9) /
+              (frames * _0x943fxfa - _0x943fxf8 * _0x943fxf8);
             var _0x943fx100 =
               (_0x943fxfa * _0x943fxf9 - _0x943fxf8 * _0x943fxfb) /
-              (_0x943fxfd * _0x943fxfa - _0x943fxf8 * _0x943fxf8);
-            _0x943fxea = _0x943fxff;
-            var _0x943fx101 = _0x943fxe8[0] + _0x943fx100;
-            var _0x943fx102 = _0x943fxea / 2;
+              (frames * _0x943fxfa - _0x943fxf8 * _0x943fxf8);
+            stablePeriodInAFrame = _0x943fxff;
+            var _0x943fx101 = frameTimeArray[0] + _0x943fx100;
+            var _0x943fx102 = stablePeriodInAFrame / 2;
             var _0x943fx7c = 0;
             var _0x943fx7b = 0;
             for (
-              _0x943fxf2 = 1;
-              _0x943fxf2 < _0x943fxe8['length'];
-              ++_0x943fxf2
+              i = 1;
+              i < frameTimeArray['length'];
+              ++i
             ) {
               var _0x943fx103 =
-                ((_0x943fxe8[_0x943fxf2] - _0x943fx101 + _0x943fx102) %
-                  _0x943fxea) -
+                ((frameTimeArray[i] - _0x943fx101 + _0x943fx102) %
+                  stablePeriodInAFrame) -
                 _0x943fx102;
               _0x943fx7b = Math['min'](_0x943fx7b, _0x943fx103);
               _0x943fx7c = Math['max'](_0x943fx7c, _0x943fx103);
@@ -4280,7 +4290,7 @@ Windows Classic mode makes web browser animations choppy. Also:
             return _0x943fxf1;
           };
           this['snap'] = function () {
-            return _0x943fxeb ? { tvsync: _0x943fxec, ms: _0x943fxea } : null;
+            return drift ? { tvsync: _0x943fxec, ms: stablePeriodInAFrame } : null;
           };
           this['vso'] = function (_0x943fx104, _0x943fx105) {
             return _0x943fx105 && _0x943fx105['ms']
@@ -4295,20 +4305,20 @@ Windows Classic mode makes web browser animations choppy. Also:
             _0x943fxe0 = 0;
             _0x943fxe1 = 0;
             _0x943fxe2 = 0.0;
-            _0x943fxe3 =
-              _0x943fxe4 =
-              _0x943fxe5 =
-              _0x943fxe6 =
-              _0x943fxe7 =
+            prev5FrameTime =
+              prev4FrameTime =
+              prev3FrameTime =
+              prev2FrameTime =
+              prev1FrameTime =
                 0.0;
-            _0x943fxe8 = [];
-            _0x943fxe9 = [];
-            _0x943fxea = 0.0;
-            _0x943fxeb = '';
+            frameTimeArray = [];
+            cutArray = [];
+            stablePeriodInAFrame = 0.0;
+            drift = '';
             _0x943fxec = 0.0;
-            _0x943fxed = 0.0;
-            _0x943fxee = 0;
-            _0x943fxef = 0;
+            sumFramePeriod = 0.0;
+            frameCounts = 0;
+            notStableCounts = 0;
           };
           this['reset']();
         }
@@ -4326,13 +4336,17 @@ Windows Classic mode makes web browser animations choppy. Also:
     </div>
     <div id="lotsOfChildren"></div>
     <script>
+      
       const highEnergy = () => {
         const ran = Math.random() * 100;
+        const max = window.max || 100;
         let i = 0;
-        while (i++ < 1000) {
+        while (i++ < Math.random(0, 1) * max) {
           const t = document.createElement('div');
-          const container = document.createElement('div');
+          const container = document.querySelector('#lotsOfChildren');
           container.appendChild(t);
+          const f = constainer.firstChild();
+          container.removeChild(f);
           // console.log("ran", i);
         }
         requestAnimationFrame(highEnergy);
@@ -4347,7 +4361,7 @@ Windows Classic mode makes web browser animations choppy. Also:
         t = n;
         requestAnimationFrame(lowEnergy);
       }
-      requestAnimationFrame(lowEnergy);
+      // requestAnimationFrame(lowEnergy);
     </script>
   </body>
 </html>

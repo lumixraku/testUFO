@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="lotsOfChildren"></div>
+    <script>
+      const highEnergy = () => {
+        const ran = Math.random() * 100;
+        let i = 0;
+        while (i++ < 100000) {
+          const t = document.createElement('div');
+          const container = document.createElement('div');
+          container.appendChild(t);
+          // console.log("ran", i);
+        }
+        requestAnimationFrame(highEnergy);
+      };
+      requestAnimationFrame(highEnergy);
+    </script>
+    <script>
+
+      let t = performance.now();
+      const lowEnergy = (n) => {
+        console.log('time span', n - t);
+        t = n;
+        requestAnimationFrame(lowEnergy);
+      }
+      requestAnimationFrame(lowEnergy);
+    </script>
+</body>
+</html>
