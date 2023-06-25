@@ -2607,7 +2607,7 @@ Windows Classic mode makes web browser animations choppy. Also:
         this['timePeriodFrameRender'] = 0;
         this['timePeriodAccuracyChecker'] = 0;
         this['fps'] = 0;
-        this['refreshRate'] = 0;
+        this['refreshRate'] = 0; // 快速刷新率检测  this['refreshRate'] = refreshRateValue;  refreshRateValue++;
         this['refreshRateFloat'] = 0;
         this['refreshDisplayed'] = 0;
         this['jitter'] = 0;
@@ -2647,7 +2647,7 @@ Windows Classic mode makes web browser animations choppy. Also:
         var jitterSlowerPeriodSum = 0;
         var _0x943fx47 = 0;
         var refreshRateValue = 0;
-        var _0x943fx49 = 0;
+        var consecutiveGoodTimes = 0;
         var frameEndTime = 0;
         var prevAvgFrameTime = 0;
         var innerWidth = 0;
@@ -2978,7 +2978,7 @@ Windows Classic mode makes web browser animations choppy. Also:
           return max - min;
         };
         this['getGoodSeconds'] = function () {
-          return _0x943fx49;
+          return consecutiveGoodTimes;
         };
         this['getCurrentFloatRefreshRate'] = function () {
           return hertz['getCurrentFrequency']();
@@ -3116,9 +3116,9 @@ Windows Classic mode makes web browser animations choppy. Also:
           }
         };
         this['getPreferredLookbehind'] = function () {
-          var _0x943fx84 = 0;
+          var minStableFrameCount = 0;
           if (_0x943fx63 && this['refreshRate'] === this['refreshDisplayed']) {
-            _0x943fx84 = 2;
+            minStableFrameCount = 2;
           } else {
             if (
               this['refreshRate'] === 60 ||
@@ -3133,19 +3133,19 @@ Windows Classic mode makes web browser animations choppy. Also:
               this['refreshRate'] === 360 ||
               this['refreshRate'] === 480
             ) {
-              _0x943fx84 = this['strictSync'] ? 4 : 2;
+              minStableFrameCount = this['strictSync'] ? 4 : 2;
             } else {
               if (this['refreshRate'] < 58 || this['refreshRate'] > 250) {
-                _0x943fx84 = this['strictSync'] ? 7 : 5;
+                minStableFrameCount = this['strictSync'] ? 7 : 5;
               } else {
-                _0x943fx84 = this['strictSync'] ? 5 : 3;
+                minStableFrameCount = this['strictSync'] ? 5 : 3;
               }
             }
           }
-          return _0x943fx84;
+          return minStableFrameCount;
         };
         this['fail'] = function () {
-          _0x943fx49 = 0;
+          consecutiveGoodTimes = 0;
           hertz['ignoreNextCycle']();
         };
         this['accuracyCheck'] = function () {
@@ -3482,14 +3482,14 @@ Windows Classic mode makes web browser animations choppy. Also:
               if (isRefreshRateStatble) {
                 var lookBehindCount = 0;
                 this['refreshRate'] = refreshRateValue;
-                _0x943fx49++;
+                consecutiveGoodTimes++;
                 if (this['refreshRate'] < constVal_15) {
                   isRefreshRateStatble = false;
                 } else {
-                  if (_0x943fx49 > 0) {
+                  if (consecutiveGoodTimes > 0) {
                     lookBehindCount = this['getPreferredLookbehind']();
                     if (
-                      _0x943fx49 < lookBehindCount ||
+                      consecutiveGoodTimes < lookBehindCount ||
                       this['getVarianceOfFPS'](lookBehindCount) > 1
                     ) {
                       isRefreshRateStatble = false;
@@ -4123,7 +4123,7 @@ Windows Classic mode makes web browser animations choppy. Also:
           var prev5FrameTime, prev4FrameTime, prev3FrameTime, prev2FrameTime, prev1FrameTime;
           var frameTimeArray = [];
           var cutArray = [];
-          var stablePeriodInAFrame;
+          var stablePeriodInAFrame; // 只有条件稳定才符合  stablePeriodInAFrame = sumFramePeriod / frameCounts;
           var drift;
           var _0x943fxec;
           var sumFramePeriod;
@@ -4336,7 +4336,7 @@ Windows Classic mode makes web browser animations choppy. Also:
     </div>
     <div id="lotsOfChildren"></div>
     <script>
-      
+
       const highEnergy = () => {
         const ran = Math.random() * 100;
         const max = window.max || 100;
@@ -4351,7 +4351,7 @@ Windows Classic mode makes web browser animations choppy. Also:
         }
         requestAnimationFrame(highEnergy);
       };
-      requestAnimationFrame(highEnergy);
+      // requestAnimationFrame(highEnergy);
     </script>
     <script>
 
