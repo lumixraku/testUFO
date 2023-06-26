@@ -157,10 +157,12 @@
         this.refreshRate =  () => {
           // Math.round(115/10) * 10
           // const longframe = this.recordingFrameArray.slice(-120).some(t => t > 120) || this.recordingFrameArray.slice(-3).some(t => t > 300);
-          const recent120 = this.recordingFrameArray.recentValue(120);
+          const recentFPS = this.recordingFrameArray.recentValue(60);
           const recent3 = this.recordingFrameArray.recentValue(3);
-          const longframe = recent120.some(t => t > 120);
-          if(!longframe) {
+          const longframe = recentFPS.some(t => t > 120);
+          const notStable = Math.max(...recentFPS) - Math.min(...recentFPS) > 1;
+
+          if(!(longframe || notStable) ) {
             console.log('!!!!+++ refreshRateValue------ME', this.frameCountInASecond);
 
           }
@@ -1104,7 +1106,6 @@
       }
 
       function animateFrame(now) {
-        if(!now) now = performance.now();
         if (!test || !testLoaded) {
           animateStop();
           return;
@@ -1119,7 +1120,7 @@
           drawMainOverlayGraphics();
           frameTiming.accuracyCheck();
 
-          meme.taskInAFrame(now);
+          now && meme.taskInAFrame(now);
 
           if (isPaused) animateStop();
           jankMonitor();
@@ -3070,6 +3071,8 @@ Windows Classic mode makes web browser animations choppy. Also:
           }
           return Math['round'](sum / count);
         };
+
+        // 最近帧 max - min
         this['getVarianceOfFPS'] = function (count) {
           var min = 0;
           var max = 0;
@@ -3677,7 +3680,7 @@ Windows Classic mode makes web browser animations choppy. Also:
           this['timePeriodAccuracyChecker'] = performance['now']() - frameStartTimeForMeasuring;
           _0x943fx47 += this['timePeriodFrameRender'] + this['timePeriodAccuracyChecker'];
           refreshRateValue++;
-          console.log('!!!refreshRateValue========', refreshRateValue);
+          // console.log('!!!refreshRateValue========', refreshRateValue);
           hertz['countCycle'](frameStartTimeForMeasuring);
         };
       }
@@ -4276,7 +4279,7 @@ Windows Classic mode makes web browser animations choppy. Also:
                 prev3FrameTime - prev4FrameTime,
                 prev4FrameTime - prev5FrameTime
               );
-            console.log('!!!maxVariantInLast5Frame', maxVariantInLast5Frame);
+            // console.log('!!!maxVariantInLast5Frame', maxVariantInLast5Frame);
             if (maxVariantInLast5Frame < always1) {
               if (--_0x943fxdf < 0 && --_0x943fxe1 < 0) {
                 var avg5FrameTime = (prev1FrameTime - prev5FrameTime) / 4;
@@ -4343,7 +4346,8 @@ Windows Classic mode makes web browser animations choppy. Also:
             );
           };
           this['calc'] = function () {
-            console.log('!!!time In A Frame', stablePeriodInAFrame);
+            // 前 100 帧得到的都是 0
+            // console.log('!!!time In A Frame', stablePeriodInAFrame);
             return stablePeriodInAFrame ? 1000 / stablePeriodInAFrame : 0;
           };
           this['validate'] = function () {
