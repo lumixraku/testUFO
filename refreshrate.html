@@ -68,8 +68,117 @@
       .hiddenchoice,
       .title {
         visibility: hidden;
-      } // Now minified into index.* files. After modif [title]{white-space:pre-line}.ShareLabel,.logo{white-space:nowrap}.title{display:none}a,img{border:0}body{font-family:Arial,sans-serif;margin:0}p{margin-top:0;margin-bottom:6px;font-size:12px}table.center{border:none;margin-left:auto;margin-right:auto}.selectArrowButton{margin:0 4px}table.intro,table.telemetry{width:100%;max-width:960px;border-collapse:separate;border-spacing:1px 4px;margin-left:auto;margin-right:auto;vertical-align:middle}.selectTestMenu{vertical-align:middle;border-collapse:separate;padding:4px;border-radius:6px;background:#fff}.selectTestMenu:hover{background:#ff0}.selectTestMenu:active,.selectTestMenu:focus{background:#fff}table.intro{border:none}.cellHeader{width:640px;height:54px;font-size:30px;background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAACgBAMAAAB54XoeAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJAAAFiQBmxXGFAAAABl0RVh0U29mdHdhcmUAcGFpbnQubmV0IDQuMC4xNzNun2MAAAAVUExURQAAAAAAAAAm/wDwAP8AAP//AP////TbnhkAAAABdFJOUwBA5thmAAABpUlEQVRo3u3agZGDIBAFUFqgBVuwBVugBfov4QBBVgLowXr53uyfZEKMvJnN6EqcKCWRSCQSiSTGnoMGekLTzJrMYNRMTjRRwMCZMoHEAL1nahkV+cGGF0QE0FVsWhmqmR/MFR8n3lTND4B5+rqHiDCgpl4UNRaoqRdEDQY6YnUd9Xi6t2igi13s8fRlA4KkZEywCCqoc4vAAr1D1kprbLM4YO5ee8mpxUKBZYMNRWOBxUUKECRHjYEEtV5SdNxgoEDiYYLUW46jBgpcKBg7BC7osmKD+N8h/2HzBDh96k2C9JZPH7x5b4gZLO/63EuHZAZ3bvOJL37UGaR9WyQzSDjqNR0yqpPMIOXIlO1ilGeUJDdIuZPXZc7ln269cIPeq+2/XQ/pvCzygy3vUinEB8HqxN+OnwWtjQ8yLMZ0n+r+AqKD8Mch/LkM3w/xrykvuC6/YG3zhvXhG9bY5c+KxF9suf87hQVU5aLx44z63Ka+BdbnTojcYGvmsMgNtucNivxge1YSEcBGWbv4ddB2vvfuh38Fqm5fGvmTDDsokUgkEsn/yw/EenQJh3TQlgAAAABJRU5ErkJggg==) -20px -38px no-repeat #404040;background-attachment:inherit;border-radius:10px}.cellLabel,.cellValue{height:44px;background:#404040}.cellLabel{width:90px;font-size:14px;text-align:right;border-top-left-radius:10px;border-bottom-left-radius:10px}.cellValue{width:160px;font-size:32px;text-align:left;border-top-right-radius:10px;border-bottom-right-radius:10px}.cellSpacer{width:0;background:0 0}.cellShare,.cellStatus{width:100%;text-align:center;border-radius:10px}.cellStatus{height:84px;font-size:30px;background:#00F}.cellShare{height:30px;font-size:16px;background:#404040}.shareText{display:inline-block;min-width:100px;margin-left:5px;width:440px;padding:2px;font-size:16px;font-family:Arial,sans-serif;color:#00F}.setting,canvas{margin:0}.box,.choice{font-family:Arial,sans-serif}.shareButton{vertical-align:bottom;border:0;padding:0;margin:0}.shareButtonGroup{display:inline-block;vertical-align:bottom}#testmodule,.logo{display:inline}.noticeText{text-align:center}.box{padding:2px 6px;color:#fff}canvas{image-rendering:crisp-edges;image-rendering:-o-crisp-edges;image-rendering:-moz-crisp-edges;image-rendering:-webkit-optimize-contrast;image-rendering:optimizeSpeed;-ms-interpolation-mode:nearest-neighbor;padding:0;border:none}#masteroptions,.choice{display:inline-block;white-space:nowrap}#masteroptions{float:right}.choice{font-size:12px;margin:4px 12px 0}.nonselectable{-webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}select option[disabled]{color:silver}.outline{padding:6px;width:16em;background:#FFF;font-family:Arial,sans-serif;border-radius:10px;border:4px solid grey}.description,.options{width:auto;max-width:928px}.description,.warning{font-family:Arial,sans-serif;background:#F0F0F0}.description{padding:6px 15px 2px;font-size:12px;text-align:left;border-radius:10px;color:#202020;margin:0 auto}.options{margin:0 auto 4px;text-align:center}.warning{padding:8px 0;color:red;font-size:20px}.callout{font-size:16px;padding-bottom:4px}.whitelink a:link,.whitelink a:visited{color:#fff}.whitelink a:hover{color:#ff0}input[type=color]{width:50px}.asterik{color:red;font-weight:bolder}.noscript{text-align:center;font-family:Arial,sans-serif;font-size:20px;color:red}.easteregg{position:fixed}
+      }
     </style>
+
+
+    <script>
+      function CircularArray (size){
+        this.size = size;
+        this.arr = [];
+        this.index = 0;
+        this.rawIndex = 0;
+        this.newValue = (v) => {
+          this.rawIndex++;
+          this.index = (this.rawIndex) % this.size;
+          this.arr[this.index] = v;
+        }
+        this.recentValue = (count) => {
+          if(this.index - count + 1 >= 0) {
+            return this.arr.slice(this.index - count + 1, this.index + 1);
+          } else {
+            return [...this.arr.slice(this.index - count + 1), ...this.arr(0, this.index +1)];
+          }
+        }
+        this.length = () => {
+          return this.arr.length;
+        }
+
+      }
+
+      const FRMAME_TIME_INIT = 0;
+      function MyFPS() {
+        this.times = [];
+        this.fpsInSec = 0;
+        this.loopStartTime = 0;
+        this.frameCountInASecond = 0;
+        this.frameTime = FRMAME_TIME_INIT;
+        this.lastRecordingTime = this.frameTime;
+        this.frameCountEndTime = FRMAME_TIME_INIT;
+        this.frameTimePrev = FRMAME_TIME_INIT;
+        this.timePeriodFromLastFrame = -1;
+        // this.recordingFrameArray = []; // 1024 // circular array
+        this.recordingFrameArray = new CircularArray(1024);
+        // this.recordingFrameArrayIndex = 0;
+        // this.recordingLength = 1024;
+        this.raqCount = 0;
+        this.taskInAFrame = (now) => {
+          this.frameTime = now;
+          this.raqCount++;
+
+
+          if (this.frameTime !== -1 && this.frameTimePrev !== -1) {
+            this.timePeriodFromLastFrame = this.frameTime - this.frameTimePrev;
+          }
+
+
+
+
+          // this.recordingFrameArrayIndex = (this.raqCount) % this.recordingLength;
+          // this.recordingFrameArray[recordingFrameArrayIndex] = this.timePeriodFromLastFrame;
+          this.recordingFrameArray.newValue(this.timePeriodFromLastFrame);
+
+
+
+          if (this.frameCountEndTime !== FRMAME_TIME_INIT) {
+            // if page paused, debugger or switch to another tab and then coming back
+            if (this.frameTime - this.frameCountEndTime >= 1500) {
+
+              // paused!!!
+              this.frameCountEndTime = this.frameTime;
+              this.frameCountInASecond = 0;
+            } else if (this.frameTime - this.frameCountEndTime >= 1000) {
+
+              this.refreshRate();
+              this.frameCountEndTime += 1000;
+              this.frameCountInASecond = 0; // 新的一轮
+
+            }
+
+            this.lastRecordingTime = this.frameTime;
+          } else {
+            // init frameEndTime
+            this.frameCountEndTime = this.frameTime;
+          }
+          this.frameCountInASecond++;
+          this.frameTimePrev = this.frameTime;
+        }// end inAFrame
+
+        this.refreshRate =  () => {
+          // Math.round(115/10) * 10
+          // const longframe = this.recordingFrameArray.slice(-120).some(t => t > 120) || this.recordingFrameArray.slice(-3).some(t => t > 300);
+          const recent120 = this.recordingFrameArray.recentValue(120);
+          const recent3 = this.recordingFrameArray.recentValue(3);
+          const longframe = recent120.some(t => t > 120);
+          if(!longframe) {
+            console.log('!!!!+++ refreshRateValue------ME', this.frameCountInASecond);
+
+          }
+        }
+      }
+
+
+      // let raq = () => {
+      //   window.requestAnimationFrame(now => {
+      //     inAFrame(now);
+      //     raq();
+      //   });
+      // }
+
+
+      // raq();
+
+    </script>
     <script type="text/javascript">
       //--------------------------------------------------------------------------------------------------------------
       // Copyright (C) 2012-2018 by Mark D. Rejhon of Blur Busters / Rejhon Technologies Inc. +++H
@@ -994,7 +1103,8 @@
         }
       }
 
-      function animateFrame() {
+      function animateFrame(now) {
+        if(!now) now = performance.now();
         if (!test || !testLoaded) {
           animateStop();
           return;
@@ -1008,6 +1118,9 @@
           test.onPaint();
           drawMainOverlayGraphics();
           frameTiming.accuracyCheck();
+
+          meme.taskInAFrame(now);
+
           if (isPaused) animateStop();
           jankMonitor();
         }
@@ -1871,6 +1984,7 @@ Windows Classic mode makes web browser animations choppy. Also:
       ];
       var browserDetect = new BrowserAgentDetector();
       var frameTiming = new FrameTiming();
+      var meme = new MyFPS();
       var gfx = new CanvasHelper();
       var zoomer = new Zoom();
       var draw = new Draw();
@@ -3542,7 +3656,8 @@ Windows Classic mode makes web browser animations choppy. Also:
               } else {
                 this['fail']();
               }
-              refreshRateValue = 0;
+              console.log('!!!!++++ refreshRateValue ------------!!!!', refreshRateValue, performance.now());
+              refreshRateValue = 0; // 一秒过去了，归零重新开始
               _0x943fx42 = 0;
               stutteringTimes = 0;
               _0x943fx41 = 0;
@@ -3553,6 +3668,7 @@ Windows Classic mode makes web browser animations choppy. Also:
               _0x943fx47 = 0;
             }
           } else {
+            // 这是首次运行，给 frameEndTime 赋值
             frameEndTime = this['frameTime'];
             refreshRateValue = 0;
           }
@@ -3561,7 +3677,7 @@ Windows Classic mode makes web browser animations choppy. Also:
           this['timePeriodAccuracyChecker'] = performance['now']() - frameStartTimeForMeasuring;
           _0x943fx47 += this['timePeriodFrameRender'] + this['timePeriodAccuracyChecker'];
           refreshRateValue++;
-          console.log('!!!refreshRateValue++', refreshRateValue);
+          console.log('!!!refreshRateValue========', refreshRateValue);
           hertz['countCycle'](frameStartTimeForMeasuring);
         };
       }
@@ -4353,15 +4469,6 @@ Windows Classic mode makes web browser animations choppy. Also:
       };
       // requestAnimationFrame(highEnergy);
     </script>
-    <script>
 
-      let t = performance.now();
-      const lowEnergy = (n) => {
-        console.log('time span', n - t);
-        t = n;
-        requestAnimationFrame(lowEnergy);
-      }
-      // requestAnimationFrame(lowEnergy);
-    </script>
   </body>
 </html>
