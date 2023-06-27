@@ -2588,7 +2588,7 @@ Windows Classic mode makes web browser animations choppy. Also:
         var frameCountASecond = 0;
         var goodSeconds = 0;
         var countFPSFrameTime = 0;
-        var avgLatencyPerFrame = 0;
+        var avgFrameLatency = 0;
         var innerWidth = 0;
         var innerHeight = 0;
         var screenLeft = 0;
@@ -3098,8 +3098,8 @@ Windows Classic mode makes web browser animations choppy. Also:
           }
           this['windowCheck']();
           if (this['fps'] !== 0) {
-            avgLatencyPerFrame = 1000 / this['fps'];
-            this['jitter'] = this['timePeriodFrameStart'] - avgLatencyPerFrame;
+            avgFrameLatency = 1000 / this['fps'];
+            this['jitter'] = this['timePeriodFrameStart'] - avgFrameLatency;
             if (Math['abs'](this['jitter']) >= 1) {
               if (this['jitter'] < 0) {
                 jitterFasterFrameCount++;
@@ -3140,9 +3140,9 @@ Windows Classic mode makes web browser animations choppy. Also:
                 }
                 countFPSFrameTime = this['frameTime'];
               } else {
-                if (Math['abs'](this['jitter']) > avgLatencyPerFrame / 2) {
+                if (Math['abs'](this['jitter']) > avgFrameLatency / 2) {
                   jitterAvgLatencyRatio =
-                    Math['abs'](this['jitter']) / avgLatencyPerFrame;
+                    Math['abs'](this['jitter']) / avgFrameLatency;
                   jitterAvgLatencyRatioSum += jitterAvgLatencyRatio;
                   if (jitterAvgLatencyRatio > 1.0) {
                     _0x943fx42 += jitterAvgLatencyRatio;
