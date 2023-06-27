@@ -423,7 +423,7 @@
       // Stutter monitor.
       // These are used for TestUFO animations that have a kiosk mode
       function jankMonitor() {
-        if (!Params.params || !Params.params.kiosk) return;
+        // if (!Params.params || !Params.params.kiosk) return;
         if (document.hidden) {
           // Tab is in background. Don't do a thing.
           jankStarted = false;

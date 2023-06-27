@@ -1,3 +1,6 @@
+const COMMON_REFRESH_RATE = [
+  60, 75, 90, 100, 120, 144, 165, 200, 240, 300, 360, 480,
+];
 function CircularArray(size) {
   this.size = size;
   this.arr = [];
@@ -11,6 +14,7 @@ function CircularArray(size) {
   this.recentValue = (count) => {
     if (count <= 0) count = 1;
     let resultArr = [];
+
     if (this.index - count + 1 >= 0) {
       resultArr = this.arr.slice(this.index - count + 1, this.index + 1);
     } else {
@@ -31,11 +35,8 @@ function CircularArray(size) {
     return filterempty.reduce((a, b) => a + b) / filterempty.length;
   };
 }
-
 const FRMAME_TIME_INIT = 0;
-const COMMON_REFRESH_RATE = [
-  60, 75, 90, 100, 120, 144, 165, 200, 240, 300, 360, 480,
-];
+
 function MyFPS() {
   this.times = [];
   this.fpsInSec = 0;
@@ -112,7 +113,9 @@ function MyFPS() {
     return this.frameCountInASecond;
   };
 
-  this.jankInfo = () => {};
+  this.jankDetect = () => {
+
+  };
 
   this.refreshRate = () => {
     // Math.round(115/10) * 10

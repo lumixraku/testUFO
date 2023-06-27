@@ -44,31 +44,38 @@
       p {
         padding: 0;
       }
+
       .selectArrowButton,
       table {
         vertical-align: middle;
         border: none;
       }
+
       table,
       table.center {
         border-spacing: 0;
         border-collapse: collapse;
       }
+
       .cellHeader,
       body {
         text-align: center;
       }
+
       .box,
       .callout,
       .shareText,
       .warning {
         font-weight: 700;
       }
+
       .easteregg,
       .hiddenchoice,
       .title {
         visibility: hidden;
       }
+
+      // Now minified into index.* files. After modif [title]{white-space:pre-line}.ShareLabel,.logo{white-space:nowrap}.title{display:none}a,img{border:0}body{font-family:Arial,sans-serif;margin:0}p{margin-top:0;margin-bottom:6px;font-size:12px}table.center{border:none;margin-left:auto;margin-right:auto}.selectArrowButton{margin:0 4px}table.intro,table.telemetry{width:100%;max-width:960px;border-collapse:separate;border-spacing:1px 4px;margin-left:auto;margin-right:auto;vertical-align:middle}.selectTestMenu{vertical-align:middle;border-collapse:separate;padding:4px;border-radius:6px;background:#fff}.selectTestMenu:hover{background:#ff0}.selectTestMenu:active,.selectTestMenu:focus{background:#fff}table.intro{border:none}.cellHeader{width:640px;height:54px;font-size:30px;background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAACgBAMAAAB54XoeAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJAAAFiQBmxXGFAAAABl0RVh0U29mdHdhcmUAcGFpbnQubmV0IDQuMC4xNzNun2MAAAAVUExURQAAAAAAAAAm/wDwAP8AAP//AP////TbnhkAAAABdFJOUwBA5thmAAABpUlEQVRo3u3agZGDIBAFUFqgBVuwBVugBfov4QBBVgLowXr53uyfZEKMvJnN6EqcKCWRSCQSiSTGnoMGekLTzJrMYNRMTjRRwMCZMoHEAL1nahkV+cGGF0QE0FVsWhmqmR/MFR8n3lTND4B5+rqHiDCgpl4UNRaoqRdEDQY6YnUd9Xi6t2igi13s8fRlA4KkZEywCCqoc4vAAr1D1kprbLM4YO5ee8mpxUKBZYMNRWOBxUUKECRHjYEEtV5SdNxgoEDiYYLUW46jBgpcKBg7BC7osmKD+N8h/2HzBDh96k2C9JZPH7x5b4gZLO/63EuHZAZ3bvOJL37UGaR9WyQzSDjqNR0yqpPMIOXIlO1ilGeUJDdIuZPXZc7ln269cIPeq+2/XQ/pvCzygy3vUinEB8HqxN+OnwWtjQ8yLMZ0n+r+AqKD8Mch/LkM3w/xrykvuC6/YG3zhvXhG9bY5c+KxF9suf87hQVU5aLx44z63Ka+BdbnTojcYGvmsMgNtucNivxge1YSEcBGWbv4ddB2vvfuh38Fqm5fGvmTDDsokUgkEsn/yw/EenQJh3TQlgAAAABJRU5ErkJggg==) -20px -38px no-repeat #404040;background-attachment:inherit;border-radius:10px}.cellLabel,.cellValue{height:44px;background:#404040}.cellLabel{width:90px;font-size:14px;text-align:right;border-top-left-radius:10px;border-bottom-left-radius:10px}.cellValue{width:160px;font-size:32px;text-align:left;border-top-right-radius:10px;border-bottom-right-radius:10px}.cellSpacer{width:0;background:0 0}.cellShare,.cellStatus{width:100%;text-align:center;border-radius:10px}.cellStatus{height:84px;font-size:30px;background:#00F}.cellShare{height:30px;font-size:16px;background:#404040}.shareText{display:inline-block;min-width:100px;margin-left:5px;width:440px;padding:2px;font-size:16px;font-family:Arial,sans-serif;color:#00F}.setting,canvas{margin:0}.box,.choice{font-family:Arial,sans-serif}.shareButton{vertical-align:bottom;border:0;padding:0;margin:0}.shareButtonGroup{display:inline-block;vertical-align:bottom}#testmodule,.logo{display:inline}.noticeText{text-align:center}.box{padding:2px 6px;color:#fff}canvas{image-rendering:crisp-edges;image-rendering:-o-crisp-edges;image-rendering:-moz-crisp-edges;image-rendering:-webkit-optimize-contrast;image-rendering:optimizeSpeed;-ms-interpolation-mode:nearest-neighbor;padding:0;border:none}#masteroptions,.choice{display:inline-block;white-space:nowrap}#masteroptions{float:right}.choice{font-size:12px;margin:4px 12px 0}.nonselectable{-webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}select option[disabled]{color:silver}.outline{padding:6px;width:16em;background:#FFF;font-family:Arial,sans-serif;border-radius:10px;border:4px solid grey}.description,.options{width:auto;max-width:928px}.description,.warning{font-family:Arial,sans-serif;background:#F0F0F0}.description{padding:6px 15px 2px;font-size:12px;text-align:left;border-radius:10px;color:#202020;margin:0 auto}.options{margin:0 auto 4px;text-align:center}.warning{padding:8px 0;color:red;font-size:20px}.callout{font-size:16px;padding-bottom:4px}.whitelink a:link,.whitelink a:visited{color:#fff}.whitelink a:hover{color:#ff0}input[type=color]{width:50px}.asterik{color:red;font-weight:bolder}.noscript{text-align:center;font-family:Arial,sans-serif;font-size:20px;color:red}.easteregg{position:fixed}
     </style>
 
 
@@ -1276,6 +1283,7 @@
               var displayMessage = "";
               if (displayedHZ > 0) {
                 // console.log('!!! display', displayedHZ);
+                // canvas RefreshRate
                 displayMessage = displayedHZ + " Hz";
               } else if (runCount < 2) {
                 displayMessage = "Calculate Your Refresh Rate";
@@ -2644,9 +2652,9 @@ Windows Classic mode makes web browser animations choppy. Also:
         var last30FramesPeriodArr = [];
         var _0x943fx3d = 0;
         var stutteringTimes = 0;
-        var _0x943fx3f = 0;
-        var _0x943fx40 = 0;
-        var _0x943fx41 = 0;
+        var dynamicStuttertimes = 0;
+        var jitterAvgFrameRatio = 0;
+        var sumJitterAvgFrameRatio = 0;
         var _0x943fx42 = 0;
         var jitterFasterFrameCount = 0;
         var jitterSlowerFrameCount = 0;
@@ -3204,14 +3212,14 @@ Windows Classic mode makes web browser animations choppy. Also:
                 frameEndTime = this['frameTime'];
               } else {
                 if (Math['abs'](this['jitter']) > prevAvgFrameTime / 2) {
-                  _0x943fx40 =
+                  jitterAvgFrameRatio =
                     Math['abs'](this['jitter']) / prevAvgFrameTime;
-                  _0x943fx41 += _0x943fx40;
-                  if (_0x943fx40 > 1.0) {
-                    _0x943fx42 += _0x943fx40;
+                  sumJitterAvgFrameRatio += jitterAvgFrameRatio;
+                  if (jitterAvgFrameRatio > 1.0) {
+                    _0x943fx42 += jitterAvgFrameRatio;
                   }
                   stutteringTimes++;
-                  _0x943fx3f++;
+                  dynamicStuttertimes++;
                   if (
                     this['status'] !== this['STATUS']['PERFORMANCE'] &&
                     this['status'] !== this['STATUS']['HIGH_CPU'] &&
@@ -3224,10 +3232,10 @@ Windows Classic mode makes web browser animations choppy. Also:
                     !RESYNC_STATUS
                   ) {
                     if (
-                      _0x943fx3f <= 10 &&
+                      dynamicStuttertimes <= 10 &&
                       stutteringTimes <= 10 &&
-                      _0x943fx40 <= 1.0 &&
-                      _0x943fx41 / stutteringTimes < 1.0 &&
+                      jitterAvgFrameRatio <= 1.0 &&
+                      sumJitterAvgFrameRatio / stutteringTimes < 1.0 &&
                       this['status'] !== this['STATUS']['STUTTER_DETECTED'] &&
                       this['status'] !== this['STATUS']['STUTTER_MAJOR']
                     ) {
@@ -3242,7 +3250,7 @@ Windows Classic mode makes web browser animations choppy. Also:
                     } else {
                       if (
                         stutteringTimes <= 10 &&
-                        _0x943fx3f <= 10 &&
+                        dynamicStuttertimes <= 10 &&
                         this['status'] !== this['STATUS']['STUTTER_MAJOR']
                       ) {
                         if (
@@ -3269,8 +3277,8 @@ Windows Classic mode makes web browser animations choppy. Also:
                     }
                   }
                 } else {
-                  if (_0x943fx3f > 0) {
-                    _0x943fx3f--;
+                  if (dynamicStuttertimes > 0) {
+                    dynamicStuttertimes--;
                   }
                 }
               }
@@ -3288,7 +3296,7 @@ Windows Classic mode makes web browser animations choppy. Also:
               refreshRateValue = 0;
               frameEndTime = this['frameTime'];
               stutteringTimes = 0;
-              _0x943fx3f = 0;
+              dynamicStuttertimes = 0;
               jitterFasterFrameCount = 0;
               jitterSlowerFrameCount = 0;
               jitterFasterPeriodSum = 0;
@@ -3454,15 +3462,15 @@ Windows Classic mode makes web browser animations choppy. Also:
                 }
               }
               if (this['status'] !== this['STATUS']['SYNCING']) {
-                var _0x943fx8b = this['fps'] > constVal_500Again;
-                var _0x943fx8c = this['fps'] < constVal_15;
-                var _0x943fx8d = this['fps'] > constVal_20;
-                var _0x943fx8e =
+                var fpsOver500 = this['fps'] > constVal_500Again;
+                var fpsLower15 = this['fps'] < constVal_15;
+                var fpsOver20 = this['fps'] > constVal_20;
+                var isPoorPerformance =
                   this['status'] === this['STATUS']['PERFORMANCE'];
-                if (_0x943fx8e && !_0x943fx8d) {
-                  _0x943fx8c = true;
+                if (isPoorPerformance && !fpsOver20) {
+                  fpsLower15 = true;
                 }
-                if (_0x943fx8b) {
+                if (fpsOver500) {
                   if (browserDetect['browser'] === 'Chrome') {
                     this['message'] = 'Too fast. Please enable VSYNC in chrome://flags';
                   } else {
@@ -3472,7 +3480,7 @@ Windows Classic mode makes web browser animations choppy. Also:
                   this['strictSync'] = true;
                   noStuttering = false;
                 } else {
-                  if (_0x943fx8c && !_0x943fx62) {
+                  if (fpsLower15 && !_0x943fx62) {
                     if (
                       this['status'] !== this['STATUS']['SYNCFAIL']
                     ) {
@@ -3555,7 +3563,7 @@ Windows Classic mode makes web browser animations choppy. Also:
               refreshRateValue = 0; // 一秒过去了，归零重新开始
               _0x943fx42 = 0;
               stutteringTimes = 0;
-              _0x943fx41 = 0;
+              sumJitterAvgFrameRatio = 0;
               jitterFasterFrameCount = 0;
               jitterSlowerFrameCount = 0;
               jitterFasterPeriodSum = 0;
@@ -4238,8 +4246,6 @@ Windows Classic mode makes web browser animations choppy. Also:
             );
           };
           this['calc'] = function () {
-            // 前 100 帧得到的都是 0
-            // console.log('!!!time In A Frame', stablePeriodInAFrame);
             return stablePeriodInAFrame ? 1000 / stablePeriodInAFrame : 0;
           };
           this['validate'] = function () {
