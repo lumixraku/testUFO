@@ -1019,7 +1019,7 @@
           drawMainOverlayGraphics();
           frameTiming.accuracyCheck();
 
-          now && meme.taskInAFrame(now);
+          // now && meme.taskInAFrame(now);
 
           if (isPaused) animateStop();
           jankMonitor();
@@ -1033,6 +1033,7 @@
   </head>
 
   <body onfocus="onWindowFocus();">
+   <div class="c" id="lotsOfChildren"></div>
     <div id="ufoheader">
       <table class="intro">
         <tbody>
@@ -4371,6 +4372,5 @@ Windows Classic mode makes web browser animations choppy. Also:
       };
       // requestAnimationFrame(highEnergy);
     </script>
-
   </body>
 </html>

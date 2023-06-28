@@ -30,14 +30,17 @@ function CircularArray(size) {
     return this.arr.length;
   };
   this.avg = () => {
-    if (this.length() === 0) return 0;
     const filterempty = this.arr.filter((x) => x);
-    return filterempty.reduce((a, b) => a + b) / filterempty.length;
+    return filterempty.reduce((a, b) => a + b, 0) / filterempty.length;
   };
 }
 const FRMAME_TIME_INIT = 0;
+const STATE_NORMAL = 0;
+const STATE_BUMP = 1;
+const STATE_STUTTER = 2;
 
 function MyFPS() {
+  this.state =
   this.times = [];
   this.fpsInSec = 0;
   this.loopStartTime = 0;
@@ -55,9 +58,11 @@ function MyFPS() {
   this.raqCount = 0;
 
   this.detectedRefreshRate = new CircularArray(10); // 记录已经测得的刷新率 用于 lookBehind 定位
-
   this.lastValidRefreshRate = 0; // 上一次稳定的刷新率
   this.fpsLastSecond = 0; // 上一次统计得到的 FPS 情况
+
+  this.tickStartTime =  0;
+  this.tickEnd = 0;
 
   /**
    * 1s过后 本轮统计结束，开始下一轮统计
@@ -66,10 +71,23 @@ function MyFPS() {
     this.fpsLastSecond = this.frameCountInASecond;
     this.frameCountInASecond = 0;
     this.stutteringTimes = 0;
+    this.tickTimeArray = [];
   };
+
+
+  this.tickTimeArray = [];
+  this.tickStart = () => {
+    this.tickStartTime = performance.now();
+  }
+  this.tickEnd = () => {
+    this.tickEndTime = performance.now();
+    this.tickTimeArray.push(this.tickEndTime - this.tickStartTime);
+  }
+
   this.taskInAFrame = (now) => {
     this.frameTime = now;
     this.raqCount++;
+
 
     if (this.frameTime !== -1 && this.frameTimePrev !== -1) {
       this.timePeriodFromLastFrame = this.frameTime - this.frameTimePrev;
@@ -84,17 +102,15 @@ function MyFPS() {
         this.frameCountLoopEndTime = this.frameTime;
         this.loopEndClear();
       } else if (this.frameTime - this.frameCountLoopEndTime >= 1000) {
-        const avgFrameLatency = 1000 / this.fps();
+        const avgFrameLatency = 1000 / this.currFPSValue();
         const jitter = Math.abs(this.timePeriodFromLastFrame - avgFrameLatency);
         if (jitter > avgFrameLatency / 2) {
           this.stutteringTimes++;
         }
-        const rs = this.refreshRate();
-        console.log(
-          '!!!!+++ refreshRateValue------ME',
-          rs,
-          this.frameCountInASecond
-        );
+
+        const fpsInfo = this.recordFPS();
+        const refreshRate = this.getRefreshRate();
+        console.log(`!!!!+++ ------ME  rr: ${refreshRate}  fps: ${this.frameCountInASecond}, frameTime ${this.frameTime}  ${this.frameCountLoopEndTime} more:`, fpsInfo);
 
         this.frameCountLoopEndTime += 1000;
         this.loopEndClear();
@@ -109,15 +125,64 @@ function MyFPS() {
     this.frameTimePrev = this.frameTime;
   }; // end inAFrame
 
-  this.fps = () => {
+  this.currFPSValue = () => {
     return this.frameCountInASecond;
   };
+
+  this.recordingFPSArray = []; // 累积记录多少秒数据呢? // 先不限制吧
+  this.recordFPS = ()=> {
+    const refreshRate = this.getRefreshRate();
+    let lagTickTimes = 0;
+    let continueLagTicks = 0; // over 1 frame latency
+    let maxContinueLagTicks = 0;
+    if(!isNaN(refreshRate)) {
+      const frametime = 1000 / refreshRate;
+      for (let i = 0; i < this.tickTimeArray.length - 1; i++) {
+        const lastTickTime = i > 0 ? this.tickTimeArray[i - 1] : 0;
+        const currentTickTime = this.tickTimeArray[i];
+        const nextTickTime = this.tickTimeArray.length - 1 ? 0 : this.tickTimeArray[i + 1]; this.tickTimeArray[i + 1];
+        if ( lastTickTime < frametime &&  currentTickTime > frametime) {
+          lagTickTimes++;
+        }
+        if ((lastTickTime > frametime && currentTickTime > frametime) && // 连续两帧都是 lag
+        (i == 0 && currentTickTime > frametime)) { // 第一帧就是 lag
+          continueLagTicks++;
+          if(continueLagTicks > maxContinueLagTicks) maxContinueLagTicks = continueLagTicks;
+        }
+        if(currentTickTime <= frametime ) continueLagTicks = 0;
+      }
+    }
+    const fps = this.frameCountInASecond;
+    const maxTickTime = Math.max(...this.tickTimeArray);
+    const minTickTime = Math.min(...this.tickTimeArray);
+    const avgTickTime = this.tickTimeArray.reduce((a, b) => a + b, 0) / this.tickTimeArray.length;
+    const recentFrames = this.recordingFrameArray.recentValue(fps);
+    const maxFrameTime = Math.max(...recentFrames);
+    const minFrameTime = Math.min(...recentFrames);
+    // 刷新率 - 实际帧数
+    // 当进入 bump 状态时， 刷新率在波动中，此刻刷新率变化较大
+    const dropFrames = Math.max(0, refreshRate - this.tickTimeArray.length);
+    const fpsInfo = {
+      fps,
+      maxTickTime,
+      minTickTime,
+      avgTickTime,
+      lagTickTimes,
+      maxContinueLagTicks,
+      dropFrames,
+      maxFrameTime,
+      minFrameTime,
+    };
+    this.recordingFPSArray.push(fpsInfo);
+    return fpsInfo;
+  }
+
 
   this.jankDetect = () => {
 
   };
 
-  this.refreshRate = () => {
+  this.getRefreshRate = () => {
     // Math.round(115/10) * 10
     // const longframe = this.recordingFrameArray.slice(-120).some(t => t > 120) || this.recordingFrameArray.slice(-3).some(t => t > 300);
     let lookBehind = this.detectedRefreshRate.recentValue(1)[0] || 60;
@@ -155,25 +220,27 @@ function MyFPS() {
 
     let result;
     if (stableFrameLatency) {
-      const stableRefreshRate = this.findClosestValueInArray(
+      const stableRefreshRate = this.findClosestSpecValueInArray(
         COMMON_REFRESH_RATE,
         this.frameCountInASecond
       );
       this.detectedRefreshRate.newValue(stableRefreshRate);
       this.lastValidRefreshRate = stableRefreshRate;
       result = stableRefreshRate;
-    } else if (bump) {
-
-      const refreshRate = this.findClosestValueInArray(
-        COMMON_REFRESH_RATE,
-        this.frameCountInASecond
-      );
-      this.detectedRefreshRate.newValue(refreshRate);
-      this.lastValidRefreshRate = refreshRate;
-
-      result = 'bump';
     } else {
-      result = this.getLastStableRefreshRate();
+
+      if (bump) {
+        const refreshRate = this.findClosestSpecValueInArray(
+          COMMON_REFRESH_RATE,
+          this.frameCountInASecond
+        );
+        this.detectedRefreshRate.newValue(refreshRate);
+        if (this.lastValidRefreshRate === 0) this.lastValidRefreshRate = refreshRate;
+        result = this.lastValidRefreshRate;//60;//'bump';
+      } else {
+        if (this.lastValidRefreshRate === 0) this.lastValidRefreshRate = 60;
+        result = this.getLastStableRefreshRate();
+      }
     }
     return result;
   };
@@ -182,7 +249,8 @@ function MyFPS() {
     // 不可以用均值，当刷新率变换的时候记录值可能是 [empty, 120, 120, 120, 60, 60, 60, 60]
     // 如用均值作为 refreshRate 则会得到 84Hz 这样的刷新率
     // return Math.round(this.detectedRefreshRate.avg());
-    return 'last>>>>' + this.lastValidRefreshRate;
+    return this.lastValidRefreshRate === 0 ? 60 : this.lastValidRefreshRate;
+    // return 'last>>>>' + this.lastValidRefreshRate;
   };
 
   this.findClosestValueInArray = (arr, goal) => {
@@ -191,4 +259,42 @@ function MyFPS() {
     });
     return closest;
   };
+
+  //
+  this.findClosestSpecValueInArray = (arr, goal) => {
+    const closest = arr.reduce(function (prev, curr) {
+      // return Math.abs(curr - goal) < Math.abs(prev - goal) ? curr : prev;
+      return goal - 5 > prev ? curr : prev;
+    });
+    return closest;
+  };
 }
+
+window.startFPS = () => {
+  const meme = new MyFPS();
+  let lastT;
+  const raf = (now) => {
+    meme.tickStart();
+
+    // lastT && document.querySelector('#lotsOfChildren').removeChild(lastT);
+    // lastT = document.createElement('div');
+    // document.querySelector('#lotsOfChildren').appendChild(lastT);
+    const container = document.querySelector('#lotsOfChildren');
+
+    const ran = performance.now() % 10000;
+    let i = 0;
+    while (i++ < ran) {
+      const t = document.createElement('div');
+      container.appendChild(t);
+    }
+    if(container.childElementCount > 10000) {
+      container.innerHTML = ''
+    }
+
+    meme.tickEnd();
+    meme.taskInAFrame(now);
+    window.requestAnimationFrame(raf);
+  };
+  window.requestAnimationFrame(raf);
+}
+startFPS();
